@@ -1,6 +1,8 @@
 # Netbeans config files
 #**/nbproject
 
+**/.DS_Store
+
 # Prerequisites
 *.d
 
