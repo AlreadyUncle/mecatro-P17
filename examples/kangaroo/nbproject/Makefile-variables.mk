@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=test_serial
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/test_serial
+CND_ARTIFACT_NAME_Debug=kangaroo
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/kangaroo
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=testserial.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/testserial.tar
+CND_PACKAGE_NAME_Debug=kangaroo.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/kangaroo.tar
 # Release configuration
-CND_PLATFORM_Release=GNU-Linux
-CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=test_serial
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/test_serial
-CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=testserial.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/testserial.tar
+CND_PLATFORM_Release=None-Linux
+CND_ARTIFACT_DIR_Release=dist/Release/None-Linux
+CND_ARTIFACT_NAME_Release=kangaroo
+CND_ARTIFACT_PATH_Release=dist/Release/None-Linux/kangaroo
+CND_PACKAGE_DIR_Release=dist/Release/None-Linux/package
+CND_PACKAGE_NAME_Release=kangaroo.tar
+CND_PACKAGE_PATH_Release=dist/Release/None-Linux/package/kangaroo.tar
 #
 # include compiler specific variables
 #
