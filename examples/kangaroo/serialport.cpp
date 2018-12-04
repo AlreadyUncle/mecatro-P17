@@ -72,7 +72,7 @@ bool CSerialPort::gets(char *reponse, unsigned int taille)
 {
     bool retour=false;
     int nbCarRecu=0;
-    if (m_fd != -1 )
+    if (m_fd != -1)
     {
         nbCarRecu=read(m_fd,reponse,taille);
         if(nbCarRecu>0)
