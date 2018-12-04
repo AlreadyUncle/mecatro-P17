@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
     int fd;
-    char caractere = 'B';
+    char caractere = 'W';
     fd = serialOpen("/dev/serial0", 9600);
 
     if (fd != -1) {
