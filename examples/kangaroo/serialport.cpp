@@ -11,6 +11,7 @@ int CSerialPort::open(const char *device, int baud)
 {
     m_fd=serialOpen(device,baud);
     //wiringPiSetup();
+    usleep(10000);
     return m_fd;
 }
 

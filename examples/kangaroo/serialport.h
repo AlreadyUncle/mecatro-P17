@@ -25,6 +25,7 @@ public:
     bool getchar(char *car);
     bool gets(char *reponse, unsigned int taille);
     void flush ();
+    
 };
 
 #endif // SERIALPORT_H
