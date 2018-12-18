@@ -15,13 +15,18 @@ int main()
     if(etat==true)
     {
         cout<<"Operationnal"<<endl;
-        cout<<robot.forwardB(10,500,cm)<<endl;
-        cout<<robot.turnB(500,360)<<endl;
+        int speed=500;
+        while(true){
+            for(speed=4000;speed<7501;speed+=500){
+                cout<<robot.turnB(360,speed,true)<<endl;
+                cout<<robot.turnB(-360,speed,true)<<endl;
+            }
+        }
 
     }
     else
     {
-        cout<<"Connection rrror"<<endl;
+        cout<<"Connection error"<<endl;
     }
 
 }
