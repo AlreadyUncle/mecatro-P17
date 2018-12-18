@@ -7,14 +7,14 @@ Ckangaroo::Ckangaroo(const char * portName)
         m_isOpened=false;
     else
         m_isOpened=true;
+    m_init=init();
 }
 
 
-bool Ckangaroo::getport()
+bool Ckangaroo::isOperationnal()
 {
-    return m_isOpened;
+    return m_isOpened&&m_init;
 }
-
 
 bool Ckangaroo::init()
 {
@@ -22,13 +22,13 @@ bool Ckangaroo::init()
 
     if(m_isOpened)
     {
+        retour =true;
         start(drive);
-            m_serialPortOutput.puts("D, UNITS 628 mm = 160000 lines\r\n");
-            m_serialPortOutput.puts("D,p0s0\r\n");
+            retour=retour&&m_serialPortOutput.puts("D, UNITS 628 mm = 160000 lines\r\n");
+            retour=retour&&m_serialPortOutput.puts("D,p0s0\r\n");
         start(turn);
-            m_serialPortOutput.puts("T, UNITS 360 degrees = 246400 lines\r\n");
-            m_serialPortOutput.puts("T,p0s0\r\n");
-            retour=true;
+            retour=retour&&m_serialPortOutput.puts("T, UNITS 360 degrees = 246400 lines\r\n");
+            retour=retour&&m_serialPortOutput.puts("T,p0s0\r\n");
     }
     return retour;
 }
@@ -71,7 +71,6 @@ void Ckangaroo::downZero()
 {
     if(m_isOpened)
     {
-
         start(moteur1);
             m_serialPortOutput.puts("1,home\r\n");
         start(moteur2);
@@ -110,10 +109,9 @@ bool Ckangaroo::setVitesse(vitesse v)
 
 
 
-bool Ckangaroo::allerEn(int distance, int v, unite u)
+bool Ckangaroo::forwardNB(int distance, int v, unite u)
 {
     bool retour=false;
-    init();
     start(drive);
     if(m_isOpened)
     {
@@ -123,7 +121,7 @@ bool Ckangaroo::allerEn(int distance, int v, unite u)
     return  retour; 
 }
 
-bool Ckangaroo::avancer(int distance, int v, unite u){
+bool Ckangaroo::forwardB(int distance, int v, unite u){
     bool retour=false;
     start(drive);
     if(m_isOpened)
@@ -139,7 +137,7 @@ bool Ckangaroo::avancer(int distance, int v, unite u){
     return  retour;
 }
 
-bool Ckangaroo::tourner(int v, int angle){
+bool Ckangaroo::turnB(int v, int angle){
     bool retour=false;
     start(turn);
     if(m_isOpened)
@@ -155,37 +153,15 @@ bool Ckangaroo::tourner(int v, int angle){
     return  retour;
 }
 
-//bool Ckangaroo::tourner(vitesse v, int angle)
-//{
-//
-////    char commande[100]={0};
-////     QString tempo;
-////    bool retour  = true;
-////
-////    init();
-////    start(turn);
-////    if(m_isOpened)
-////    {
-////        strcpy(commande,"T,p");
-////        angle=angle*degre;
-////        tempo=QString::number(angle);
-////        strcat(commande,tempo.toStdString().c_str());
-////        strcat(commande,"s");
-////
-////        tempo=QString::number(v);
-////        strcat(commande,tempo.toStdString().c_str());
-////        strcat(commande,"\r\n");
-////        retour=m_serialPortOutput.puts(commande);
-////    }
-////    return  retour;
-//    
-//    return false;
-//
-//
-//}
-
-
-
+bool Ckangaroo::turnNB(int v, int angle){
+    bool retour=false;
+    start(turn);
+    if(m_isOpened)
+    {
+        string commande="T,p"+std::to_string(angle*degre)+"s"+std::to_string(v)+"\r\n";
+        retour=m_serialPortOutput.puts(commande.c_str());
+    }
+}
 
 //retourne un code erreur
 //0 pas d'erreur

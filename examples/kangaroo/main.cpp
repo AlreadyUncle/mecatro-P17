@@ -11,19 +11,17 @@ int main()
     
     bool etat;
     Ckangaroo robot("/dev/serial0");
-    etat=robot.getport();
+    etat=robot.isOperationnal();
     if(etat==true)
     {
-        cout<<"Succes"<<endl;
-        //Correction : 1) Initialiser d'abord ; 2 ) Start ce que l'on desire
-        robot.init();
-        cout<<robot.avancer(10,500,cm)<<endl;
-        cout<<robot.tourner(500,360)<<endl;
+        cout<<"Operationnal"<<endl;
+        cout<<robot.forwardB(10,500,cm)<<endl;
+        cout<<robot.turnB(500,360)<<endl;
 
     }
     else
     {
-        cout<<"Erreur"<<endl;
+        cout<<"Connection rrror"<<endl;
     }
 
 }

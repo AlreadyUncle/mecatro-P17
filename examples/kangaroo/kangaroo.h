@@ -25,11 +25,12 @@ public:
     Ckangaroo(const char * portName);
     ~Ckangaroo();
 
-    bool allerEn(int distance, int v, unite u);
-    bool avancer(int distance, int v, unite u);
+    bool forwardB(int distance, int v, unite u);
+    bool forwardNB(int distance, int v, unite u);
     bool setVitesse (vitesse v);
-    bool tourner (int v,int angle);
-    bool getport();
+    bool turnB (int v,int angle);
+    bool turnNB (int v,int angle);
+    bool isOperationnal();
 
     int getPosition (mode m,int &position);
     int getPositionMax (mode m, int &positionMax); // retourne le range de position maximal
@@ -40,6 +41,10 @@ public:
 
     CSerialPort m_serialPortOutput;
     bool m_isOpened;
+    bool m_init;
+    
+    int m_x,m_y;
+    int m_angle;
 
     bool init();
     bool start(mode m);
