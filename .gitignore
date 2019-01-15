@@ -1,5 +1,5 @@
-# Netbeans config files
-#**/nbproject
+# IDE config files
+.idea
 
 **/.DS_Store
 

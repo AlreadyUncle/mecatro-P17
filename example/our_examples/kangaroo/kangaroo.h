@@ -8,11 +8,6 @@ enum mode
     moteur1=0x31,moteur2=0x32,drive=0x44,turn=0x54
 };
 
-enum unite
-{
-    mm=4,cm=34,m=3395,degre=7
-};
-
 enum vitesse
 {
     km0=0, km05=200,km1=400,km15=600,km2=800,km25=1000,km3=1200,km35=1400,km4=1600,km45=1800,km5=2000
@@ -25,14 +20,14 @@ public:
     Ckangaroo(const char * portName);
     ~Ckangaroo();
 
-    bool forwardB(int distance, int v, unite u);
-    bool forwardNB(int distance, int v, unite u);
+    bool forwardB(int distance, int v, bool verbose=false);
+    bool forwardNB(int distance, int v);
     bool setVitesse (vitesse v);
-    bool turnB (int v,int angle);
-    bool turnNB (int v,int angle);
+    bool turnB (int angle,int v, bool verbose=false);
+    bool turnNB (int angle,int v);
     bool isOperationnal();
 
-    int getPosition (mode m,int &position);
+    string getPosition (mode m);
     int getPositionMax (mode m, int &positionMax); // retourne le range de position maximal
     int getPositionMin (mode m , int &positionMin); //retourne le range de position minimal
     int getSpeed (mode m, int &speed); //retourne la vitesse

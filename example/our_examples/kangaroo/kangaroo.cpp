@@ -109,111 +109,63 @@ bool Ckangaroo::setVitesse(vitesse v)
 
 
 
-bool Ckangaroo::forwardNB(int distance, int v, unite u)
+bool Ckangaroo::forwardNB(int distance, int v)
 {
     bool retour=false;
     start(drive);
     if(m_isOpened)
     {
-        string commande="D,p"+std::to_string(u*distance)+"s"+std::to_string(v)+"\r\n";
+        string commande="D,p"+std::to_string((int)(distance*5.6666))+"s"+std::to_string(v)+"\r\n";
         retour=m_serialPortOutput.puts(commande.c_str());
     }
     return  retour; 
 }
 
-bool Ckangaroo::forwardB(int distance, int v, unite u){
+bool Ckangaroo::forwardB(int distance, int v, bool verbose){
     bool retour=false;
     start(drive);
     if(m_isOpened)
     {
-        string commande="D,p"+std::to_string(u*distance)+"s"+std::to_string(v)+"\r\n";
+        string commande="D,p"+std::to_string((int)(distance*5.6666))+"s"+std::to_string(v)+"\r\n";
         retour=m_serialPortOutput.puts(commande.c_str());
     }
     
     char rep;
     do{
+        if(verbose)
+            cout << getPosition(drive) << endl;
         rep=getState(drive);
     }while(rep!='P');
     return  retour;
 }
 
-bool Ckangaroo::turnB(int v, int angle){
+bool Ckangaroo::turnB(int angle, int v, bool verbose){
     bool retour=false;
     start(turn);
     if(m_isOpened)
     {
-        string commande="T,p"+std::to_string(angle*degre)+"s"+std::to_string(v)+"\r\n";
+        string commande="T,p"+std::to_string((int)(angle*13.89))+"s"+std::to_string(v)+"\r\n";
         retour=m_serialPortOutput.puts(commande.c_str());
     }
     
     char rep;
     do{
+        if(verbose)
+            cout << getPosition(turn) << endl;
         rep=getState(turn);
     }while(rep!='P');
     return  retour;
 }
 
-bool Ckangaroo::turnNB(int v, int angle){
+bool Ckangaroo::turnNB(int angle, int v){
     bool retour=false;
     start(turn);
     if(m_isOpened)
     {
-        string commande="T,p"+std::to_string(angle*degre)+"s"+std::to_string(v)+"\r\n";
+        string commande="T,p"+std::to_string((int)(angle*13.89))+"s"+std::to_string(v)+"\r\n";
         retour=m_serialPortOutput.puts(commande.c_str());
     }
 }
-
-//retourne un code erreur
-//0 pas d'erreur
-int Ckangaroo::getPosition(mode m,int &position)
-{
-    char commande[100]={0};
-    char reponse[100]={0};
-
-    int codeErreur=0;
-    char tempo[10]={0};
-    int nb=0;
-    char cm=(char)m;
-
-    if(m_isOpened)
-    {
-
-        strcpy(commande,&cm);
-        strcat(commande,",getp\r\n");
-        if(m_serialPortOutput.puts(commande))
-        {
-            unsigned int i=0;
-            do
-            {
-                nb=m_serialPortOutput.dataAvailable();
-                if(nb!=-1)
-                {
-                    m_serialPortOutput.getchar(&reponse[i]);
-                    i++;
-                }
-            }while(reponse[i-1]!='\n' && i<99);
-            reponse[i]='\0';
-            if(reponse[2]!='E')
-            {
-                int j=0;
-                for( i=3;i<strlen(reponse)-2;i++)
-                {
-                    tempo[j++]=reponse[i];
-                }
-                position=atoi(tempo);
-            }
-            else
-            {
-                tempo[0]=reponse[2];
-                tempo[1]=reponse[3];
-                codeErreur=atoi(tempo);
-            }
-        }
-
-    }
-    return codeErreur;
-}
-
 
 int Ckangaroo::getSpeed(mode m, int &speed)
 {
@@ -261,9 +213,6 @@ int Ckangaroo::getSpeed(mode m, int &speed)
 
     }
     return codeErreur;
-
-
-
 }
 
 char Ckangaroo::getState(mode m)
@@ -290,6 +239,32 @@ char Ckangaroo::getState(mode m)
     }
     return reponse[2];
 }
+
+string Ckangaroo::getPosition(mode m)
+{
+    string commande;
+    string reponse="";
+    char lastChar;
+    
+    if(m_isOpened)
+    {
+        commande=(char)m;
+        commande+=",getp\r\n";
+        if(m_serialPortOutput.puts(commande.c_str()))
+        {
+            do
+            {
+                if(m_serialPortOutput.dataAvailable()!=-1)
+                {
+                    m_serialPortOutput.getchar(&lastChar);
+                    reponse+=lastChar;
+                }
+            }while(lastChar!='\n');
+        }
+    }
+    return reponse;
+}
+
 
 int Ckangaroo::getPositionMax (mode m, int &positionMax)
 {
@@ -397,6 +372,5 @@ int Ckangaroo::getPositionMin (mode m , int &positionMin)
 Ckangaroo::~Ckangaroo()
 {
    // m_serialPortOutput.flush();
-
 }
 
