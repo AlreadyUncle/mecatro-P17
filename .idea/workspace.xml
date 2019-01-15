@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1a785100-3ed8-49e0-8e3d-26dc0204388d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/dxl_monitor.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/win32/.vs/dxl_monitor/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/win32/dxl_monitor.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/win32/dxl_monitor/dxl_monitor.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/win32/dxl_monitor/dxl_monitor.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/win32/dxl_monitor/dxl_monitor.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/win64/.vs/dxl_monitor/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/win64/dxl_monitor.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/win64/dxl_monitor/dxl_monitor.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/win64/dxl_monitor/dxl_monitor.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dxl_monitor/win64/dxl_monitor/dxl_monitor.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/bulk_read.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/win32/.vs/bulk_read/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/win32/bulk_read.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/win32/bulk_read/bulk_read.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/win32/bulk_read/bulk_read.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/win32/bulk_read/bulk_read.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/win64/.vs/bulk_read/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/win64/bulk_read.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/win64/bulk_read/bulk_read.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/win64/bulk_read/bulk_read.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/bulk_read/win64/bulk_read/bulk_read.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/multi_port.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/win32/.vs/multi_port/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/win32/multi_port.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/win32/multi_port/multi_port.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/win32/multi_port/multi_port.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/win32/multi_port/multi_port.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/win64/.vs/multi_port/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/win64/multi_port.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/win64/multi_port/multi_port.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/win64/multi_port/multi_port.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/multi_port/win64/multi_port/multi_port.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/ping.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/win32/.vs/ping/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/win32/ping.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/win32/ping/ping.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/win32/ping/ping.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/win32/ping/ping.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/win64/.vs/ping/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/win64/ping.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/win64/ping/ping.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/win64/ping/ping.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/ping/win64/ping/ping.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/read_write.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/win32/.vs/read_write/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/win32/read_write.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/win32/read_write/read_write.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/win32/read_write/read_write.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/win32/read_write/read_write.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/win64/.vs/read_write/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/win64/read_write.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/win64/read_write/read_write.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/win64/read_write/read_write.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/read_write/win64/read_write/read_write.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/reset.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/win32/.vs/reset/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/win32/reset.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/win32/reset/reset.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/win32/reset/reset.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/win32/reset/reset.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/win64/.vs/reset/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/win64/reset.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/win64/reset/reset.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/win64/reset/reset.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/reset/win64/reset/reset.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/sync_write.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/win32/.vs/sync_write/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/win32/sync_write.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/win32/sync_write/sync_write.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/win32/sync_write/sync_write.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/win32/sync_write/sync_write.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/win64/.vs/sync_write/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/win64/sync_write.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/win64/sync_write/sync_write.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/win64/sync_write/sync_write.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol1.0/sync_write/win64/sync_write/sync_write.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/broadcast_ping.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/win32/.vs/broadcast_ping/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/win32/broadcast_ping.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/win32/broadcast_ping/broadcast_ping.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/win32/broadcast_ping/broadcast_ping.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/win32/broadcast_ping/broadcast_ping.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/win64/.vs/broadcast_ping/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/win64/broadcast_ping.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/win64/broadcast_ping/broadcast_ping.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/win64/broadcast_ping/broadcast_ping.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/broadcast_ping/win64/broadcast_ping/broadcast_ping.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/bulk_read_write.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/win32/.vs/bulk_read_write/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/win32/bulk_read_write.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/win32/bulk_read_write/bulk_read_write.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/win32/bulk_read_write/bulk_read_write.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/win32/bulk_read_write/bulk_read_write.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/win64/.vs/bulk_read_write/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/win64/bulk_read_write.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/win64/bulk_read_write/bulk_read_write.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/win64/bulk_read_write/bulk_read_write.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/bulk_read_write/win64/bulk_read_write/bulk_read_write.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/clear_multi_turn.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/win32/.vs/clear_multi_turn/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/win32/clear_multi_turn.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/win32/clear_multi_turn/clear_multi_turn.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/win32/clear_multi_turn/clear_multi_turn.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/win32/clear_multi_turn/clear_multi_turn.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/win64/.vs/clear_multi_turn/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/win64/clear_multi_turn.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/win64/clear_multi_turn/clear_multi_turn.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/win64/clear_multi_turn/clear_multi_turn.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/clear_multi_turn/win64/clear_multi_turn/clear_multi_turn.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/factory_reset.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/win32/.vs/factory_reset/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/win32/factory_reset.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/win32/factory_reset/factory_reset.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/win32/factory_reset/factory_reset.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/win32/factory_reset/factory_reset.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/win64/.vs/factory_reset/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/win64/factory_reset.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/win64/factory_reset/factory_reset.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/win64/factory_reset/factory_reset.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/factory_reset/win64/factory_reset/factory_reset.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/indirect_address.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/win32/.vs/indirect_address/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/win32/indirect_address.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/win32/indirect_address/indirect_address.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/win32/indirect_address/indirect_address.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/win32/indirect_address/indirect_address.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/win64/.vs/indirect_address/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/win64/indirect_address.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/win64/indirect_address/indirect_address.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/win64/indirect_address/indirect_address.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/indirect_address/win64/indirect_address/indirect_address.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/multi_port.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/win32/.vs/multi_port/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/win32/multi_port.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/win32/multi_port/multi_port.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/win32/multi_port/multi_port.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/win32/multi_port/multi_port.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/win64/.vs/multi_port/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/win64/multi_port.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/win64/multi_port/multi_port.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/win64/multi_port/multi_port.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/multi_port/win64/multi_port/multi_port.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/ping.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/win32/.vs/ping/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/win32/ping.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/win32/ping/ping.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/win32/ping/ping.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/win32/ping/ping.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/win64/.vs/ping/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/win64/ping.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/win64/ping/ping.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/win64/ping/ping.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/ping/win64/ping/ping.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/read_write.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/win32/.vs/read_write/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/win32/read_write.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/win32/read_write/read_write.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/win32/read_write/read_write.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/win32/read_write/read_write.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/win64/.vs/read_write/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/win64/read_write.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/win64/read_write/read_write.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/win64/read_write/read_write.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/read_write/win64/read_write/read_write.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/reboot.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/win32/.vs/reboot/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/win32/reboot.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/win32/reboot/reboot.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/win32/reboot/reboot.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/win32/reboot/reboot.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/win64/.vs/reboot/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/win64/reboot.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/win64/reboot/reboot.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/win64/reboot/reboot.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/reboot/win64/reboot/reboot.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/sync_read_write.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/win32/.vs/sync_read_write/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/win32/sync_read_write.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/win32/sync_read_write/sync_read_write.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/win32/sync_read_write/sync_read_write.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/win32/sync_read_write/sync_read_write.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/win64/.vs/sync_read_write/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/win64/sync_read_write.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/win64/sync_read_write/sync_read_write.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/win64/sync_read_write/sync_read_write.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol2.0/sync_read_write/win64/sync_read_write/sync_read_write.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/linux32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/linux64/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/linux_sbc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/mac/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/protocol_combined.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/win32/.vs/protocol_combined/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/win32/protocol_combined.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/win32/protocol_combined/protocol_combined.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/win32/protocol_combined/protocol_combined.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/win32/protocol_combined/protocol_combined.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/win64/.vs/protocol_combined/v14/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/win64/protocol_combined.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/win64/protocol_combined/protocol_combined.vcxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/win64/protocol_combined/protocol_combined.vcxproj.filters" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/protocol_combined/win64/protocol_combined/protocol_combined.vcxproj.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/dynamixel_sdk/dynamixel_sdk.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/dynamixel_sdk/group_bulk_read.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/dynamixel_sdk/group_bulk_write.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/dynamixel_sdk/group_sync_read.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/dynamixel_sdk/group_sync_write.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/dynamixel_sdk/packet_handler.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/dynamixel_sdk/port_handler.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/dynamixel_sdk/port_handler_arduino.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/dynamixel_sdk/port_handler_linux.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/dynamixel_sdk/port_handler_mac.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/dynamixel_sdk/port_handler_windows.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/dynamixel_sdk/protocol1_packet_handler.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/dynamixel_sdk/protocol2_packet_handler.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/keywords.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DynamixelSDK.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/build/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dynamixel_sdk/group_bulk_read.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dynamixel_sdk/group_bulk_write.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dynamixel_sdk/group_sync_read.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dynamixel_sdk/group_sync_write.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dynamixel_sdk/packet_handler.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dynamixel_sdk/port_handler.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dynamixel_sdk/port_handler_arduino.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dynamixel_sdk/port_handler_linux.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dynamixel_sdk/port_handler_mac.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dynamixel_sdk/port_handler_windows.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dynamixel_sdk/protocol1_packet_handler.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dynamixel_sdk/protocol2_packet_handler.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/Makefile-Debug.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/Makefile-Release.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/Makefile-impl.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/Makefile-variables.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/Package-Debug.bash" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/Package-Release.bash" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/configurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/private/Makefile-variables.mk" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/private/Makefile-variables.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/private/c_standard_headers_indexer.c" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/private/c_standard_headers_indexer.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/private/configurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/private/cpp_standard_headers_indexer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/private/cpp_standard_headers_indexer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/private/downloads-192.168.43.46-pi-22" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/private/downloads-192.168.43.46-pi-22" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/private/downloads-raspberrypi-pi-22" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/private/launcher.properties" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/private/launcher.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/private/private.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/private/timestamps-192.168.43.46-pi-22" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/private/timestamps-raspberrypi-pi-22" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/TXD test/nbproject/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/ax12.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/Makefile-Debug.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/Makefile-Release.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/Makefile-impl.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/Makefile-variables.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/Package-Debug.bash" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/Package-Release.bash" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/configurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/private/Makefile-variables.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/private/c_standard_headers_indexer.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/private/configurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/private/configurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/private/cpp_standard_headers_indexer.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/private/launcher.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/private/timestamps-rpi-green-pi-22" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ax12/nbproject/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/kangaroo.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/kangaroo.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/kangaroo.h" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/kangaroo.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/kangaroo_fara1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/kangaroo_fara1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/Makefile-Debug.mk" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/Makefile-Debug.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/Makefile-Release.mk" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/Makefile-Release.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/Makefile-impl.mk" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/Makefile-impl.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/Makefile-variables.mk" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/Makefile-variables.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/Package-Debug.bash" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/Package-Debug.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/Package-Release.bash" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/Package-Release.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/configurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/configurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/private/Makefile-variables.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/private/c_standard_headers_indexer.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/private/configurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/private/cpp_standard_headers_indexer.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/private/downloads-192.168.43.46-pi-22" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/private/downloads-rpi-blue-pi-22" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/private/downloads-rpi-blue-pi-22" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/private/launcher.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/private/private.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/private/timestamps-192.168.43.46-pi-22" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/private/timestamps-192.168.43.46-pi-22" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/private/timestamps-rpi-blue-pi-22" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/private/timestamps-rpi-blue-pi-22" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/nbproject/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/nbproject/project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/serialport.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/serialport.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kangaroo/serialport.h" beforeDir="false" afterPath="$PROJECT_DIR$/example/our_examples/kangaroo/serialport.h" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1394">
+              <caret line="116" column="26" selection-start-line="116" selection-start-column="26" selection-end-line="116" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example/protocol1.0/read_write/read_write.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/build/Makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/components/main.cpp" />
+        <option value="$PROJECT_DIR$/build/Makefile" />
+        <option value="$PROJECT_DIR$/example/protocol1.0/read_write/read_write.cpp" />
+        <option value="$PROJECT_DIR$/build/README.md" />
+        <option value="$PROJECT_DIR$/Makefile" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/src/build/Makefile" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="mecatro-github" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mecatro-github" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mecatro-github" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mecatro-github" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mecatro-github" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mecatro-github" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+              <item name="protocol1.0" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mecatro-github" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mecatro-github" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+              <item name="protocol1.0" type="462c0819:PsiDirectoryNode" />
+              <item name="read_write" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mecatro-github" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mecatro-github" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/example/our_examples" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/components/build" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/components" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a785100-3ed8-49e0-8e3d-26dc0204388d" name="Default Changelist" comment="" />
+      <created>1547560015445</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1547560015445</updated>
+      <workItem from="1547560016562" duration="4627000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="4627000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" weight="0.35421687" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="File Transfer" weight="0.32891566" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Remote Host" weight="0.3297568" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.properties" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/build/mac/Makefile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keywords.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="15" lean-forward="true" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DynamixelSDK.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dxl_build/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret column="45" selection-start-column="45" selection-end-column="45" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dxl_build/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1819">
+          <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/protocol1.0/sync_write/sync_write.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/protocol1.0/sync_write/linux_sbc/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-305" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/protocol1.0/read_write/linux_sbc/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="34" column="58" lean-forward="true" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1394">
+          <caret line="116" column="26" selection-start-line="116" selection-start-column="26" selection-end-line="116" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/protocol1.0/read_write/read_write.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/build/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
