@@ -47,7 +47,7 @@
 #include <typeinfo> 	    // Runtime type information utilities
 #include <bitset> 	    // std::bitset class template
 #include <functional> 	    // Function objects, designed for use with the standard algorithms
-#include <utility> 	    // Various utility build
+#include <utility> 	    // Various utility libdxl_build
 #include <ctime> 	    // C-style time/date utilites
 #include <cstddef> 	    // typedefs for types such as size_t, NULL and others
 #include <new> 	            // Low-level memory management utilities
