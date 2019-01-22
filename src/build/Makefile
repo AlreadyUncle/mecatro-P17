@@ -41,13 +41,16 @@ LNKFLAGS    = $(CXFLAGS) #-Wl,-rpath,$(DIR_THOR)/lib
 # Core components (all of these are likely going to be needed)
 #---------------------------------------------------------------------
 INCLUDES   += -I$(DIR_DXL)/include/dynamixel_sdk
+INCLUDES   += -I$(DIR_DXL)/include/components
 LIBRARIES  += -ldxl_sbc_cpp
 LIBRARIES  += -lrt
 
 #---------------------------------------------------------------------
 # Files
 #---------------------------------------------------------------------
-SOURCES = src/main.cpp \
+SOURCES  = src/main.cpp \
+           src/components/AX12.cpp \
+           src/components/AX12_manager.cpp
     # *** OTHER SOURCES GO HERE ***
 
 OBJECTS  = $(addsuffix .o,$(addprefix $(DIR_OBJS)/,$(basename $(notdir $(SOURCES)))))
