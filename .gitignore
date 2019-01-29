@@ -1,6 +1,9 @@
 # IDE config files
 .idea
 
+# CMake build files
+cmake**
+
 **/.DS_Store
 
 # Prerequisites

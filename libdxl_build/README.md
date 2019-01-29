@@ -1,1 +1,0 @@
-Build repository for dynamixel_sdk library, not need to touch
