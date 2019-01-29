@@ -85,22 +85,22 @@ void AX12::goToPosition(int pos){                   // 0 <= pos <= 1023
         printf("%s\n", packetHandler->getRxPacketError(dxl_error));
     }
 
-//    do
-//    {
-//        // Read present position
-//        dxl_comm_result = packetHandler->read2ByteTxRx(portHandler, ID, ADDR_MX_PRESENT_POSITION, &dxl_present_position, &dxl_error);
-//        if (dxl_comm_result != COMM_SUCCESS)
-//        {
-//            printf("%s\n", packetHandler->getTxRxResult(dxl_comm_result));
-//        }
-//        else if (dxl_error != 0)
-//        {
-//            printf("%s\n", packetHandler->getRxPacketError(dxl_error));
-//        }
-//
+    do
+    {
+        // Read present position
+        dxl_comm_result = packetHandler->read2ByteTxRx(portHandler, ID, ADDR_MX_PRESENT_POSITION, &dxl_present_position, &dxl_error);
+        if (dxl_comm_result != COMM_SUCCESS)
+        {
+            printf("%s\n", packetHandler->getTxRxResult(dxl_comm_result));
+        }
+        else if (dxl_error != 0)
+        {
+            printf("%s\n", packetHandler->getRxPacketError(dxl_error));
+        }
+
 //        printf("[ID:%03d] GoalPos:%03d  PresPos:%03d\n", ID, pos, dxl_present_position);
-//
-//    }while((abs(pos - dxl_present_position) > DXL_MOVING_STATUS_THRESHOLD));
+
+    }while((abs(pos - dxl_present_position) > DXL_MOVING_STATUS_THRESHOLD));
 
 }
 
