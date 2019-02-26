@@ -110,7 +110,7 @@ bool Ckangaroo::turnNB(int angle, int v){
     }
 }
 
-int Ckangaroo::getSpeed(mode m){
+int Ckangaroo::getSpeed(mode m, int& speed){
     string reponse="";
     string tempo="";
     char lastChar;
@@ -130,7 +130,7 @@ int Ckangaroo::getSpeed(mode m){
                 {
                     tempo+=reponse[i];
                 }
-                return std::stoi(tempo);
+                speed = std::stoi(tempo);
             }
             else{
                 tempo+=reponse[2];
