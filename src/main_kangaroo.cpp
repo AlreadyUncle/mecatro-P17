@@ -1,6 +1,6 @@
 #include <iostream>
-#include "kangaroo.h"
-#include "serialport.h"
+#include "components/kangaroo.h"
+#include "components/serialport.h"
 #include <wiringPi.h>
 #include <wiringSerial.h>
 

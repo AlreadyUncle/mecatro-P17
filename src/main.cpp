@@ -5,10 +5,10 @@
 #include <wiringPi.h>
 #include "dynamixel_sdk.h"
 
-#include "AX12.h"
-#include "kangaroo.h"
-#include "LCD.h"
-#include "serialport.h"
+#include "components/AX12.h"
+#include "components/kangaroo.h"
+#include "components/LCD.h"
+#include "components/serialport.h"
 
 using namespace std;
 

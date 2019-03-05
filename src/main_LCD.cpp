@@ -1,7 +1,7 @@
 #include <wiringPi.h>
 #include <lcd.h>
 #include <unistd.h>
-#include "LCD.h"
+#include "components/LCD.h"
 
 //USE WIRINGPI PIN NUMBERS
 #define LCD_RS  25               //Register select pin
