@@ -18,6 +18,7 @@ set(SOURCE_FILES
         src/components/kangaroo.cpp
         src/components/LCD.cpp
         src/components/serialport.cpp
+        src/components/Log.cpp
         )
 
 # Link everything to the project
