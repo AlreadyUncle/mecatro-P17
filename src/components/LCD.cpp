@@ -8,6 +8,7 @@
 #include "LCD.h"
 
 LCD::LCD() {
+    cout << "Entering cons" << endl;
     wiringPiSetup();
     lcd_handle = lcdInit (4, 20, 4, LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7, 0, 0, 0, 0);
     for(int i=0;i<20;i++){
