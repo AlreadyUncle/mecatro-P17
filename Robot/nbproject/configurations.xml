@@ -4,8 +4,11 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>AX12.h</itemPath>
       <itemPath>LCD.h</itemPath>
       <itemPath>US_sensor.h</itemPath>
+      <itemPath>kangaroo.h</itemPath>
+      <itemPath>serialport.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,9 +17,12 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>AX12.cpp</itemPath>
       <itemPath>LCD.cpp</itemPath>
       <itemPath>US_sensor.cpp</itemPath>
+      <itemPath>kangaroo.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>serialport.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -40,9 +46,16 @@
       </toolsSet>
       <compileType>
         <linkerTool>
-          <commandLine>-lwiringPi -lwiringPiDev</commandLine>
+          <linkerAddLib>
+            <pElem>/usr/local/lib</pElem>
+          </linkerAddLib>
+          <commandLine>-lwiringPi -lwiringPiDev -ldxl_sbc_cpp</commandLine>
         </linkerTool>
       </compileType>
+      <item path="AX12.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AX12.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="LCD.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="LCD.h" ex="false" tool="3" flavor2="0">
@@ -51,7 +64,15 @@
       </item>
       <item path="US_sensor.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="kangaroo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="kangaroo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="serialport.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="serialport.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -74,6 +95,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="AX12.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AX12.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="LCD.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="LCD.h" ex="false" tool="3" flavor2="0">
@@ -82,7 +107,15 @@
       </item>
       <item path="US_sensor.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="kangaroo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="kangaroo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="serialport.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="serialport.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
