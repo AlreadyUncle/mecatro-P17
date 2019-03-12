@@ -4,7 +4,7 @@ project(mecatro_P17)
 set(CMAKE_CXX_STANDARD 14)
 
 # Add libraries to the list
-# - libdxl_sbc_cpp.so for dynamixelSDK (after installation, the binary should be in /usr/local/lib
+# - libdxl_sbc_cpp.so for dynamixelSDK (after installation, the binary should be in /usr/local/lib)
 # - wiringPi for regular wiringPi utilities
 # - wiringPiDev for drivers such as lcd.h
 set(PROJECT_LINK_LIBS libdxl_sbc_cpp.so wiringPi wiringPiDev)
@@ -18,6 +18,8 @@ set(SOURCE_FILES
         src/components/kangaroo.cpp
         src/components/LCD.cpp
         src/components/serialport.cpp
+        src/components/US_sensor.cpp
+        src/robot/Robot.cpp src/robot/Robot.h
         )
 
 # Link everything to the project

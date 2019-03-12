@@ -18,11 +18,15 @@ class Ckangaroo
 
 public:
     Ckangaroo(string portName);
+
+    Ckangaroo();
+
     ~Ckangaroo();
 
+    // B : blocking (ass a while loop to wait until movement is completed)
+    // NB : non-blocking (just sends the command)
     bool forwardB(int distance, int v, bool verbose=false);
     bool forwardNB(int distance, int v);
-    bool setVitesse (vitesse v);
     bool turnB (int angle,int v, bool verbose=false);
     bool turnNB (int angle,int v);
     bool isOperationnal();
