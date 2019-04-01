@@ -15,7 +15,7 @@ include_directories(libs/dxl_sdk_cpp_source/include/dynamixel_sdk) # location of
 set(SOURCE_FILES
         src/main.cpp
         src/components/AX12.cpp
-        src/components/kangaroo.cpp
+        src/components/Kangaroo.cpp
         src/components/LCD.cpp
         src/components/serialport.cpp
         src/components/US_sensor.cpp

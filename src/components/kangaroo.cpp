@@ -2,9 +2,9 @@
 
 #define BAUD_RATE               9600
 
-Ckangaroo::Ckangaroo() {}
+Kangaroo::Kangaroo() {}
 
-Ckangaroo::Ckangaroo(string portName) {
+Kangaroo::Kangaroo(string portName) {
     /**
      * Initialize serial connection with Kangaroo
      */
@@ -13,9 +13,9 @@ Ckangaroo::Ckangaroo(string portName) {
 }
 
 
-bool Ckangaroo::isOperationnal() { return m_isOpened && m_init; }
+bool Kangaroo::isOperationnal() { return m_isOpened && m_init; }
 
-bool Ckangaroo::init() {
+bool Kangaroo::init() {
     bool retour = false;
     if (m_isOpened) {
         retour = true;
@@ -29,7 +29,7 @@ bool Ckangaroo::init() {
     return retour;
 }
 
-bool Ckangaroo::putCommand(char mode, string cmd) {
+bool Kangaroo::putCommand(char mode, string cmd) {
     bool retour = false;
     string commande = "";
     if (m_isOpened) {
@@ -40,11 +40,11 @@ bool Ckangaroo::putCommand(char mode, string cmd) {
     return retour;
 }
 
-bool Ckangaroo::start(mode m) { return putCommand((char) m, ",start\r\n"); }
+bool Kangaroo::start(mode m) { return putCommand((char) m, ",start\r\n"); }
 
-bool Ckangaroo::powerdown(mode m) { return putCommand((char) m, ",powerdown\r\n"); }
+bool Kangaroo::powerdown(mode m) { return putCommand((char) m, ",powerdown\r\n"); }
 
-void Ckangaroo::downZero() {
+void Kangaroo::downZero() {
     if (m_isOpened) {
         start(moteur1);
         m_serialPortOutput.puts("1,home\r\n");
@@ -57,8 +57,10 @@ void Ckangaroo::downZero() {
     }
 }
 
-bool Ckangaroo::forwardNB(int distance, int v) {
+bool Kangaroo::forwardNB(int distance, int v) {
     bool retour = false;
+    // todo: change this and check previous mode to start(new_mode) only if needed
+    // it is required if we were in mode D and we want to turn, however we can just keep the current mode in memory
     start(drive);
     if (m_isOpened) {
         string commande = "D,p" + std::to_string((int) (distance * 5.6666)) + "s" + std::to_string(v) + "\r\n";
@@ -67,7 +69,7 @@ bool Ckangaroo::forwardNB(int distance, int v) {
     return retour;
 }
 
-bool Ckangaroo::forwardB(int distance, int v, bool verbose) {
+bool Kangaroo::forwardB(int distance, int v, bool verbose) {
     bool retour = false;
     start(drive);
     if (m_isOpened) {
@@ -84,7 +86,7 @@ bool Ckangaroo::forwardB(int distance, int v, bool verbose) {
     return retour;
 }
 
-bool Ckangaroo::turnB(int angle, int v, bool verbose) {
+bool Kangaroo::turnB(int angle, int v, bool verbose) {
     bool retour = false;
     start(turn);
     if (m_isOpened) {
@@ -101,7 +103,7 @@ bool Ckangaroo::turnB(int angle, int v, bool verbose) {
     return retour;
 }
 
-bool Ckangaroo::turnNB(int angle, int v) {
+bool Kangaroo::turnNB(int angle, int v) {
     bool retour = false;
     start(turn);
     if (m_isOpened) {
@@ -110,7 +112,7 @@ bool Ckangaroo::turnNB(int angle, int v) {
     }
 }
 
-int Ckangaroo::getSpeed(mode m, int &speed) {
+int Kangaroo::getSpeed(mode m, int &speed) {
     string reponse = "";
     string tempo = "";
     char lastChar;
@@ -140,7 +142,7 @@ int Ckangaroo::getSpeed(mode m, int &speed) {
     return codeErreur;
 }
 
-char Ckangaroo::getState(mode m) {
+char Kangaroo::getState(mode m) {
     string reponse = "";
     char lastChar;
 
@@ -157,7 +159,7 @@ char Ckangaroo::getState(mode m) {
     return reponse[2];
 }
 
-string Ckangaroo::getPosition(mode m) {
+string Kangaroo::getPosition(mode m) {
     string commande;
     string reponse = "";
     char lastChar;
@@ -178,7 +180,7 @@ string Ckangaroo::getPosition(mode m) {
 }
 
 
-int Ckangaroo::getPositionMax(mode m, int &positionMax) {
+int Kangaroo::getPositionMax(mode m, int &positionMax) {
     char commande[100] = {0};
     char reponse[100] = {0};
     int codeErreur = 0;
@@ -220,7 +222,7 @@ int Ckangaroo::getPositionMax(mode m, int &positionMax) {
 }
 
 
-int Ckangaroo::getPositionMin(mode m, int &positionMin) {
+int Kangaroo::getPositionMin(mode m, int &positionMin) {
     char commande[100] = {0};
     char reponse[100] = {0};
     int codeErreur = 0;
@@ -262,6 +264,6 @@ int Ckangaroo::getPositionMin(mode m, int &positionMin) {
 }
 
 
-Ckangaroo::~Ckangaroo() {
+Kangaroo::~Kangaroo() {
     // m_serialPortOutput.flush();
 }

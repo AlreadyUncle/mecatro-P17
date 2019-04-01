@@ -31,7 +31,7 @@ private:
     dynamixel::PacketHandler* packetHandler;
 
     map<int, AX12> ax_servos;
-    Ckangaroo kangaroo;
+    Kangaroo kangaroo;
     US_sensor sensor;
 };
 

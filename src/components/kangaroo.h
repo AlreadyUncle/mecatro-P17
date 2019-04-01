@@ -13,16 +13,18 @@ enum vitesse
     km0=0, km05=200,km1=400,km15=600,km2=800,km25=1000,km3=1200,km35=1400,km4=1600,km45=1800,km5=2000
 };
 
-class Ckangaroo
+class Kangaroo
 {
 
 public:
-    Ckangaroo(string portName);
+    Kangaroo();
+    Kangaroo(string portName);
+    ~Kangaroo();
 
-    Ckangaroo();
+    bool moveForward();
+    bool turn();
 
-    ~Ckangaroo();
-
+    //todo: remove
     // B : blocking (ass a while loop to wait until movement is completed)
     // NB : non-blocking (just sends the command)
     bool forwardB(int distance, int v, bool verbose=false);
@@ -41,9 +43,6 @@ public:
     CSerialPort m_serialPortOutput;
     bool m_isOpened;
     bool m_init;
-    
-    int m_x,m_y;
-    int m_angle;
 
     bool init();
     bool start(mode m);
