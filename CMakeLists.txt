@@ -18,7 +18,9 @@ set(SOURCE_FILES
         src/components/kangaroo.cpp
         src/components/LCD.cpp
         src/components/serialport.cpp
-        src/SmallRobotBehaviour.cpp src/SmallRobotBehaviour.h)
+        src/components/Log.cpp
+        src/SmallRobotBehaviour.cpp src/SmallRobotBehaviour.h
+        )
 
 # Link everything to the project
 add_executable(mecatro_P17 ${SOURCE_FILES})
