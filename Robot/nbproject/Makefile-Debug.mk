@@ -35,9 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/LCD.o \
-	${OBJECTDIR}/US_sensor.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/src/components/AX12.o \
+	${OBJECTDIR}/src/components/LCD.o \
+	${OBJECTDIR}/src/components/US_sensor.o \
+	${OBJECTDIR}/src/components/kangaroo.o \
+	${OBJECTDIR}/src/components/serialport.o \
+	${OBJECTDIR}/src/robot/Robot.o
 
 
 # C Compiler Flags
@@ -64,20 +68,40 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/robot: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/robot ${OBJECTFILES} ${LDLIBSOPTIONS} -lwiringPi -lwiringPiDev
 
-${OBJECTDIR}/LCD.o: LCD.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LCD.o LCD.cpp
-
-${OBJECTDIR}/US_sensor.o: US_sensor.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/US_sensor.o US_sensor.cpp
-
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/src/components/AX12.o: src/components/AX12.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/components/AX12.o src/components/AX12.cpp
+
+${OBJECTDIR}/src/components/LCD.o: src/components/LCD.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/components/LCD.o src/components/LCD.cpp
+
+${OBJECTDIR}/src/components/US_sensor.o: src/components/US_sensor.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/components/US_sensor.o src/components/US_sensor.cpp
+
+${OBJECTDIR}/src/components/kangaroo.o: src/components/kangaroo.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/components/kangaroo.o src/components/kangaroo.cpp
+
+${OBJECTDIR}/src/components/serialport.o: src/components/serialport.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/components
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/components/serialport.o src/components/serialport.cpp
+
+${OBJECTDIR}/src/robot/Robot.o: src/robot/Robot.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/robot
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/robot/Robot.o src/robot/Robot.cpp
 
 # Subprojects
 .build-subprojects:
