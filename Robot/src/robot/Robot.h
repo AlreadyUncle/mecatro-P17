@@ -9,30 +9,48 @@
 #include "../components/AX12.h"
 #include "../components/kangaroo.h"
 #include "../components/US_sensor.h"
+#include "../components/serialport.h"
+#include "../components/LCD.h"
+
+
+#include <cstdlib>
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
+
+#include <wiringPi.h>
+#include <wiringSerial.h>
 
 class Robot {
 
 public:
-    Robot(vector<int> ax12_id);
+    Robot(int n_ax12);
 
     // tmp, will probably change with BT
     // Kangaroo methods
-    void goTo(int x, int y, int angle);
-    bool isMovementFinished();
+    void goForwardTo(int x, int y, int speed, int angle, bool verbose=false);
+    void turnTo(int x, int y, int speed, int angle, bool verbose=false);
+    void stop(bool verbose=false);
+    bool isMovementFinished(bool verbose=false);
 
-    int getX();
-    int getY();
-    int getAngle();
+    int getX(bool verbose=false);
+    int getY(bool verbose=false);
+    int getAngle(bool verbose=false);
 
     // AX12 methods
 
 private:
-    dynamixel::PortHandler* portHandler;
-    dynamixel::PacketHandler* packetHandler;
+    dynamixel::PortHandler* m_portHandler;
+    dynamixel::PacketHandler* m_packetHandler;
 
-    map<int, AX12> ax_servos;
-    Kangaroo kangaroo;
-    US_sensor sensor;
+    AX12 m_ax_servos[];
+    Kangaroo m_kangaroo;
+    US_sensor m_sensor;
+    LCD m_screen;
+    
+    int m_X,m_Y;
+    int m_angle;
 };
 
 

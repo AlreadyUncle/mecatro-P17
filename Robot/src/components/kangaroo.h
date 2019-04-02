@@ -2,6 +2,9 @@
 #define KANGAROO_H
 #include "serialport.h"
 #include <stdlib.h>
+#include <string>
+
+using namespace std;
 
 enum mode
 {
@@ -28,9 +31,9 @@ public:
     // B : blocking (ass a while loop to wait until movement is completed)
     // NB : non-blocking (just sends the command)
     bool forwardB(int distance, int v, bool verbose=false);
-    bool forwardNB(int distance, int v);
+    bool forwardNB(int distance, int v, bool verbose=false);
     bool turnB (int angle,int v, bool verbose=false);
-    bool turnNB (int angle,int v);
+    bool turnNB (int angle,int v, bool verbose=false);
     bool isOperationnal();
 
     string getPosition (mode m);
@@ -39,17 +42,16 @@ public:
     int getSpeed (mode m, int &speed); //retourne la vitesse
     char getState(mode m);
 
-
-    CSerialPort m_serialPortOutput;
-    bool m_isOpened;
-    bool m_init;
-
     bool init();
     bool start(mode m);
     bool powerdown(mode m);
     void downZero();
 private:
     bool putCommand(char mode,string cmd);
+    
+    CSerialPort m_serialPortOutput;
+    bool m_isOpened;
+    bool m_init;
 };
 
 #endif // KANGAROO_H

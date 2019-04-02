@@ -7,7 +7,6 @@
       <itemPath>src/components/AX12.h</itemPath>
       <itemPath>src/components/LCD.h</itemPath>
       <itemPath>src/robot/Robot.h</itemPath>
-      <itemPath>US_sensor.h</itemPath>
       <itemPath>src/components/US_sensor.h</itemPath>
       <itemPath>src/components/kangaroo.h</itemPath>
       <itemPath>src/components/serialport.h</itemPath>
@@ -25,6 +24,7 @@
       <itemPath>src/components/US_sensor.cpp</itemPath>
       <itemPath>src/components/kangaroo.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>ref.cpp</itemPath>
       <itemPath>src/components/serialport.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -55,9 +55,9 @@
           <commandLine>-lwiringPi -lwiringPiDev</commandLine>
         </linkerTool>
       </compileType>
-      <item path="US_sensor.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ref.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/components/AX12.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -104,9 +104,9 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="US_sensor.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ref.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/components/AX12.cpp" ex="false" tool="1" flavor2="0">
       </item>

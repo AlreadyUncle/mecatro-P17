@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/ref.o \
 	${OBJECTDIR}/src/components/AX12.o \
 	${OBJECTDIR}/src/components/LCD.o \
 	${OBJECTDIR}/src/components/US_sensor.o \
@@ -72,6 +73,11 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/ref.o: ref.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ref.o ref.cpp
 
 ${OBJECTDIR}/src/components/AX12.o: src/components/AX12.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/components

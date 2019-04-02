@@ -57,13 +57,14 @@ void Kangaroo::downZero() {
     }
 }
 
-bool Kangaroo::forwardNB(int distance, int v) {
+bool Kangaroo::forwardNB(int distance, int v, bool verbose) {
     bool retour = false;
     // todo: change this and check previous mode to start(new_mode) only if needed
     // it is required if we were in mode D and we want to turn, however we can just keep the current mode in memory
     start(drive);
     if (m_isOpened) {
         string commande = "D,p" + std::to_string((int) (distance * 5.6666)) + "s" + std::to_string(v) + "\r\n";
+        if (verbose) cout << commande << endl;
         retour = m_serialPortOutput.puts(commande.c_str());
     }
     return retour;
@@ -74,6 +75,7 @@ bool Kangaroo::forwardB(int distance, int v, bool verbose) {
     start(drive);
     if (m_isOpened) {
         string commande = "D,p" + std::to_string((int) (distance * 5.6666)) + "s" + std::to_string(v) + "\r\n";
+        if (verbose) cout << commande << endl;
         retour = m_serialPortOutput.puts(commande.c_str());
     }
 
@@ -91,6 +93,7 @@ bool Kangaroo::turnB(int angle, int v, bool verbose) {
     start(turn);
     if (m_isOpened) {
         string commande = "T,p" + std::to_string((int) (angle * 13.89)) + "s" + std::to_string(v) + "\r\n";
+        if (verbose) cout << commande << endl;        
         retour = m_serialPortOutput.puts(commande.c_str());
     }
 
@@ -103,11 +106,12 @@ bool Kangaroo::turnB(int angle, int v, bool verbose) {
     return retour;
 }
 
-bool Kangaroo::turnNB(int angle, int v) {
+bool Kangaroo::turnNB(int angle, int v, bool verbose) {
     bool retour = false;
     start(turn);
     if (m_isOpened) {
         string commande = "T,p" + std::to_string((int) (angle * 13.89)) + "s" + std::to_string(v) + "\r\n";
+        if (verbose) cout << commande << endl;
         retour = m_serialPortOutput.puts(commande.c_str());
     }
 }
@@ -262,7 +266,6 @@ int Kangaroo::getPositionMin(mode m, int &positionMin) {
 
 
 }
-
 
 Kangaroo::~Kangaroo() {
     // m_serialPortOutput.flush();

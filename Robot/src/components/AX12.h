@@ -15,7 +15,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "dynamixel_sdk.h"
+#include "libs/dxl_sdk_cpp_source/include/dynamixel_sdk/dynamixel_sdk.h"
+
 
 // Control table address
 #define ADDR_MX_TORQUE_ENABLE           24                  // Control table address is different in Dynamixel model
