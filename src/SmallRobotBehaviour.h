@@ -1,31 +1,76 @@
 //
 // Created by juliette on 05/03/19.
 //
-namespace behaviourtree
+inline void SleepMS(int ms)
 {
-    inline void SleepMS(int ms)
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+}
+
+
+BT::NodeStatus OpenClamp()
+{
+    return BT::NodeStatus::SUCCESS;
+}
+
+BT::NodeStatus CloseClamp()
+{
+    return BT::NodeStatus::SUCCESS;
+}
+
+BT::NodeStatus Turn90()
+{
+    return BT::NodeStatus::SUCCESS;
+}
+
+
+struct Position2D
+{
+    double x;
+    double y;
+};
+
+class Move: public SyncActionNode
+{
+    public:
+    Move(const std::string& name, const NodeConfiguration& config):
+            SyncActionNode(name,config)
+    {}
+
+    static PortsList providedPorts()
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+        return { OutputPort<Point>("pos") };
     }
 
-    BT::NodeStatus PushPuck();
+    NodeStatus tick() override {
+        {
+            Optional <std::string> goal = getInput<std::string>("pos");
+            goal = BT::convertFromString(goal)
 
-    BT::NodeStatus GetG();
+            // Si mouvement non en cours -> lancer le mouvement
+            // Sinon, si position atteinte -> Renvoyer SUCCESS et mettre à jour
+            //  la position du robot et spécifier que le mouvement est terminé
+            // Sinon, renvoyer RUNNING
 
-    BT::NodeStatus WeightG();
+            return NodeStatus::SUCCESS;
+        }
+    }
+}
 
-    BT::NodeStatus ChasseNeige();
+template <> inline Position2D convertFromString(StringView str)
+{
+    auto parts = splitString(str, ';');
+    if (parts.size() != 2)
+    {
+        throw RuntimeError("invalid input)");
+    }
+    else{
+        Point output;
+        output.x     = convertFromString<double>(parts[0]);
+        output.y     = convertFromString<double>(parts[1]);
+        return output;
+    }
+}
 
-
-    BT::NodeStatus MoveTo_M();
-
-    BT::NodeStatus MoveTo_P1();
-
-    BT::NodeStatus MoveTo_P2();
-
-    BT::NodeStatus OpenPlier();
-
-    BT::NodeStatus CloseClamp();
-
-    void RegisterNodes(BT::BehaviorTreeFactory& factory);
+void RegisterNodes(BT::BehaviorTreeFactory& factory);
+{
 }

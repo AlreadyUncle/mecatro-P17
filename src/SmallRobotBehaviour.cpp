@@ -2,7 +2,9 @@
 // Created by juliette on 05/03/19.
 //
 
-#include "behaviortree.h"
+#include "SmallRobotBehaviour.h"
+
+std::map<std::string,std::string> positions;
 
 static const char* xml_text = R"(
 <root main_tree_to_execute = "MainTree">
@@ -11,16 +13,17 @@ static const char* xml_text = R"(
 
     <BehaviorTree ID="PushPuck">
         <Sequence>
-            <MoveTo_M/>
-            <Turn_90/>
-            <MoveTo_P1/>
+            <Move   pos = positions['M'] />
+            <Turn90/>
+            <Move   pos = positions['P1'] />
             <OpenClamp/>
+
             <ReactiveSequence>
                 <Fallback>
                     <Condition ID = "NoObstacle"/>
                     <Avoid/>
                 </Fallback>
-                <MoveTo_P2/>
+                <Move   pos = positions['P2'] />
             </ReactiveSequence>
             <CloseClamp/>
         </Sequence>
@@ -30,7 +33,7 @@ static const char* xml_text = R"(
 
     <BehaviorTree ID="GetG">
         <Sequence>
-            <MoveTo_G/>
+            <Move   pos = positions['G']>
             <OpenClamp/>
             <Grab_G>
             <CloseClamp/>
@@ -46,10 +49,10 @@ static const char* xml_text = R"(
                 <Avoid/>
             </Fallback>
             <Sequence>
-                <MoveTo_B/>
-                <MoveTo_J/>
+                <Move   pos = {B} />
+                <Move   pos = {J} />
                 <CheckRobot/>
-                <MoveTo_Scale/>
+                <Move   pos = positions['scale'] />
                 <OpenClamp/>
             </Sequence>
     </BehaviorTree>
@@ -75,25 +78,27 @@ static const char* xml_text = R"(
  )";
 
 using namespace BT;
+using namespace
 
 int main(int argc, char** argv)
 {
     BT::BehaviorTreeFactory factory;
-    SmallRobot::RegisterNodes(factory);
 
     // Important: when the object tree goes out of scope, all the TreeNodes are destroyed
     auto tree = factory.createTreeFromText(xml_text);
 
-    factory.registerNodeType<PushPuck>("PushPuck");
+    factory.registerSimpleAction("OpenClamp", std::bind(OpenCLamp));
+    factory.registerSimpleAction("CloseClamp", std::bind(CloseCLamp));
+    factory.registerSimpleAction("Turn90", std::bind(Turn90));
+    factory.registerSimpleAction("Grab_G", std::bind(Grab_G));
 
-    tree.root_node->executeTick();
+    NodeStatus status = NodeStatus::RUNNING;
+    // Keep on ticking until you get either a SUCCESS or FAILURE state
+    while( status == NodeStatus::RUNNING)
+    {
+        status = tree.root_node->executeTick();
+        SleepMS(1);   // optional sleep to avoid "busy loops"
+    }
 
     return 0;
-
-}
-
-
-BT::NodeStatus PushPuck()
-{
-    return BT::NodeStatus::SUCCESS;
 }
