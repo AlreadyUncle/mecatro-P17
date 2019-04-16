@@ -10,17 +10,22 @@ inline void SleepMS(int ms)
 BT::NodeStatus OpenClamp()
 {
     return BT::NodeStatus::SUCCESS;
-}
+};
 
 BT::NodeStatus CloseClamp()
 {
     return BT::NodeStatus::SUCCESS;
-}
+};
 
 BT::NodeStatus Turn90()
 {
     return BT::NodeStatus::SUCCESS;
-}
+};
+
+BT::NodeStatus ChasseNeige()
+{
+    return BT::NodeStatus::SUCCESS;
+};
 
 
 struct Position2D
@@ -39,22 +44,27 @@ class Move: public SyncActionNode
     static PortsList providedPorts()
     {
         return { OutputPort<Point>("pos") };
-    }
+    };
 
     NodeStatus tick() override {
         {
             Optional <std::string> goal = getInput<std::string>("pos");
             goal = BT::convertFromString(goal)
 
-            // Si mouvement non en cours -> lancer le mouvement
-            // Sinon, si position atteinte -> Renvoyer SUCCESS et mettre à jour
-            //  la position du robot et spécifier que le mouvement est terminé
-            // Sinon, renvoyer RUNNING
-
-            return NodeStatus::SUCCESS;
+            if (not isMoving) {
+                // lancer le mouvement
+                isMoving = true
+                return NodeStatus::RUNNING
+            }
+            if( posReached ) {
+                isMoving = false
+                // mettre à jour la position du robot
+                return NodeStatus::SUCCESS
+            }
+            return NodeStatus::RUNNING;
         }
     }
-}
+};
 
 template <> inline Position2D convertFromString(StringView str)
 {
@@ -69,8 +79,8 @@ template <> inline Position2D convertFromString(StringView str)
         output.y     = convertFromString<double>(parts[1]);
         return output;
     }
-}
+;
 
 void RegisterNodes(BT::BehaviorTreeFactory& factory);
 {
-}
+};
