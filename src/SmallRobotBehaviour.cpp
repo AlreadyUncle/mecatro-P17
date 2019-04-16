@@ -2,7 +2,8 @@
 // Created by juliette on 05/03/19.
 //
 
-#include "SmallRobotBehaviour.h"
+#include "SmallNodes.h"
+#include "SmallNodes.cpp"
 
 std::map<std::string,std::string> positions;
 
@@ -79,6 +80,12 @@ static const char* xml_text = R"(
 
 using namespace BT;
 using namespace
+
+
+
+
+
+
 
 int main(int argc, char** argv)
 {

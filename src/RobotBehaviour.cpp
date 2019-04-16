@@ -2,11 +2,8 @@
 // Created by juliette on 09/04/19.
 //
 
-#include "RobotBehaviour.h"
-
-//
-// Created by juliette on 05/03/19.
-//
+#include "RobotNodes.h"
+#include "RobotNodes.cpp"
 
 std::map<std::string,std::string> positions;
 
