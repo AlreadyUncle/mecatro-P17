@@ -1,17 +1,16 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string>
-
 #include <wiringPi.h>
-#include "dynamixel_sdk.h"
-
-#include "components/AX12.h"
-#include "components/kangaroo.h"
+#include <lcd.h>
+#include <unistd.h>
 #include "components/LCD.h"
-#include "components/serialport.h"
-
-using namespace std;
+#include "components/kangaroo.h"
 
 int main() {
-    printf("hellooo");
+    LCD screen("/dev/ttyUSB0");
+
+    if(screen.m_isOpened) {
+        screen.clear_screen();
+        screen.print_to_screen("Mecatro", 3, 5);
+        //cout<<"done"<<endl;
+    }
+    return 0;
 }

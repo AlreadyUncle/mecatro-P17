@@ -16,11 +16,10 @@ set(SOURCE_FILES
         src/main.cpp
         src/components/AX12.cpp
         src/components/kangaroo.cpp
-        src/components/LCD.cpp
         src/components/serialport.cpp
         src/components/Log.cpp
-        src/SmallRobotBehaviour.cpp src/SmallRobotBehaviour.h
-        )
+        #src/SmallRobotBehaviour.cpp src/SmallRobotBehaviour.h
+        src/components/LCD.cpp src/components/LCD.h)
 
 # Link everything to the project
 add_executable(mecatro_P17 ${SOURCE_FILES})
