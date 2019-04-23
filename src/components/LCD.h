@@ -13,12 +13,11 @@ class LCD {
 
         LCD(string portName);
         ~LCD();
-/*
-        string print_to_screen(string s,int x=0,int y=0,bool verbose=false);
-        string print_to_screen_centered(string s,int line=0,bool verbose=false);
-*/
-        void clear_screen();
-        void cursor(bool enable = true);
-        void backlight(bool enable = true);
-        void print_to_screen(string s,int row = 1,int offset = 0);
+
+        void reset();
+        void clear();
+        void toggleCursor(bool enable = true);
+        void toggleBacklight(bool enable = true);
+        void printToScreen(string s,int row = 1,int offset = 0);
+        void printToScreenCentered(string s,int row = 1);
 };
