@@ -2,7 +2,8 @@
 // Created by juliette on 05/03/19.
 //
 
-#include "SmallRobotBehaviour.h"
+#include "SmallNodes.h"
+#include "SmallNodes.cpp"
 
 std::map<std::string,std::string> positions;
 
@@ -60,7 +61,7 @@ static const char* xml_text = R"(
     <!--------------------------------------->
 
     <BehaviorTree ID="ChasseNeige">
-
+        <ChasseNeige/>
     </BehaviorTree>
 
     <!--------------------------------------->
@@ -80,6 +81,12 @@ static const char* xml_text = R"(
 using namespace BT;
 using namespace
 
+
+
+
+
+
+
 int main(int argc, char** argv)
 {
     BT::BehaviorTreeFactory factory;
@@ -87,10 +94,11 @@ int main(int argc, char** argv)
     // Important: when the object tree goes out of scope, all the TreeNodes are destroyed
     auto tree = factory.createTreeFromText(xml_text);
 
-    factory.registerSimpleAction("OpenClamp", std::bind(OpenCLamp));
+    factory.registerSimpleAction("OpenClamp", std::bind(OpenClamp));
     factory.registerSimpleAction("CloseClamp", std::bind(CloseCLamp));
     factory.registerSimpleAction("Turn90", std::bind(Turn90));
     factory.registerSimpleAction("Grab_G", std::bind(Grab_G));
+    factory.registerSimpleAction("ChasseNeige", std::bind(ChasseNeige));
 
     NodeStatus status = NodeStatus::RUNNING;
     // Keep on ticking until you get either a SUCCESS or FAILURE state

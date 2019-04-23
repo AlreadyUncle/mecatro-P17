@@ -18,7 +18,8 @@
 #define LCD_D4  13               //Data pin 4
 #define LCD_D5  6               //Data pin 5
 #define LCD_D6  5               //Data pin 6
-#define LCD_D7  11               //Data pin 7
+#define LCD_D7  11              //Data pin 7
+
 
 using namespace std;
 class LCD {

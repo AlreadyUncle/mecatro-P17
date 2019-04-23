@@ -1,5 +1,4 @@
 #include <wiringPi.h>
-#include <lcd.h>
 #include <unistd.h>
 #include "components/LCD.h"
 
