@@ -1,0 +1,61 @@
+<root main_tree_to_execute="MainTree">
+
+
+    <BehaviorTree ID="CollectPucks">
+        <Sequence>
+            <Move pos= positions['P1'] />
+            <CollectPuck/>
+            <Move pos= positions['P2'] />
+            <CollectPuck/>
+            <Move pos= positions['P3'] />
+            <CollectPuck/>
+            <Move pos= positions['P4'] />
+            <CollectPuck/>
+            <Move pos= positions['P5'] />
+            <CollectPuck/>
+            <Move pos= positions['P6'] />
+            <CollectPuck/>
+        </Sequence>
+    </BehaviorTree>
+
+
+    <BehaviorTree ID="WeightPucks">
+        <Repeat nb="6">
+            <Sequence>
+            <Fallback>
+                <Condition ID="RedPuck"/>
+                <DropPuck/>
+            </Fallback>
+            <TurnCylinder/>
+            <Sequence/>
+        </Repeat/>
+    </BehaviorTree>
+
+
+    <BehaviorTree ID="DropInAccelerator">
+        <Repeat nb="6">
+            <Sequence>
+            <Fallback>
+                <Condition ID="NoPuck"/>
+                <DropPuck/>
+            </Fallback>
+            <TurnCylinder/>
+            <Sequence/>
+        </Repeat/>
+    </BehaviorTree>
+
+
+    <BehaviorTree ID="DropInAccelerator">
+
+    </BehaviorTree>
+
+
+    <BehaviorTree ID="MainTree">
+        <Sequence>
+            <SubTree ID="WeightPucks"/>
+            <SubTree ID="CollectPucks"/>
+            <SubTree ID="ReachAccelerator"/>
+            <SubTree ID="DropInAccelerator"/>
+        </Sequence>
+    </BehaviorTree>
+</root>

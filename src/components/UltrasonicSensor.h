@@ -19,6 +19,7 @@
 #include <errno.h>
 #include <cstring>
 #include <sys/time.h>
+#include "loguru.hpp"
 
 
 
@@ -35,8 +36,8 @@ public:
      * If no object was detected, return -1
      * If the sensor did not fire (therefore, the echo signal was never raised), return -2
      */
-    int getDistance(bool verbose=false);
-    virtual ~UltrasonicSensor();
+    int getDistance();
+
 private:
        int waitforpin(int pin, int level, int timeout);
        int wait(int useconds);

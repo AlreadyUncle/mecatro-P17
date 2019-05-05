@@ -2,13 +2,13 @@
 // Created by Ibrahim Said on 4/16/2019.
 //
 
-#include "serialport.h"
+#include "SerialPort.h"
 
 
 class LCD {
 
     public:
-        CSerialPort m_serialPortOutput;
+        SerialPort m_serialPortOutput;
         bool m_isOpened;
 
         LCD(string portName);

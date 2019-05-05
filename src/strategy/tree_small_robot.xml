@@ -1,0 +1,61 @@
+<root main_tree_to_execute="MainTree">
+
+    <BehaviorTree ID="PushPuck">
+        <Sequence>
+            <Move pos= positions['M'] />
+            <Turn90/>
+            <Move pos= positions['P1'] />
+            <OpenClamp/>
+
+            <ReactiveSequence>
+                <Fallback>
+                    <Condition ID="NoObstacle"/>
+                    <Avoid/>
+                </Fallback>
+                <Move pos= positions['P2'] />
+            </ReactiveSequence>
+            <CloseClamp/>
+        </Sequence>
+    </BehaviorTree>
+
+
+    <BehaviorTree ID="GetG">
+        <Sequence>
+        <Move pos= positions['G']>
+        <OpenClamp/>
+        <Grab_G>
+        <CloseClamp/>
+        <Sequence/>
+    </BehaviorTree>
+
+
+    <BehaviorTree ID="WeightG">
+        <ReactiveSequence>
+        <Fallback>
+            <Condition ID="NoObstacle"/>
+            <Avoid/>
+        </Fallback>
+        <Sequence>
+            <Move pos={B} />
+            <Move pos={J} />
+            <CheckRobot/>
+            <Move pos= positions['scale'] />
+            <OpenClamp/>
+        </Sequence>
+    </BehaviorTree>
+
+
+    <BehaviorTree ID="ChasseNeige">
+        <ChasseNeige/>
+    </BehaviorTree>
+
+
+    <BehaviorTree ID="MainTree">
+        <Sequence>
+            <SubTree ID="PushPuck"/>
+            <SubTree ID="GetG"/>
+            <SubTree ID="WeightG"/>
+            <SubTree ID="ChasseNeige"/>
+        </Sequence>
+    </BehaviorTree>
+</root>

@@ -32,11 +32,11 @@ class MoveBaseAction : public AsyncActionNode
     // This overloaded method is used to stop the execution of this node.
     void halt() override
     {
-        _halt_requested.store(true);
+        _haltRequested.store(true);
     }
 
   private:
-    std::atomic_bool _halt_requested;
+    std::atomic_bool _haltRequested;
 };
 
 //-------------------------
@@ -52,19 +52,19 @@ NodeStatus MoveBaseAction::tick()
     printf("[ MoveBase: STARTED ]. goal: x=%.f y=%.1f theta=%.2f\n", 
            goal.x, goal.y, goal.theta);
 
-    _halt_requested.store(false);
+    _haltRequested.store(false);
     int count = 0;
 
     // Pretend that "computing" takes 250 milliseconds.
-    // It is up to you to check periodicall _halt_requested and interrupt
+    // It is up to you to check periodicall _haltRequested and interrupt
     // this tick() if it is true.
-    while (!_halt_requested && count++ < 25)
+    while (!_haltRequested && count++ < 25)
     {
         SleepMS(10);
     }
 
     std::cout << "[ MoveBase: FINISHED ]" << std::endl;
-    return _halt_requested ? NodeStatus::FAILURE : NodeStatus::SUCCESS;
+    return _haltRequested ? NodeStatus::FAILURE : NodeStatus::SUCCESS;
 }
 ```
 
