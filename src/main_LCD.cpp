@@ -1,21 +1,24 @@
 #include <wiringPi.h>
+#include <lcd.h>
 #include <unistd.h>
 #include "components/LCD.h"
+#include "components/kangaroo.h"
 
-//USE WIRINGPI PIN NUMBERS
-#define LCD_RS  25               //Register select pin
-#define LCD_E   24               //Enable Pin
-#define LCD_D4  23               //Data pin 4
-#define LCD_D5  22               //Data pin 5
-#define LCD_D6  21               //Data pin 6
-#define LCD_D7  14               //Data pin 7
+int main() {
+    LCD screen("/dev/ttyUSB0");
 
-int main()
-{
-    LCD* lc = new LCD();
-     for(int i=0;i<250;i++){
-         delay(10);
-         lc->print_score(i);
-     }
-
+    if(screen.m_isOpened) {
+        screen.reset();
+        screen.toggleCursor(false);
+        for(int i=0;i<20;i++){
+            screen.printToScreenCentered("Mecatro",1);
+            screen.printToScreenCentered("MinesParistech",2);
+            screen.printToScreenCentered("Coupe de France",3);
+            screen.printToScreenCentered("de Robotique 2k19",4);
+            delay(1000);
+            screen.clear();
+            delay(100);
+        }
+    }
+    return 0;
 }
