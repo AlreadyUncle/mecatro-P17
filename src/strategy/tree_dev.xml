@@ -4,7 +4,6 @@
             <MoveAhead name="move_ahead"
                        moveForward="true"
                        distance="10"
-                       obstacleInFront="{obstacleInFront}" obstacleBehind="{obstacleBehind}"
             />
         </Sequence>
     </BehaviorTree>

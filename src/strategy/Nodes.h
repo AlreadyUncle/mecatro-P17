@@ -44,9 +44,7 @@ namespace Robot {
         // It is mandatory to define this static method.
         static PortsList providedPorts() {
             return {InputPort<bool>("moveForward"),
-                    InputPort<int>("distance"),
-                    InputPort<bool>("obstacleInFront"),
-                    InputPort<bool>("obstacleBehind")};
+                    InputPort<int>("distance")};
         }
 
     private:
