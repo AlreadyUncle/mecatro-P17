@@ -1,9 +1,8 @@
 <root main_tree_to_execute="MainTree">
     <BehaviorTree ID="MainTree">
         <Sequence name="root_sequence">
-            <MoveAhead name="move_ahead"
-                       moveForward="true"
-                       distance="10"
+            <Turn name="turn"
+                  angle="10"
             />
         </Sequence>
     </BehaviorTree>

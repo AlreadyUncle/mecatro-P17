@@ -44,12 +44,14 @@ namespace Robot {
 
         // It is mandatory to define this static method.
         static PortsList providedPorts() {
-            return {InputPort<bool>("moveForward"),
-                    InputPort<int>("distance")};
+            return {
+                    InputPort<bool>("moveForward"),
+                    InputPort<int>("distance")
+            };
         }
 
     private:
-        bool isMoving= false;
+        bool isMoving = false;
         UltrasonicSensor &frontSensor;
         UltrasonicSensor &backSensor;
         Kangaroo &kangaroo;
@@ -58,7 +60,7 @@ namespace Robot {
     class Turn : public CoroActionNode {
     public:
         Turn(const std::string &name, const NodeConfiguration &config,
-                    Kangaroo &kangaroo) :
+             Kangaroo &kangaroo) :
                 CoroActionNode(name, config),
                 kangaroo(kangaroo) {}
 
@@ -70,8 +72,11 @@ namespace Robot {
 
         // It is mandatory to define this static method.
         static PortsList providedPorts() {
-                    InputPort<int>("angle")};
-        }
+            return {
+                    InputPort<int>("angle")
+            };
+        };
+
 
     private:
         Kangaroo &kangaroo;
