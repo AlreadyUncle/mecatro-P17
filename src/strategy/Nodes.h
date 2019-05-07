@@ -16,6 +16,7 @@
 #define UNITS_PER_MM                    5.6666  // Kangaroo parameters
 #define UNITS_PER_DEGREE                13.89
 #define DEFAULT_KANGAROO_SPEED          10
+#define DEFAULT_ROTATION_SPEED          10
 
 using namespace BT;
 
@@ -54,8 +55,26 @@ namespace Robot {
         Kangaroo &kangaroo;
     };
 
-    class Turn : public AsyncActionNode {
+    class Turn : public CoroActionNode {
+    public:
+        Turn(const std::string &name, const NodeConfiguration &config,
+                    Kangaroo &kangaroo) :
+                CoroActionNode(name, config),
+                kangaroo(kangaroo) {}
 
+        NodeStatus tick() override;
+
+        void cleanup(bool halted);
+
+        void halt() override;
+
+        // It is mandatory to define this static method.
+        static PortsList providedPorts() {
+                    InputPort<int>("angle")};
+        }
+
+    private:
+        Kangaroo &kangaroo;
     };
 
     class ActivateAX12 : public AsyncActionNode {

@@ -78,3 +78,45 @@ void Robot::MoveAhead::halt() {
     // Do not forget to call this at the end.
     CoroActionNode::halt();
 }
+
+
+
+
+
+NodeStatus Robot::Turn::tick() {
+    // ------------------------
+    // Read move instructions from the blackboard
+    auto angleInput = getInput<bool>("angle");
+    if (!angleInput) {
+        throw BT::RuntimeError("missing required input [angle]: ",
+                               angleInput.error());
+    }
+    int angle = angleInput.value();
+    // faire la conversion
+    int angleUnits = angle
+
+    // ------------------------
+    // Move or wait logic
+    bool isTurnCompleted = false;
+
+    while (!kangarou.isMoveCompleted()) {
+            LOG_F(1, "turning... ");
+            setStatusRunningAndYield();
+            kangarou.startTurnMove(angleUnits,DEFAULT_ROTATION_SPEED);
+    }
+    LOG_F(INFO, "straight move completed (total distance : %d degrés, %d units)", angle, angleUnits);
+
+    cleanup(false);
+    return NodeStatus::SUCCESS;
+}
+
+void Robot::MoveAhead::cleanup(bool halted) {
+
+}
+
+void Robot::Turn::halt() {
+    //todo: stop movement ?
+    cleanup(true);
+    // Do not forget to call this at the end.
+    CoroActionNode::halt();
+}
