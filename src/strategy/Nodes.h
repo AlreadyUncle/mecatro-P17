@@ -86,7 +86,18 @@ namespace Robot {
     };
 
     class UpdateScore : public SyncActionNode {
+    public:
+        Turn(const std::string &name, const NodeConfiguration &config, LCD &lcd) :
+                CoroActionNode(name, config),
+                LCD(lcd) {}
 
+        NodeStatus tick() override;
+
+        static PortsList providedPorts() {
+            InputPort<int>("bonus"),
+            InputPort<int>("oldScore")
+            OutputPort<int>("newScore");
+        }
     };
 
     class JackUnplugged : public ConditionNode {

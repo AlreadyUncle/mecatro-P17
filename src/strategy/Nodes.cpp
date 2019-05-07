@@ -120,3 +120,28 @@ void Robot::Turn::halt() {
     // Do not forget to call this at the end.
     CoroActionNode::halt();
 }
+
+
+
+
+NodeStatus Robot::UpdateScore::tick() {
+    auto bonusInput = getInput<int>("bonus");
+    if (!bonus) {
+        throw BT::RuntimeError("missing required input [bonus]: ",
+                               bonusInput.error());
+    }
+    int bonus = bonusInput.value();
+
+    auto score = getInput<int>("oldScore");
+    if (!score)
+    {
+        throw BT::RuntimeError("missing required input [score]: ",
+                               score.error() );
+    }
+
+    newS = score.value()+bonus
+    setOutput("newScore", newS);
+    LCD.printToScreenCentered(std::to_string(newS));
+    LOG_F(INFO, "Added %d to the score. New score :%d", bonus, newS);
+    return NodeStatus::SUCCESS;
+}
