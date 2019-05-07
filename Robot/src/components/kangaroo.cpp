@@ -183,6 +183,35 @@ string Kangaroo::getPosition(mode m) {
     return reponse;
 }
 
+string Kangaroo::getPositionMax(mode m) {
+    string commande;
+    string reponse = "";
+    char lastChar;
+
+    if (m_isOpened) {
+        commande = (char) m;
+        commande += ",getmax\r\n";
+        if (m_serialPortOutput.puts(commande.c_str())) {
+            do {
+                if (m_serialPortOutput.dataAvailable() != -1) {
+                    m_serialPortOutput.getchar(&lastChar);
+                    reponse += lastChar;
+                }
+            } while (lastChar != '\n');
+            if (reponse[2] != 'E') {
+                int j = 0;
+                for (i = 3; i < reponse.length() - 2; i++) {
+                    tempo[j++] = reponse[i];
+                }
+                positionMax = atoi(tempo);
+            } else {
+                return -1;
+            }
+        }
+    }
+    return reponse;
+}
+
 
 int Kangaroo::getPositionMax(mode m, int &positionMax) {
     char commande[100] = {0};

@@ -1,7 +1,3 @@
-//
-// Created by Alexandre Thomas on 2019-03-05.
-//
-
 #include "Robot.h"
 
 #define PORT_NAME_KANGAROO              "/dev/serial0"      // Port address for Kangaroo
