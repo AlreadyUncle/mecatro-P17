@@ -17,6 +17,7 @@
 #define UNITS_PER_MM                    5.6666  // Kangaroo parameters
 #define UNITS_PER_DEGREE                13.89
 #define DEFAULT_KANGAROO_SPEED          10
+#define DEFAULT_ROTATION_SPEED          10
 
 using namespace BT;
 
@@ -44,8 +45,10 @@ namespace Robot {
 
         // It is mandatory to define this static method.
         static PortsList providedPorts() {
-            return {InputPort<bool>("moveForward"),
-                    InputPort<int>("distance")};
+            return {
+                    InputPort<bool>("moveForward"),
+                    InputPort<int>("distance")
+            };
         }
 
     private:
@@ -55,8 +58,29 @@ namespace Robot {
         Kangaroo &kangaroo;
     };
 
-    class Turn : public AsyncActionNode {
+    class Turn : public CoroActionNode {
+    public:
+        Turn(const std::string &name, const NodeConfiguration &config,
+             Kangaroo &kangaroo) :
+                CoroActionNode(name, config),
+                kangaroo(kangaroo) {}
 
+        NodeStatus tick() override;
+
+        void cleanup(bool halted);
+
+        void halt() override;
+
+        // It is mandatory to define this static method.
+        static PortsList providedPorts() {
+            return {
+                    InputPort<int>("angle")
+            };
+        };
+
+
+    private:
+        Kangaroo &kangaroo;
     };
 
     /**
@@ -90,7 +114,18 @@ namespace Robot {
     };
 
     class UpdateScore : public SyncActionNode {
+    public:
+        Turn(const std::string &name, const NodeConfiguration &config, LCD &lcd) :
+                CoroActionNode(name, config),
+                LCD(lcd) {}
 
+        NodeStatus tick() override;
+
+        static PortsList providedPorts() {
+            InputPort<int>("bonus"),
+            InputPort<int>("oldScore")
+            OutputPort<int>("newScore");
+        }
     };
 
     class JackUnplugged : public ConditionNode {

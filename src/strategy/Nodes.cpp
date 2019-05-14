@@ -126,3 +126,73 @@ void Robot::MoveAX12::cleanup(bool halted) {
 void Robot::MoveAX12::halt() {
     CoroActionNode::halt();
 }
+
+
+
+
+
+NodeStatus Robot::Turn::tick() {
+    // ------------------------
+    // Read move instructions from the blackboard
+    cout << "ok5" <<endl;
+    auto angleInput = getInput<int>("angle");
+    if (!angleInput) {
+        throw BT::RuntimeError("missing required input [angle]: ",
+                               angleInput.error());
+    }
+    int angle = angleInput.value();
+    // faire la conversion
+    int angleUnits = angle;
+
+    // ------------------------
+    // Move or wait logic
+    bool isTurnCompleted = false;
+    cout << "ok6" <<endl;
+    cout<< kangaroo.isMoveCompleted()<<endl;
+    while (!kangaroo.isMoveCompleted()) {
+        cout<<"llll"<<endl;
+        LOG_F(1, "turning... ");
+        kangaroo.startTurnMove(angleUnits,DEFAULT_ROTATION_SPEED);
+        setStatusRunningAndYield();
+    }
+    LOG_F(INFO, "straight move completed (total distance : %d degrés, %d units)", angle, angleUnits);
+
+    cleanup(false);
+    return NodeStatus::SUCCESS;
+}
+
+void Robot::Turn::cleanup(bool halted) {
+
+}
+
+void Robot::Turn::halt() {
+    //todo: stop movement ?
+    cleanup(true);
+    // Do not forget to call this at the end.
+    CoroActionNode::halt();
+}
+
+
+
+
+NodeStatus Robot::UpdateScore::tick() {
+    auto bonusInput = getInput<int>("bonus");
+    if (!bonus) {
+        throw BT::RuntimeError("missing required input [bonus]: ",
+                               bonusInput.error());
+    }
+    int bonus = bonusInput.value();
+
+    auto score = getInput<int>("oldScore");
+    if (!score)
+    {
+        throw BT::RuntimeError("missing required input [score]: ",
+                               score.error() );
+    }
+
+    newS = score.value()+bonus
+    setOutput("newScore", newS);
+    LCD.printToScreenCentered(std::to_string(newS));
+    LOG_F(INFO, "Added %d to the score. New score :%d", bonus, newS);
+    return NodeStatus::SUCCESS;
+}

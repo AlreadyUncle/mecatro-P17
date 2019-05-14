@@ -33,9 +33,15 @@
             </Sequence>
 
         </Parallel>
+
         <!--            <MoveAhead name="move_ahead"-->
         <!--                       moveForward="true"-->
         <!--                       distance="10"-->
         <!--            />-->
+        <Sequence name="root_sequence_turn">
+            <Turn name="turn"
+                  angle="10"
+            />
+        </Sequence>
     </BehaviorTree>
 </root>

@@ -66,6 +66,11 @@ int main(int argc, char *argv[]) {
     builderMoveAhead = [&](const std::string &name, const NodeConfiguration &config) {
         return std::make_unique<MoveAhead>(name, config, frontSensor, backSensor, kangaroo);
     };
+    NodeBuilder builderTurn;
+    builderTurn = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<Turn>(name, config, kangaroo);
+    };
+
     NodeBuilder builderMoveAX_1;
     builderMoveAX_1 = [&](const std::string &name, const NodeConfiguration &config) {
         return std::make_unique<MoveAX12>(name, config, ax_1);
