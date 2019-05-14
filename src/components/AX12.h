@@ -6,8 +6,10 @@
 #define MECATRO_P17_AX12_H
 
 #if defined(__linux__) || defined(__APPLE__)
+
 #include <fcntl.h>
 #include <termios.h>
+
 #define STDIN_FILENO 0
 #elif defined(_WIN32) || defined(_WIN64)
 #include <conio.h>
@@ -16,6 +18,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "dynamixel_sdk.h"
+#include "loguru.hpp"
 
 // Control table address
 #define ADDR_MX_TORQUE_ENABLE           24                  // Control table address is different in Dynamixel model
@@ -43,30 +46,31 @@
 #define DXL_MOVING_STATUS_THRESHOLD     5                  // Dynamixel moving status threshold
 
 #define ESC_ASCII_VALUE                 0x1b
-enum AX12Mode { joint, wheel };
-
-
-
-
-
+enum AX12Mode {
+    joint, wheel
+};
 
 
 class AX12 {
 public:
-    AX12(int,dynamixel::PortHandler *,dynamixel::PacketHandler *);
+    AX12(int, dynamixel::PortHandler *, dynamixel::PacketHandler *);
+
     int ID;
     AX12Mode mode;
     dynamixel::PortHandler *portHandler;
     dynamixel::PacketHandler *packetHandler;
     static int test;
+
     void goToPosition(int);
+
     void setSpeed(int);
+
     void setMode(AX12Mode);
+
     int getPosition();
-    
+
 
 };
-
 
 
 #endif //MECATRO_P17_AX12_H

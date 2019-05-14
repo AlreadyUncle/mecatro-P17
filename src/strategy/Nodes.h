@@ -9,6 +9,7 @@
 #include "loguru.hpp"
 #include "../components/UltrasonicSensor.h"
 #include "../components/Kangaroo.h"
+#include "../components/AX12.h"
 
 #define SERIAL_PORT_KANGAROO            "/dev/serial0"
 
@@ -48,7 +49,7 @@ namespace Robot {
         }
 
     private:
-        bool isMoving= false;
+        bool isMoving = false;
         UltrasonicSensor &frontSensor;
         UltrasonicSensor &backSensor;
         Kangaroo &kangaroo;
@@ -58,11 +59,33 @@ namespace Robot {
 
     };
 
-    class ActivateAX12 : public AsyncActionNode {
+    /**
+     * Activate an AX12 (in mode joint or wheel) to make it move to position `pos`.
+     * Return RUNNING until the movement is completed, then return SUCCESS.
+     */
+    class MoveAX12 : public CoroActionNode {
+    public:
+        MoveAX12(const std::string &name, const NodeConfiguration &config, AX12 &ax) :
+                CoroActionNode(name, config),
+                _ax(ax) {}
 
+        NodeStatus tick() override;
+
+        void cleanup(bool halted);
+
+        void halt() override;
+
+        // It is mandatory to define this static method.
+        static PortsList providedPorts() {
+            return {InputPort<int>("pos"),
+                    InputPort<std::string>("mode")};
+        }
+
+    private:
+        AX12 _ax;
     };
 
-    class ActivatePump : public AsyncActionNode {
+    class ActivatePump : public CoroActionNode {
 
     };
 

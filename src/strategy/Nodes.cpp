@@ -78,3 +78,51 @@ void Robot::MoveAhead::halt() {
     // Do not forget to call this at the end.
     CoroActionNode::halt();
 }
+
+NodeStatus Robot::MoveAX12::tick() {
+    // ------------------------
+    // Read move instructions from the blackboard
+    auto positionInput = getInput<int>("pos");
+    auto modeInput = getInput<std::string>("mode");
+    if (!positionInput) {
+        throw BT::RuntimeError("missing required input [pos]: ",
+                               positionInput.error());
+    }
+    if (!modeInput) {
+        throw BT::RuntimeError("missing required input [mode]: ",
+                               modeInput.error());
+    }
+    auto goalPosition = positionInput.value();
+    auto modeString = modeInput.value();
+
+    // ------------------------
+    // Move logic
+
+    AX12Mode mode = joint;
+    if (modeString == "joint")
+        mode = joint;
+    else if (modeString == "wheel")
+        mode = wheel;
+    else
+        LOG_F(ERROR, "[id %d] Could not recognize mode, using mode joint by default", _ax.ID);
+    _ax.setMode(mode);
+
+    auto currentPosition = _ax.getPosition();
+    _ax.goToPosition(goalPosition);
+    while (std::abs(goalPosition - currentPosition) > DXL_MOVING_STATUS_THRESHOLD) {
+        currentPosition = _ax.getPosition();
+        LOG_F(INFO, "[id %d] moving ; GoalPos:%03d CurrentPos:%03d", _ax.ID, goalPosition, currentPosition);
+        setStatusRunningAndYield();
+    }
+
+    cleanup(false);
+    return NodeStatus::SUCCESS;
+}
+
+void Robot::MoveAX12::cleanup(bool halted) {
+
+}
+
+void Robot::MoveAX12::halt() {
+    CoroActionNode::halt();
+}

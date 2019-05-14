@@ -22,31 +22,26 @@ AX12::AX12(int ID, dynamixel::PortHandler *portHandler, dynamixel::PacketHandler
 
     // Open port
     if (portHandler->openPort()) {
-        printf("Succeeded to open the port!\n");
+        LOG_F(INFO, "[id %d] Succeeded to open the port!\n", this->ID);
     } else {
-        printf("Failed to open the port!\n");
-        printf("Press any key to terminate...\n");
-
-
+        LOG_F(ERROR, "[id %d] Failed to open the port!\n", this->ID);
     }
 
     // Set port baudrate
     if (portHandler->setBaudRate(BAUDRATE)) {
-        printf("Succeeded to change the baudrate!\n");
+        LOG_F(INFO, "[id %d] Succeeded to change the baudrate!\n", this->ID);
     } else {
-        printf("Failed to change the baudrate!\n");
-        printf("Press any key to terminate...\n");
-
+        LOG_F(ERROR, "[id %d] Failed to change the baudrate!\n", this->ID);
     }
 
     // Enable Dynamixel Torque
     dxl_comm_result = packetHandler->write1ByteTxRx(portHandler, ID, ADDR_MX_TORQUE_ENABLE, TORQUE_ENABLE, &dxl_error);
     if (dxl_comm_result != COMM_SUCCESS) {
-        printf("%s\n", packetHandler->getTxRxResult(dxl_comm_result));
+        LOG_F(ERROR, "[id %d] %s\n", this->ID, packetHandler->getTxRxResult(dxl_comm_result));
     } else if (dxl_error != 0) {
-        printf("%s\n", packetHandler->getRxPacketError(dxl_error));
+        LOG_F(ERROR, "[id %d] %s\n", this->ID, packetHandler->getRxPacketError(dxl_error));
     } else {
-        printf("Dynamixel has been successfully connected \n");
+        LOG_F(INFO, "[id %d] Dynamixel has been successfully connected \n", this->ID);
     }
 
 }
@@ -65,25 +60,25 @@ void AX12::goToPosition(int pos) {                   // 0 <= pos <= 1023
 
 
     if (dxl_comm_result != COMM_SUCCESS) {
-        printf("%s\n", packetHandler->getTxRxResult(dxl_comm_result));
+        LOG_F(ERROR, "[id %d] %s\n", this->ID, packetHandler->getTxRxResult(dxl_comm_result));
     } else if (dxl_error != 0) {
-        printf("%s\n", packetHandler->getRxPacketError(dxl_error));
+        LOG_F(ERROR, "[id %d] %s\n", this->ID, packetHandler->getRxPacketError(dxl_error));
     }
 
 //    do
 //    {
 //        // Read present position
-//        dxl_comm_result = packetHandler->read2ByteTxRx(portHandler, ID, ADDR_MX_PRESENT_POSITION, &dxl_present_position, &dxl_error);
+//        dxl_comm_result = packetHandler->read2ByteTxRx(_portHandler, ID, ADDR_MX_PRESENT_POSITION, &dxl_present_position, &dxl_error);
 //        if (dxl_comm_result != COMM_SUCCESS)
 //        {
-//            printf("%s\n", packetHandler->getTxRxResult(dxl_comm_result));
+//            LOG_F(INFO,"%s\n", packetHandler->getTxRxResult(dxl_comm_result));
 //        }
 //        else if (dxl_error != 0)
 //        {
-//            printf("%s\n", packetHandler->getRxPacketError(dxl_error));
+//            LOG_F(INFO,"%s\n", packetHandler->getRxPacketError(dxl_error));
 //        }
 //
-//        printf("[ID:%03d] GoalPos:%03d  PresPos:%03d\n", ID, pos, dxl_present_position);
+//        LOG_F(INFO,"[ID:%03d] GoalPos:%03d  PresPos:%03d\n", ID, pos, dxl_present_position);
 //
 //    }while((abs(pos - dxl_present_position) > DXL_MOVING_STATUS_THRESHOLD));
 
@@ -97,9 +92,9 @@ int AX12::getPosition() {
     dxl_comm_result = packetHandler->read2ByteTxRx(portHandler, ID, ADDR_MX_PRESENT_POSITION, &dxl_present_position,
                                                    &dxl_error);
     if (dxl_comm_result != COMM_SUCCESS) {
-        printf("%s\n", packetHandler->getTxRxResult(dxl_comm_result));
+        LOG_F(ERROR, "[id %d] %s\n", this->ID, packetHandler->getTxRxResult(dxl_comm_result));
     } else if (dxl_error != 0) {
-        printf("%s\n", packetHandler->getRxPacketError(dxl_error));
+        LOG_F(ERROR, "[id %d] %s\n", this->ID, packetHandler->getRxPacketError(dxl_error));
     }
     return dxl_present_position;
 
@@ -119,18 +114,18 @@ void AX12::setMode(AX12Mode mode) {
 
 
         if (dxl_comm_result != COMM_SUCCESS) {
-            printf("%s\n", packetHandler->getTxRxResult(dxl_comm_result));
+            LOG_F(INFO, "[id %d] %s\n", this->ID, packetHandler->getTxRxResult(dxl_comm_result));
         } else if (dxl_error != 0) {
-            printf("%s\n", packetHandler->getRxPacketError(dxl_error));
+            LOG_F(INFO, "[id %d] %s\n", this->ID, packetHandler->getRxPacketError(dxl_error));
         }
 
         dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, ID, ADDR_MX_CCW_ANGLE_LIMIT, CCW, &dxl_error);
 
 
         if (dxl_comm_result != COMM_SUCCESS) {
-            printf("%s\n", packetHandler->getTxRxResult(dxl_comm_result));
+            LOG_F(INFO, "[id %d] %s\n", this->ID, packetHandler->getTxRxResult(dxl_comm_result));
         } else if (dxl_error != 0) {
-            printf("%s\n", packetHandler->getRxPacketError(dxl_error));
+            LOG_F(INFO, "[id %d] %s\n", this->ID, packetHandler->getRxPacketError(dxl_error));
         }
 
     } else if (mode == wheel) {
@@ -141,18 +136,18 @@ void AX12::setMode(AX12Mode mode) {
 
 
         if (dxl_comm_result != COMM_SUCCESS) {
-            printf("%s\n", packetHandler->getTxRxResult(dxl_comm_result));
+            LOG_F(INFO, "[id %d] %s\n", this->ID, packetHandler->getTxRxResult(dxl_comm_result));
         } else if (dxl_error != 0) {
-            printf("%s\n", packetHandler->getRxPacketError(dxl_error));
+            LOG_F(INFO, "[id %d] %s\n", this->ID, packetHandler->getRxPacketError(dxl_error));
         }
 
         dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, ID, ADDR_MX_CCW_ANGLE_LIMIT, CCW, &dxl_error);
 
 
         if (dxl_comm_result != COMM_SUCCESS) {
-            printf("%s\n", packetHandler->getTxRxResult(dxl_comm_result));
+            LOG_F(INFO, "[id %d] %s\n", this->ID, packetHandler->getTxRxResult(dxl_comm_result));
         } else if (dxl_error != 0) {
-            printf("%s\n", packetHandler->getRxPacketError(dxl_error));
+            LOG_F(INFO, "[id %d] %s\n", this->ID, packetHandler->getRxPacketError(dxl_error));
         }
 
     }
@@ -170,9 +165,9 @@ void AX12::setSpeed(int speed) {                   // 0 <= pos <= 1023
 
 
     if (dxl_comm_result != COMM_SUCCESS) {
-        printf("%s\n", packetHandler->getTxRxResult(dxl_comm_result));
+        LOG_F(INFO, "[id %d] %s\n", this->ID, packetHandler->getTxRxResult(dxl_comm_result));
     } else if (dxl_error != 0) {
-        printf("%s\n", packetHandler->getRxPacketError(dxl_error));
+        LOG_F(INFO, "[id %d] %s\n", this->ID, packetHandler->getRxPacketError(dxl_error));
     }
 
 }

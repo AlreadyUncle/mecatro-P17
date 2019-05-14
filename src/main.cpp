@@ -44,6 +44,12 @@ int main(int argc, char *argv[]) {
     else
         LOG_F(ERROR, "Kangaroo is not operational !");
 
+    dynamixel::PortHandler *portHandler = dynamixel::PortHandler::getPortHandler(DEVICENAME);
+    dynamixel::PacketHandler *packetHandler = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
+    AX12 ax_1(1, portHandler, packetHandler);
+    AX12 ax_4(4, portHandler, packetHandler);
+    AX12 ax_5(5, portHandler, packetHandler);
+
 
     // -----------------------
     // Create the behavior tree
@@ -60,8 +66,23 @@ int main(int argc, char *argv[]) {
     builderMoveAhead = [&](const std::string &name, const NodeConfiguration &config) {
         return std::make_unique<MoveAhead>(name, config, frontSensor, backSensor, kangaroo);
     };
+    NodeBuilder builderMoveAX_1;
+    builderMoveAX_1 = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12>(name, config, ax_1);
+    };
+    NodeBuilder builderMoveAX_4;
+    builderMoveAX_4 = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12>(name, config, ax_4);
+    };
+    NodeBuilder builderMoveAX_5;
+    builderMoveAX_5 = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12>(name, config, ax_5);
+    };
 
     factory.registerBuilder<MoveAhead>("MoveAhead", builderMoveAhead);
+    factory.registerBuilder<MoveAX12>("MoveAX_1", builderMoveAX_1);
+    factory.registerBuilder<MoveAX12>("MoveAX_4", builderMoveAX_4);
+    factory.registerBuilder<MoveAX12>("MoveAX_5", builderMoveAX_5);
 
 
     // Trees are created at deployment-time (i.e. at run-time, but only
