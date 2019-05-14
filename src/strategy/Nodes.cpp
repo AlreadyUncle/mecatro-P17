@@ -128,13 +128,10 @@ void Robot::MoveAX12::halt() {
 }
 
 
-
-
-
 NodeStatus Robot::Turn::tick() {
     // ------------------------
     // Read move instructions from the blackboard
-    cout << "ok5" <<endl;
+    cout << "ok5" << endl;
     auto angleInput = getInput<int>("angle");
     if (!angleInput) {
         throw BT::RuntimeError("missing required input [angle]: ",
@@ -147,12 +144,12 @@ NodeStatus Robot::Turn::tick() {
     // ------------------------
     // Move or wait logic
     bool isTurnCompleted = false;
-    cout << "ok6" <<endl;
-    cout<< kangaroo.isMoveCompleted()<<endl;
+    cout << "ok6" << endl;
+    cout << kangaroo.isMoveCompleted() << endl;
     while (!kangaroo.isMoveCompleted()) {
-        cout<<"llll"<<endl;
+        cout << "llll" << endl;
         LOG_F(1, "turning... ");
-        kangaroo.startTurnMove(angleUnits,DEFAULT_ROTATION_SPEED);
+        kangaroo.startTurnMove(angleUnits, DEFAULT_ROTATION_SPEED);
         setStatusRunningAndYield();
     }
     LOG_F(INFO, "straight move completed (total distance : %d degrés, %d units)", angle, angleUnits);
@@ -173,26 +170,17 @@ void Robot::Turn::halt() {
 }
 
 
-
-
 NodeStatus Robot::UpdateScore::tick() {
-    auto bonusInput = getInput<int>("bonus");
-    if (!bonus) {
-        throw BT::RuntimeError("missing required input [bonus]: ",
-                               bonusInput.error());
+    auto pointsEarnedInput = getInput<int>("pointsEarned");
+    if (!pointsEarnedInput) {
+        throw BT::RuntimeError("missing required input [pointsEarned]: ",
+                               pointsEarnedInput.error());
     }
-    int bonus = bonusInput.value();
+    int pointsEarned = pointsEarnedInput.value();
+    currentScore += pointsEarned;
 
-    auto score = getInput<int>("oldScore");
-    if (!score)
-    {
-        throw BT::RuntimeError("missing required input [score]: ",
-                               score.error() );
-    }
+    lcd.printToScreenCentered("Score : " + std::to_string(currentScore));
+    LOG_F(INFO, "Added %d to the score. New current score :%d", pointsEarned, currentScore);
 
-    newS = score.value()+bonus
-    setOutput("newScore", newS);
-    LCD.printToScreenCentered(std::to_string(newS));
-    LOG_F(INFO, "Added %d to the score. New score :%d", bonus, newS);
     return NodeStatus::SUCCESS;
 }
