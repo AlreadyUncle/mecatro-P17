@@ -10,6 +10,7 @@
 #include "../components/UltrasonicSensor.h"
 #include "../components/Kangaroo.h"
 #include "../components/AX12.h"
+#include "../components/LCD.h"
 
 #define SERIAL_PORT_KANGAROO            "/dev/serial0"
 
@@ -58,6 +59,9 @@ namespace Robot {
         Kangaroo &kangaroo;
     };
 
+    /**
+     * Turn a certain angle
+     */
     class Turn : public CoroActionNode {
     public:
         Turn(const std::string &name, const NodeConfiguration &config,
@@ -113,19 +117,24 @@ namespace Robot {
 
     };
 
+    /**
+     * Update the internal score estimation, and print it to the LCD screen.
+     */
     class UpdateScore : public SyncActionNode {
     public:
-        Turn(const std::string &name, const NodeConfiguration &config, LCD &lcd) :
-                CoroActionNode(name, config),
-                LCD(lcd) {}
+        UpdateScore(const std::string &name, const NodeConfiguration &config, LCD &lcd) :
+                SyncActionNode(name, config),
+                lcd(lcd) {}
 
         NodeStatus tick() override;
 
         static PortsList providedPorts() {
-            InputPort<int>("bonus"),
-            InputPort<int>("oldScore")
-            OutputPort<int>("newScore");
+            InputPort<int>("pointsEarned");
         }
+
+    private:
+        int currentScore = 0;
+        LCD &lcd;
     };
 
     class JackUnplugged : public ConditionNode {
