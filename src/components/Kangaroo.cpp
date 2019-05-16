@@ -7,7 +7,13 @@ Kangaroo::Kangaroo(string portName) {
 }
 
 
-bool Kangaroo::isOperational() { return m_isOpened && m_init; }
+bool Kangaroo::isOperational() {
+    if (!m_isOpened)
+        LOG_F(ERROR, "Port is not opened");
+    if (!m_init)
+        LOG_F(ERROR, "Could not init the Kangaroo");
+    return m_isOpened && m_init;
+}
 
 bool Kangaroo::init() {
     bool retour = false;

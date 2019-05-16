@@ -44,6 +44,8 @@ int main(int argc, char *argv[]) {
     else
         LOG_F(ERROR, "Kangaroo is not operational !");
 
+
+
     dynamixel::PortHandler *portHandler = dynamixel::PortHandler::getPortHandler(DEVICENAME);
     dynamixel::PacketHandler *packetHandler = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
     AX12 ax_1(1, portHandler, packetHandler);

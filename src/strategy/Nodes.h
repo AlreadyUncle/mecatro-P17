@@ -12,7 +12,7 @@
 #include "../components/AX12.h"
 #include "../components/LCD.h"
 
-#define SERIAL_PORT_KANGAROO            "/dev/serial0"
+#define SERIAL_PORT_KANGAROO            "/dev/ttyUSB0"
 
 #define SENSOR_OBSTACLE_THRESHOLD       100     // distance (in mm) under which obstacles are considered
 #define UNITS_PER_MM                    5.6666  // Kangaroo parameters
