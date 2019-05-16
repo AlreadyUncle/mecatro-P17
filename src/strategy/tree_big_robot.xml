@@ -1,59 +1,110 @@
+<!--
+départ jaune -> AX1,et tourner barillet pour se placer devant un non-rouge
+départ violet -> AX2
+-->
+
 <root main_tree_to_execute="MainTree">
 
 
     <BehaviorTree ID="CollectPucks">
         <Sequence>
-            <Move pos= positions['P1'] />
-            <CollectPuck/>
-            <Move pos= positions['P2'] />
-            <CollectPuck/>
-            <Move pos= positions['P3'] />
-            <CollectPuck/>
-            <Move pos= positions['P4'] />
-            <CollectPuck/>
-            <Move pos= positions['P5'] />
-            <CollectPuck/>
-            <Move pos= positions['P6'] />
-            <CollectPuck/>
+            <SubTree ID = "GetPuck" pos = "">
+            <SubTree ID = "GetPuck" pos = "">
+            <SubTree ID = "GetPuck" pos = "">
+            <SubTree ID = "GetPuck" pos = "">
+            <SubTree ID = "GetPuck" pos = "">
+            <SubTree ID = "GetPuck" pos = "">
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID = "GetPuck">
+        <MoveAhead moveForward="true"
+                   distance = "{pos}"
+        />
+        <ActiverBarillet/>
+        <GrabPuck/>
+    </BehaviorTree>
+
+    <BehaviorTree ID = "GrabPuck">
+        <MoveAX_3 name="approach_puck"
+                  pos=""
+                  mode="joint"
+        />
+        <ActivatePump/>
+        <MoveAX_5 name="turn_90"
+                  pos=""
+                  mode="joint"
+        />
+        <MoveAX_4 name="approach_barrel"
+                  pos=""
+                  mode="joint"
+        />
+        <ActivatePump/>
+        <MoveAX_4 name="return"
+                  pos=""
+                  mode="joint"
+        />
+    </BehaviorTree>
+
+
+
+    <BehaviorTree ID="WeightPucks">
+        <Sequence>
+            <ActiverBarillet/>
+            <Repeat nb="5">
+                <MoveAX_1 name="psuh_puck"
+                          pos=""
+                          mode="joint"
+                />
+                <MoveAX_1 name="return"
+                          pos=""
+                          mode="joint"
+                />
+                <ActiverBarillet/>
+            </Repeat/>
+        </Sequence>
+
+    </BehaviorTree>
+
+
+
+    <BehaviorTree ID="ReachAccelerator">
+        <Sequence>
+            <MoveAhead moveForward="true"
+                       distance = ""
+            />
+            <Turn angle = ""
+            />
+            <MoveAhead moveForward="true"
+                       distance = ""
+            />
+            <Turn angle = ""
+            />
+            <MoveAhead moveForward="true"
+                       distance = ""
+            />
         </Sequence>
     </BehaviorTree>
 
 
-    <BehaviorTree ID="WeightPucks">
-        <Repeat nb="6">
-            <Sequence>
-            <Fallback>
-                <Condition ID="RedPuck"/>
-                <DropPuck/>
-            </Fallback>
-            <TurnCylinder/>
-            <Sequence/>
-        </Repeat/>
-    </BehaviorTree>
-
 
     <BehaviorTree ID="DropInAccelerator">
-        <Repeat nb="6">
-            <Sequence>
-            <Fallback>
-                <Condition ID="NoPuck"/>
-                <DropPuck/>
-            </Fallback>
-            <TurnCylinder/>
-            <Sequence/>
-        </Repeat/>
+        <MoveAX_1 name="psuh_puck"
+                  pos=""
+                  mode="joint"
+        />
+        <MoveAX_1 name="return"
+                  pos=""
+                  mode="joint"
+        />
     </BehaviorTree>
 
-
-    <BehaviorTree ID="DropInAccelerator">
-
-    </BehaviorTree>
 
 
     <BehaviorTree ID="MainTree">
         <Sequence>
-            <SubTree ID="WeightPucks"/>
             <SubTree ID="CollectPucks"/>
+            <SubTree ID="WeightPucks"/>
             <SubTree ID="ReachAccelerator"/>
             <SubTree ID="DropInAccelerator"/>
         </Sequence>
