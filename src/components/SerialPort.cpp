@@ -11,7 +11,7 @@ int SerialPort::open(const char *device, int baud) {
     m_fd = serialOpen(device, baud);
 
     if (m_fd == -1)
-        LOG_F(ERROR, "Failed to open serial port, errno : %d", errno);
+        LOG_F(ERROR, "Failed to open serial port %s, errno : %d", device, errno);
     else
         LOG_F(INFO, "Success opening serial port (m_fd = %d)", m_fd);
 

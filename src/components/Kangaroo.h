@@ -33,7 +33,7 @@ public:
     /**
      * Send a command to the Kangaroo to start a straight move, forward or backward depending on the sign of `distance`.
      * @param distance : distance to do, in units !
-     * @param v : speed (in units/s ??)
+     * @param v : speed (in units/s ?)
      * @return If sending the command was a success or not
      */
     bool startStraightMove(int distance, int v);

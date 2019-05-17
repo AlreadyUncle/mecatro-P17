@@ -20,6 +20,12 @@
 #define DEFAULT_KANGAROO_SPEED          10
 #define DEFAULT_ROTATION_SPEED          10
 
+#define AX_ID_BR_PUSH_PUCK_RIGHT        1       // BR stands for big robot
+#define AX_ID_BR_PUSH_PUCK_LEFT         2
+#define AX_ID_BR_MOVE_ARM_SIDE          3
+#define AX_ID_BR_MOVE_ARM_FRONT         4
+#define AX_ID_BR_TURN_ARM               5
+
 using namespace BT;
 
 namespace Robot {

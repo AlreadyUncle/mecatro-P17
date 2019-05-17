@@ -87,11 +87,14 @@ int Kangaroo::getPosition() {
         throw;
     }
 
+    LOG_F(INFO, "Kangaroo current position : %d", position);
     return position;
 }
 
 bool Kangaroo::isMoveCompleted() {
-    return getRawPosition()[2] == 'P';
+    std::string rawPosition = getRawPosition();
+    LOG_F(INFO, "Kangaroo current position (raw) : %s", rawPosition.c_str());
+    return rawPosition[2] == 'P';
 }
 
 // to remove ??

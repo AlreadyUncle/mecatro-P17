@@ -1,5 +1,6 @@
 <root main_tree_to_execute="MainTree">
     <BehaviorTree ID="MainTree">
+
         <Sequence name="root_sequence_move">
             <MoveAhead name="move_ahead"
                        moveForward="true"
@@ -7,46 +8,16 @@
             />
         </Sequence>
 
+<!--        <Sequence name="sequence_1">-->
+<!--            <MoveAX name="move_ax_1"-->
+<!--                      pos="1000"-->
+<!--                      mode="joint"-->
+<!--            />-->
+<!--            <MoveAX name="move_ax_1"-->
+<!--                      pos="100"-->
+<!--                      mode="joint"-->
+<!--            />-->
+<!--        </Sequence>-->
 
-        <!--        <Parallel name="root_ax" threshold="3">-->
-        <!--            <Sequence name="sequence_1">-->
-        <!--                <MoveAX_1 name="move_ax_1"-->
-        <!--                          pos="1000"-->
-        <!--                          mode="joint"-->
-        <!--                />-->
-        <!--                <MoveAX_1 name="move_ax_1"-->
-        <!--                          pos="100"-->
-        <!--                          mode="joint"-->
-        <!--                />-->
-        <!--            </Sequence>-->
-        <!--            <Sequence name="sequence_1">-->
-        <!--                <MoveAX_4 name="move_ax_4"-->
-        <!--                          pos="1000"-->
-        <!--                          mode="joint"-->
-        <!--                />-->
-        <!--                <MoveAX_4 name="move_ax_4"-->
-        <!--                          pos="100"-->
-        <!--                          mode="joint"-->
-        <!--                />-->
-        <!--            </Sequence>-->
-        <!--            <Sequence name="sequence_1">-->
-        <!--                <MoveAX_5 name="move_ax_5"-->
-        <!--                          pos="1000"-->
-        <!--                          mode="joint"-->
-        <!--                />-->
-        <!--                <MoveAX_5 name="move_ax_5"-->
-        <!--                          pos="100"-->
-        <!--                          mode="joint"-->
-        <!--                />-->
-        <!--            </Sequence>-->
-
-        <!--        </Parallel>-->
-
-
-        <!--        <Sequence name="root_sequence_turn">-->
-        <!--            <Turn name="turn"-->
-        <!--                  angle="10"-->
-        <!--            />-->
-        <!--        </Sequence>-->
     </BehaviorTree>
 </root>
