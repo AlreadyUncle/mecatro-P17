@@ -16,9 +16,6 @@
 
 #include "strategy/Nodes.h"
 
-#define SENSOR_TRIGGER_PIN          23
-#define SENSOR_ECHO_PIN_FRONT       24
-#define SENSOR_ECHO_PIN_BACK        25
 
 
 using namespace std;
@@ -49,7 +46,11 @@ int main(int argc, char *argv[]) {
     dynamixel::PortHandler *portHandler = dynamixel::PortHandler::getPortHandler(DEVICENAME);
     dynamixel::PacketHandler *packetHandler = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
 
-    AX12 ax(AX_ID_BR_PUSH_PUCK_RIGHT, portHandler, packetHandler);
+    AX12 axPushRightPuck(AX_ID_BR_PUSH_RIGHT_PUCK, portHandler, packetHandler);
+    AX12 axPushLeftPuck(AX_ID_BR_PUSH_LEFT_PUCK, portHandler, packetHandler);
+    AX12 axMoveArmSide(AX_ID_BR_MOVE_ARM_SIDE, portHandler, packetHandler);
+    AX12 axMoveArmFront(AX_ID_BR_MOVE_ARM_FRONT, portHandler, packetHandler);
+    AX12 axTurnArm(AX_ID_BR_TURN_ARM, portHandler, packetHandler);
 
 
     // -----------------------
@@ -67,14 +68,40 @@ int main(int argc, char *argv[]) {
     builderMoveAhead = [&](const std::string &name, const NodeConfiguration &config) {
         return std::make_unique<MoveAhead>(name, config, frontSensor, backSensor, kangaroo);
     };
+    NodeBuilder builderTurn;
+    builderTurn = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<Turn>(name, config, kangaroo);
+    };
 
-    NodeBuilder builderMoveAX;
-    builderMoveAX = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAX12>(name, config, ax);
+    NodeBuilder builderPushRightPuck = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12Joint>(name, config, axPushRightPuck);
+    };
+    NodeBuilder builderPushLeftPuck = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12Joint>(name, config, axPushLeftPuck);
+    };
+    NodeBuilder builderMoveArmFront = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12Joint>(name, config, axMoveArmFront);
+    };
+    NodeBuilder builderTurnArm = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12Joint>(name, config, axTurnArm);
+    };
+
+    NodeBuilder builderMoveArmSideJoint = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12Joint>(name, config, axMoveArmSide);
+    };
+    NodeBuilder builderMoveArmSideWheel = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12Wheel>(name, config, axMoveArmSide);
     };
 
     factory.registerBuilder<MoveAhead>("MoveAhead", builderMoveAhead);
-    factory.registerBuilder<MoveAX12>("MoveAX", builderMoveAX);
+
+    factory.registerBuilder<MoveAX12Joint>("PushRightPuck", builderPushRightPuck);
+    factory.registerBuilder<MoveAX12Joint>("PushLeftPuck", builderPushLeftPuck);
+    factory.registerBuilder<MoveAX12Joint>("MoveArmFront", builderMoveArmFront);
+    factory.registerBuilder<MoveAX12Joint>("TurnArm", builderTurnArm);
+
+    factory.registerBuilder<MoveAX12Wheel>("MoveArmSideWheel", builderMoveArmSideWheel);
+    factory.registerBuilder<MoveAX12Joint>("MoveArmSideJoint", builderMoveArmSideJoint);
 
 
     // Trees are created at deployment-time (i.e. at run-time, but only
@@ -87,6 +114,7 @@ int main(int argc, char *argv[]) {
     // This logger saves state changes on file
     FileLogger logger_file(tree, "/home/pi/mecatro_P17/log/bt_trace.fbl");
     printTreeRecursively(tree.root_node);
+
 
     // -----------------------
     // Execute the behavior tree

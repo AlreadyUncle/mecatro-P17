@@ -14,17 +14,25 @@
 
 #define SERIAL_PORT_KANGAROO            "/dev/ttyUSB0"
 
+// Speed and position constants
 #define SENSOR_OBSTACLE_THRESHOLD       100     // distance (in mm) under which obstacles are considered
-#define UNITS_PER_MM                    5.6666  // Kangaroo parameters
-#define UNITS_PER_DEGREE                13.89
-#define DEFAULT_KANGAROO_SPEED          10
-#define DEFAULT_ROTATION_SPEED          10
+#define UNITS_PER_MM                    5.669  // Kangaroo parameters
+#define UNITS_PER_DEGREE                1//13.89
+#define DEFAULT_KANGAROO_SPEED          500
+#define DEFAULT_KANGAROO_ROTATION_SPEED 10
+#define DEFAULT_AX12_WHEEL_SPEED        200
 
-#define AX_ID_BR_PUSH_PUCK_RIGHT        1       // BR stands for big robot
-#define AX_ID_BR_PUSH_PUCK_LEFT         2
+// AX-12 IDs
+#define AX_ID_BR_PUSH_RIGHT_PUCK        6       // BR stands for big robot
+#define AX_ID_BR_PUSH_LEFT_PUCK         2
 #define AX_ID_BR_MOVE_ARM_SIDE          3
 #define AX_ID_BR_MOVE_ARM_FRONT         4
 #define AX_ID_BR_TURN_ARM               5
+
+// Pins definition
+#define SENSOR_TRIGGER_PIN              23
+#define SENSOR_ECHO_PIN_FRONT           24
+#define SENSOR_ECHO_PIN_BACK            25
 
 using namespace BT;
 
@@ -94,12 +102,11 @@ namespace Robot {
     };
 
     /**
-     * Activate an AX12 (in mode joint or wheel) to make it move to position `pos`.
-     * Return RUNNING until the movement is completed, then return SUCCESS.
+     * Activate an AX12 to make it move to position `pos`.
      */
-    class MoveAX12 : public CoroActionNode {
+    class MoveAX12Joint : public CoroActionNode {
     public:
-        MoveAX12(const std::string &name, const NodeConfiguration &config, AX12 &ax) :
+        MoveAX12Joint(const std::string &name, const NodeConfiguration &config, AX12 &ax) :
                 CoroActionNode(name, config),
                 _ax(ax) {}
 
@@ -111,8 +118,37 @@ namespace Robot {
 
         // It is mandatory to define this static method.
         static PortsList providedPorts() {
-            return {InputPort<int>("pos"),
-                    InputPort<std::string>("mode")};
+            return {
+                    InputPort<int>("pos"),
+            };
+        }
+
+    private:
+        AX12 _ax;
+    };
+
+    /**
+     * Activate an AX12 in wheel mode during `duration`, in CW or CCW depending on `isCW`
+     * Return RUNNING until the movement is completed, then return SUCCESS.
+     */
+    class MoveAX12Wheel : public CoroActionNode {
+    public:
+        MoveAX12Wheel(const std::string &name, const NodeConfiguration &config, AX12 &ax) :
+                CoroActionNode(name, config),
+                _ax(ax) {}
+
+        NodeStatus tick() override;
+
+        void cleanup(bool halted);
+
+        void halt() override;
+
+        // It is mandatory to define this static method.
+        static PortsList providedPorts() {
+            return {
+                    InputPort<int>("duration"),
+                    InputPort<bool>("isCW"),
+            };
         }
 
     private:

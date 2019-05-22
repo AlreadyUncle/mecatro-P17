@@ -7,7 +7,6 @@
 
 AX12::AX12(int ID, dynamixel::PortHandler *portHandler, dynamixel::PacketHandler *packetHandler) {
     this->ID = ID;
-    mode = joint;
     // Initialize PortHandler instance
     // Set the port path
     // Get methods and members of PortHandlerLinux or PortHandlerWindows
@@ -43,45 +42,23 @@ AX12::AX12(int ID, dynamixel::PortHandler *portHandler, dynamixel::PacketHandler
     } else {
         LOG_F(INFO, "[id %d] Dynamixel has been successfully connected \n", this->ID);
     }
-
 }
 
-void AX12::goToPosition(int pos) {                   // 0 <= pos <= 1023
+
+void AX12::goToPositionJointMode(int pos) {                   // 0 <= pos <= 1023
 
     int dxl_comm_result = COMM_TX_FAIL;             // Communication result
 
     uint8_t dxl_error = 0;                          // Dynamixel error
-//    uint16_t dxl_present_position = 0;              // Present position
-
 
     // Write goal position
-
     dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, ID, ADDR_MX_GOAL_POSITION, pos, &dxl_error);
-
 
     if (dxl_comm_result != COMM_SUCCESS) {
         LOG_F(ERROR, "[id %d] %s\n", this->ID, packetHandler->getTxRxResult(dxl_comm_result));
     } else if (dxl_error != 0) {
         LOG_F(ERROR, "[id %d] %s\n", this->ID, packetHandler->getRxPacketError(dxl_error));
     }
-
-//    do
-//    {
-//        // Read present position
-//        dxl_comm_result = packetHandler->read2ByteTxRx(_portHandler, ID, ADDR_MX_PRESENT_POSITION, &dxl_present_position, &dxl_error);
-//        if (dxl_comm_result != COMM_SUCCESS)
-//        {
-//            LOG_F(INFO,"%s\n", packetHandler->getTxRxResult(dxl_comm_result));
-//        }
-//        else if (dxl_error != 0)
-//        {
-//            LOG_F(INFO,"%s\n", packetHandler->getRxPacketError(dxl_error));
-//        }
-//
-//        LOG_F(INFO,"[ID:%03d] GoalPos:%03d  PresPos:%03d\n", ID, pos, dxl_present_position);
-//
-//    }while((abs(pos - dxl_present_position) > DXL_MOVING_STATUS_THRESHOLD));
-
 }
 
 int AX12::getPosition() {
@@ -171,3 +148,4 @@ void AX12::setSpeed(int speed) {                   // 0 <= pos <= 1023
     }
 
 }
+

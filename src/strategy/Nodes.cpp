@@ -4,6 +4,7 @@
 
 #include "Nodes.h"
 
+// ------ Kangaroo -------
 NodeStatus Robot::MoveAhead::tick() {
     // ------------------------
     // Read move instructions from the blackboard
@@ -79,55 +80,6 @@ void Robot::MoveAhead::halt() {
     CoroActionNode::halt();
 }
 
-NodeStatus Robot::MoveAX12::tick() {
-    // ------------------------
-    // Read move instructions from the blackboard
-    auto positionInput = getInput<int>("pos");
-    auto modeInput = getInput<std::string>("mode");
-    if (!positionInput) {
-        throw BT::RuntimeError("missing required input [pos]: ",
-                               positionInput.error());
-    }
-    if (!modeInput) {
-        throw BT::RuntimeError("missing required input [mode]: ",
-                               modeInput.error());
-    }
-    auto goalPosition = positionInput.value();
-    auto modeString = modeInput.value();
-
-    // ------------------------
-    // Move logic
-
-    AX12Mode mode = joint;
-    if (modeString == "joint")
-        mode = joint;
-    else if (modeString == "wheel")
-        mode = wheel;
-    else
-        LOG_F(ERROR, "[id %d] Could not recognize mode, using mode joint by default", _ax.ID);
-    _ax.setMode(mode);
-
-    auto currentPosition = _ax.getPosition();
-    _ax.goToPosition(goalPosition);
-    while (std::abs(goalPosition - currentPosition) > DXL_MOVING_STATUS_THRESHOLD) {
-        currentPosition = _ax.getPosition();
-        LOG_F(INFO, "[id %d] moving ; GoalPos:%03d CurrentPos:%03d", _ax.ID, goalPosition, currentPosition);
-        setStatusRunningAndYield();
-    }
-
-    cleanup(false);
-    return NodeStatus::SUCCESS;
-}
-
-void Robot::MoveAX12::cleanup(bool halted) {
-
-}
-
-void Robot::MoveAX12::halt() {
-    CoroActionNode::halt();
-}
-
-
 NodeStatus Robot::Turn::tick() {
     // ------------------------
     // Read move instructions from the blackboard
@@ -149,7 +101,7 @@ NodeStatus Robot::Turn::tick() {
     while (!kangaroo.isMoveCompleted()) {
         cout << "llll" << endl;
         LOG_F(1, "turning... ");
-        kangaroo.startTurnMove(angleUnits, DEFAULT_ROTATION_SPEED);
+        kangaroo.startTurnMove(angleUnits, DEFAULT_KANGAROO_ROTATION_SPEED);
         setStatusRunningAndYield();
     }
     LOG_F(INFO, "straight move completed (total distance : %d degrés, %d units)", angle, angleUnits);
@@ -169,7 +121,93 @@ void Robot::Turn::halt() {
     CoroActionNode::halt();
 }
 
+// ------ AX12 -------
+NodeStatus Robot::MoveAX12Joint::tick() {
+    // ------------------------
+    // Read move instructions from the blackboard
+    auto positionInput = getInput<int>("pos");
+    if (!positionInput) {
+        throw BT::RuntimeError("missing required input [pos]: ",
+                               positionInput.error());
+    }
+    auto goalPosition = positionInput.value();
 
+    // ------------------------
+    // Move logic
+    _ax.setMode(joint);
+    _ax.setSpeed(0); // 0 : maximum speed (same as 1023)
+    _ax.goToPositionJointMode(goalPosition);
+
+    auto currentPosition = _ax.getPosition();
+    while (std::abs(goalPosition - currentPosition) > DXL_MOVING_STATUS_THRESHOLD) {
+        currentPosition = _ax.getPosition();
+        LOG_F(INFO, "[id %d] moving ; GoalPos:%03d CurrentPos:%03d", _ax.ID, goalPosition, currentPosition);
+        setStatusRunningAndYield();
+    }
+
+    cleanup(false);
+    return NodeStatus::SUCCESS;
+}
+
+void Robot::MoveAX12Joint::cleanup(bool halted) {
+}
+
+void Robot::MoveAX12Joint::halt() {
+    CoroActionNode::halt();
+}
+
+NodeStatus Robot::MoveAX12Wheel::tick() {
+    // Get inputs from the blackboard
+    auto durationInput = getInput<int>("duration");
+    if (!durationInput) {
+        throw BT::RuntimeError("missing required input [duration]: ",
+                               durationInput.error());
+    }
+    auto duration = std::chrono::milliseconds(durationInput.value());
+
+    auto isCWInput = getInput<bool>("isCW");
+    if (!isCWInput) {
+        throw BT::RuntimeError("missing required input [isCW]: ",
+                               isCWInput.error());
+    }
+    auto isCW = isCWInput.value();
+
+    // Rotation direction (CW or CCW) is controlled by the 10th bit
+    int speed = isCW ? DEFAULT_AX12_WHEEL_SPEED + 1024 : DEFAULT_AX12_WHEEL_SPEED;
+    int zero = isCW ? 1024 : 0;
+
+    // Start the movement
+    _ax.setMode(wheel);
+    auto initialTime = std::chrono::system_clock::now();
+    _ax.setSpeed(speed);
+
+    auto currentPosition = _ax.getPosition();
+    auto currentTime = std::chrono::system_clock::now();
+    while (currentTime < initialTime + duration) {
+        currentPosition = _ax.getPosition();
+        currentTime = std::chrono::system_clock::now();
+        LOG_F(INFO, "[id %d] moving ; GoalDuration:%03d CurrentDuration:%03d CurrentPos:%03d", _ax.ID,
+              duration.count(), (currentTime - initialTime).count(), currentPosition);
+        setStatusRunningAndYield();
+    }
+
+    // Stop the movement
+    _ax.setSpeed(zero);
+
+
+    cleanup(false);
+    return NodeStatus::SUCCESS;
+}
+
+void Robot::MoveAX12Wheel::cleanup(bool halted) {
+
+}
+
+void Robot::MoveAX12Wheel::halt() {
+    CoroActionNode::halt();
+}
+
+// ------ Other -------
 NodeStatus Robot::UpdateScore::tick() {
     auto pointsEarnedInput = getInput<int>("pointsEarned");
     if (!pointsEarnedInput) {

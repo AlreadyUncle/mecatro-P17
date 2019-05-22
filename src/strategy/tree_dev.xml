@@ -1,23 +1,64 @@
 <root main_tree_to_execute="MainTree">
     <BehaviorTree ID="MainTree">
+        <Sequence name="root">
 
-        <Sequence name="root_sequence_move">
             <MoveAhead name="move_ahead"
+                       distance="200"
                        moveForward="true"
-                       distance="10"
             />
-        </Sequence>
 
-<!--        <Sequence name="sequence_1">-->
-<!--            <MoveAX name="move_ax_1"-->
-<!--                      pos="1000"-->
-<!--                      mode="joint"-->
-<!--            />-->
-<!--            <MoveAX name="move_ax_1"-->
-<!--                      pos="100"-->
-<!--                      mode="joint"-->
-<!--            />-->
-<!--        </Sequence>-->
+            <!--            <MoveArmSideWheel name="move_arm_side"-->
+            <!--                              duration="4200"-->
+            <!--                              isCW="false"-->
+            <!--            />-->
+
+            <!--            <MoveArmSideJoint name="move_arm_side_joint"-->
+            <!--                              pos="350"-->
+            <!--            />-->
+            <!--            <TurnArm name="turn_arm"-->
+            <!--                     pos="200"-->
+            <!--            />-->
+
+
+            <!--            <MoveArmSideWheel name="move_arm_side"-->
+            <!--                              duration="4200"-->
+            <!--                              isCW="true"-->
+            <!--            />-->
+
+            <!--            <MoveArmFront name="move_arm_front"-->
+            <!--                          pos="600"-->
+            <!--                          mode="joint"-->
+            <!--            />-->
+            <!--            <TurnArm name="turn_arm"-->
+            <!--                     pos="200"-->
+            <!--                     mode="joint"-->
+            <!--            />-->
+            <!--            <TurnArm name="turn_arm"-->
+            <!--                     pos="510"-->
+            <!--                     mode="joint"-->
+            <!--            />-->
+            <!--            <MoveArmFront name="move_arm_front"-->
+            <!--                          pos="150"-->
+            <!--                          mode="joint"-->
+            <!--            />-->
+
+            <!--            <PushRightPuck name="push_right_puck"-->
+            <!--                           pos="1023"-->
+            <!--                           mode="joint"-->
+            <!--            />-->
+            <!--            <PushRightPuck name="push_right_puck"-->
+            <!--                           pos="560"-->
+            <!--                           mode="joint"-->
+            <!--            />-->
+            <!--            <PushLeftPuck name="push_left_puck"-->
+            <!--                          pos="0"-->
+            <!--                          mode="joint"-->
+            <!--            />-->
+            <!--            <PushLeftPuck name="push_left_puck"-->
+            <!--                          pos="470"-->
+            <!--                          mode="joint"-->
+            <!--            />-->
+        </Sequence>
 
     </BehaviorTree>
 </root>

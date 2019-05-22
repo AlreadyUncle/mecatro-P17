@@ -56,12 +56,10 @@ public:
     AX12(int, dynamixel::PortHandler *, dynamixel::PacketHandler *);
 
     int ID;
-    AX12Mode mode;
     dynamixel::PortHandler *portHandler;
     dynamixel::PacketHandler *packetHandler;
-    static int test;
 
-    void goToPosition(int);
+    void goToPositionJointMode(int);
 
     void setSpeed(int);
 

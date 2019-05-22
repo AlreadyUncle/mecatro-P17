@@ -30,7 +30,7 @@ include_directories(
 set(SOURCE_FILES
         libs/loguru/loguru.cpp
 
-        src/main.cpp
+        src/main_big_robot.cpp
 
         src/components/AX12.cpp
         src/components/Kangaroo.cpp
