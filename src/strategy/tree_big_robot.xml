@@ -1,6 +1,6 @@
 <!--
-départ jaune -> AX1,et tourner barillet pour se placer devant un non-rouge
 départ violet -> AX2
+(départ jaune -> AX1,et tourner barillet pour se placer devant un non-rouge)
 -->
 
 <root main_tree_to_execute="MainTree">
@@ -8,30 +8,44 @@ départ violet -> AX2
 
     <BehaviorTree ID="CollectPucks">
         <Sequence>
-            <SubTree ID = "GetPuck" pos = "">
-            <SubTree ID = "GetPuck" pos = "">
-            <SubTree ID = "GetPuck" pos = "">
-            <SubTree ID = "GetPuck" pos = "">
-            <SubTree ID = "GetPuck" pos = "">
-            <SubTree ID = "GetPuck" pos = "">
+            <MoveAhead moveForward="true"
+                       distance = "778"
+            />
+            <Turn name = "turn_90_right"
+                  angle = ""
+            />
+            <SubTree ID = "GetPuck" dist = "485">
+            <SubTree ID = "GetPuck" dist = "100">
+            <SubTree ID = "GetPuck" dist = "100">
+            <SubTree ID = "GetPuck" dist = "100">
+            <SubTree ID = "GetPuck" dist = "100">
+            <SubTree ID = "GetPuck" dist = "100">
         </Sequence>
     </BehaviorTree>
 
     <BehaviorTree ID = "GetPuck">
         <MoveAhead moveForward="true"
-                   distance = "{pos}"
+                   distance = "{dist}"
         />
-        <ActiverBarillet/>
         <GrabPuck/>
+        <ActiverBarillet/>
     </BehaviorTree>
 
     <BehaviorTree ID = "GrabPuck">
+        <MoveAX_5 name="turn_90_left"
+                  pos=""
+                  mode="joint"
+        />
         <MoveAX_3 name="approach_puck"
                   pos=""
                   mode="joint"
         />
         <ActivatePump/>
-        <MoveAX_5 name="turn_90"
+        <MoveAX_3 name="come_back"
+                  pos=""
+                  mode="joint"
+        />
+        <MoveAX_5 name="turn_90_right"
                   pos=""
                   mode="joint"
         />
@@ -40,7 +54,7 @@ départ violet -> AX2
                   mode="joint"
         />
         <ActivatePump/>
-        <MoveAX_4 name="return"
+        <MoveAX_4 name="come_back"
                   pos=""
                   mode="joint"
         />
@@ -51,6 +65,10 @@ départ violet -> AX2
     <BehaviorTree ID="WeightPucks">
         <Sequence>
             <ActiverBarillet/>
+            <MoveAhead moveForward="true"
+                       distance = "828"
+            />
+            <!-- Trouver le noeud pour la répétition -->
             <Repeat nb="5">
                 <MoveAX_1 name="psuh_puck"
                           pos=""
@@ -61,24 +79,28 @@ départ violet -> AX2
                           mode="joint"
                 />
                 <ActiverBarillet/>
-            </Repeat/>
+            </Repeat>
         </Sequence>
-
     </BehaviorTree>
 
 
 
     <BehaviorTree ID="ReachAccelerator">
         <Sequence>
-            <MoveAhead moveForward="true"
-                       distance = ""
-            />
-            <Turn angle = ""
+            <Turn name = "turn_90_right"
+                  angle = ""
             />
             <MoveAhead moveForward="true"
                        distance = ""
             />
-            <Turn angle = ""
+            <Turn name = "turn_90_left"
+                  angle = ""
+            />
+            <MoveAhead moveForward="true"
+                       distance = ""
+            />
+            <Turn name = "turn_90_right"
+                  angle = ""
             />
             <MoveAhead moveForward="true"
                        distance = ""
@@ -93,7 +115,7 @@ départ violet -> AX2
                   pos=""
                   mode="joint"
         />
-        <MoveAX_1 name="return"
+        <MoveAX_1 name="come_back"
                   pos=""
                   mode="joint"
         />
