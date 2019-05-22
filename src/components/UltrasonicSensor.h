@@ -39,7 +39,7 @@ public:
     int getDistance();
 
 private:
-       int waitforpin(int pin, int level, int timeout);
+       int waitForPin(int pin, int level, int timeout);
        int wait(int useconds);
        const int ECHO_PIN, TRIGGER_PIN;
 

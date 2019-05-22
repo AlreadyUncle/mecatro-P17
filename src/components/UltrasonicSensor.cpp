@@ -16,13 +16,13 @@
 using namespace std;
 
 UltrasonicSensor::UltrasonicSensor(int trigger_pin, int echo_pin) : TRIGGER_PIN(trigger_pin), ECHO_PIN(echo_pin) {
-    if (wiringPiSetupGpio() == -1)
+    if (wiringPiSetup() == -1)
         LOG_F(ERROR, "Trying to initialize sensor, could not initialise wiringPi : %s", strerror(errno));
     pinMode(TRIGGER_PIN, OUTPUT);
     pinMode(ECHO_PIN, INPUT);
 }
 
-int UltrasonicSensor::waitforpin(int pin, int level, int timeout) {
+int UltrasonicSensor::waitForPin(int pin, int level, int timeout) {
     struct timeval now, start;
     long micros;
 
@@ -57,9 +57,9 @@ int UltrasonicSensor::getDistance() {
     wait(10); /* wait 10 microseconds */
     digitalWrite(TRIGGER_PIN, LOW);
 
-    if (waitforpin(ECHO_PIN, HIGH, 10000) > 0) { /* 10 ms timeout */
+    if (waitForPin(ECHO_PIN, HIGH, 10000) > 0) { /* 10 ms timeout */
         //todo: ask why 60ms instead of 36ms as in the doc http://www.robot-electronics.co.uk/htm/srf04tech.htm
-        int pulsewidth = waitforpin(ECHO_PIN, LOW, 60000L); /* 60 ms timeout */
+        int pulsewidth = waitForPin(ECHO_PIN, LOW, 60000L); /* 60 ms timeout */
 
         if (pulsewidth > 0) {
             double distanceMm = pulsewidth * 340 * 0.001 / 2;
