@@ -8,23 +8,15 @@
 NodeStatus Robot::MoveAhead::tick() {
     // ------------------------
     // Read move instructions from the blackboard
-    auto moveForwardInput = getInput<bool>("moveForward");
     auto distanceInput = getInput<int>("distance");
-    if (!moveForwardInput) {
-        throw BT::RuntimeError("missing required input [moveForward]: ",
-                               moveForwardInput.error());
-    }
     if (!distanceInput) {
         throw BT::RuntimeError("missing required input [distance]: ",
                                distanceInput.error());
     }
     int distanceToTravelMm = distanceInput.value();
-    bool moveForward = moveForwardInput.value();
-    if (!moveForward)
-        distanceToTravelMm *= -1;
 
     // Use the appropriate ultrasonic sensor to check for obstacles
-    UltrasonicSensor &sensor = moveForward ? frontSensor : backSensor;
+    UltrasonicSensor &sensor = distanceToTravelMm >= 0 ? frontSensor : backSensor;
 
 
     // ------------------------
@@ -83,28 +75,24 @@ void Robot::MoveAhead::halt() {
 NodeStatus Robot::Turn::tick() {
     // ------------------------
     // Read move instructions from the blackboard
-    cout << "ok5" << endl;
     auto angleInput = getInput<int>("angle");
     if (!angleInput) {
         throw BT::RuntimeError("missing required input [angle]: ",
                                angleInput.error());
     }
-    int angle = angleInput.value();
-    // faire la conversion
-    int angleUnits = angle;
+    int angleDegrees = angleInput.value();
+    int angleUnits = (int) (angleDegrees * UNITS_PER_DEGREE);
 
     // ------------------------
     // Move or wait logic
+    kangaroo.startTurnMove(angleUnits, DEFAULT_KANGAROO_ROTATION_SPEED);
     bool isTurnCompleted = false;
-    cout << "ok6" << endl;
-    cout << kangaroo.isMoveCompleted() << endl;
-    while (!kangaroo.isMoveCompleted()) {
-        cout << "llll" << endl;
+    while (!isTurnCompleted) {
         LOG_F(1, "turning... ");
-        kangaroo.startTurnMove(angleUnits, DEFAULT_KANGAROO_ROTATION_SPEED);
+        isTurnCompleted = kangaroo.isMoveCompleted();
         setStatusRunningAndYield();
     }
-    LOG_F(INFO, "straight move completed (total distance : %d degrés, %d units)", angle, angleUnits);
+    LOG_F(INFO, "turn move completed (total distance : %d degrees, %d units)", angleDegrees, angleUnits);
 
     cleanup(false);
     return NodeStatus::SUCCESS;
@@ -158,23 +146,19 @@ void Robot::MoveAX12Joint::halt() {
 
 NodeStatus Robot::MoveAX12Wheel::tick() {
     // Get inputs from the blackboard
-    auto durationInput = getInput<int>("duration");
-    if (!durationInput) {
-        throw BT::RuntimeError("missing required input [duration]: ",
-                               durationInput.error());
+    auto distanceInput = getInput<int>("distance");
+    if (!distanceInput) {
+        throw BT::RuntimeError("missing required input [distance]: ",
+                               distanceInput.error());
     }
-    auto duration = std::chrono::milliseconds(durationInput.value());
-
-    auto isCWInput = getInput<bool>("isCW");
-    if (!isCWInput) {
-        throw BT::RuntimeError("missing required input [isCW]: ",
-                               isCWInput.error());
-    }
-    auto isCW = isCWInput.value();
+    auto distance = distanceInput.value();
 
     // Rotation direction (CW or CCW) is controlled by the 10th bit
+    bool isCW = distance >= 0;
     int speed = isCW ? DEFAULT_AX12_WHEEL_SPEED + 1024 : DEFAULT_AX12_WHEEL_SPEED;
     int zero = isCW ? 1024 : 0;
+    auto duration = std::chrono::milliseconds((int) (1000 * distance) / DEFAULT_AX12_WHEEL_SPEED);
+    LOG_F(INFO, "duration : %d", (int) (1000 * distance) / DEFAULT_AX12_WHEEL_SPEED);
 
     // Start the movement
     _ax.setMode(wheel);

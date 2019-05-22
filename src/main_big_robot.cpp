@@ -46,8 +46,8 @@ int main(int argc, char *argv[]) {
     dynamixel::PortHandler *portHandler = dynamixel::PortHandler::getPortHandler(DEVICENAME);
     dynamixel::PacketHandler *packetHandler = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
 
-    AX12 axPushRightPuck(AX_ID_BR_PUSH_RIGHT_PUCK, portHandler, packetHandler);
-    AX12 axPushLeftPuck(AX_ID_BR_PUSH_LEFT_PUCK, portHandler, packetHandler);
+    AX12 axPushRightAtom(AX_ID_BR_PUSH_RIGHT_ATOM, portHandler, packetHandler);
+    AX12 axPushLeftAtom(AX_ID_BR_PUSH_LEFT_ATOM, portHandler, packetHandler);
     AX12 axMoveArmSide(AX_ID_BR_MOVE_ARM_SIDE, portHandler, packetHandler);
     AX12 axMoveArmFront(AX_ID_BR_MOVE_ARM_FRONT, portHandler, packetHandler);
     AX12 axTurnArm(AX_ID_BR_TURN_ARM, portHandler, packetHandler);
@@ -73,11 +73,11 @@ int main(int argc, char *argv[]) {
         return std::make_unique<Turn>(name, config, kangaroo);
     };
 
-    NodeBuilder builderPushRightPuck = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAX12Joint>(name, config, axPushRightPuck);
+    NodeBuilder builderPushRightAtom = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12Joint>(name, config, axPushRightAtom);
     };
-    NodeBuilder builderPushLeftPuck = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAX12Joint>(name, config, axPushLeftPuck);
+    NodeBuilder builderPushLeftAtom = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12Joint>(name, config, axPushLeftAtom);
     };
     NodeBuilder builderMoveArmFront = [&](const std::string &name, const NodeConfiguration &config) {
         return std::make_unique<MoveAX12Joint>(name, config, axMoveArmFront);
@@ -94,9 +94,10 @@ int main(int argc, char *argv[]) {
     };
 
     factory.registerBuilder<MoveAhead>("MoveAhead", builderMoveAhead);
+    factory.registerBuilder<Turn>("Turn", builderTurn);
 
-    factory.registerBuilder<MoveAX12Joint>("PushRightPuck", builderPushRightPuck);
-    factory.registerBuilder<MoveAX12Joint>("PushLeftPuck", builderPushLeftPuck);
+    factory.registerBuilder<MoveAX12Joint>("PushRightAtom", builderPushRightAtom);
+    factory.registerBuilder<MoveAX12Joint>("PushLeftAtom", builderPushLeftAtom);
     factory.registerBuilder<MoveAX12Joint>("MoveArmFront", builderMoveArmFront);
     factory.registerBuilder<MoveAX12Joint>("TurnArm", builderTurnArm);
 

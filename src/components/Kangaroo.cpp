@@ -48,12 +48,15 @@ bool Kangaroo::startStraightMove(int distance, int v) {
 }
 
 bool Kangaroo::startTurnMove(int angle, int v) {
-    bool retour = false;
+    bool success = false;
     start(turn);
     if (m_isOpened) {
         string commande = "T,p" + std::to_string(angle) + "s" + std::to_string(v) + "\r\n";
-        retour = m_serialPortOutput.puts(commande.c_str());
+        success = m_serialPortOutput.puts(commande.c_str());
     }
+    LOG_IF_F(INFO, success, "starting turn move ; goal : angle = %d units, speed = %d", angle, v);
+    LOG_IF_F(ERROR, !success, "could not start turn move ! (goal : angle = %d units, speed = %d)", angle, v);
+    return success;
 }
 
 string Kangaroo::getRawPosition() {
@@ -93,7 +96,7 @@ int Kangaroo::getPosition() {
 
 bool Kangaroo::isMoveCompleted() {
     std::string rawPosition = getRawPosition();
-    LOG_F(INFO, "Kangaroo current position (raw) : %s", rawPosition.c_str());
+    LOG_F(1, "Kangaroo current position (raw) : %s", rawPosition.c_str());
     return rawPosition[2] == 'P';
 }
 

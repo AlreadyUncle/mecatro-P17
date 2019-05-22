@@ -2,63 +2,52 @@
     <BehaviorTree ID="MainTree">
         <Sequence name="root">
 
-            <MoveAhead name="move_ahead"
-                       distance="200"
-                       moveForward="true"
+            <MoveArmSideJoint name="move arm to the center (joint mode)"
+                              pos="800"
+            />
+            <MoveArmSideWheel name="move arm to the left"
+                              distance="500"
+            />
+            <!-- todo : activer la ventouse-->
+            <MoveArmSideWheel name="move arm back inside"
+                              distance="-500"
             />
 
-            <!--            <MoveArmSideWheel name="move_arm_side"-->
-            <!--                              duration="4200"-->
-            <!--                              isCW="false"-->
-            <!--            />-->
-
-            <!--            <MoveArmSideJoint name="move_arm_side_joint"-->
-            <!--                              pos="350"-->
-            <!--            />-->
-            <!--            <TurnArm name="turn_arm"-->
-            <!--                     pos="200"-->
-            <!--            />-->
-
-
-            <!--            <MoveArmSideWheel name="move_arm_side"-->
-            <!--                              duration="4200"-->
-            <!--                              isCW="true"-->
-            <!--            />-->
-
-            <!--            <MoveArmFront name="move_arm_front"-->
-            <!--                          pos="600"-->
-            <!--                          mode="joint"-->
-            <!--            />-->
-            <!--            <TurnArm name="turn_arm"-->
-            <!--                     pos="200"-->
-            <!--                     mode="joint"-->
-            <!--            />-->
-            <!--            <TurnArm name="turn_arm"-->
-            <!--                     pos="510"-->
-            <!--                     mode="joint"-->
-            <!--            />-->
-            <!--            <MoveArmFront name="move_arm_front"-->
-            <!--                          pos="150"-->
-            <!--                          mode="joint"-->
-            <!--            />-->
-
-            <!--            <PushRightPuck name="push_right_puck"-->
-            <!--                           pos="1023"-->
-            <!--                           mode="joint"-->
-            <!--            />-->
-            <!--            <PushRightPuck name="push_right_puck"-->
-            <!--                           pos="560"-->
-            <!--                           mode="joint"-->
-            <!--            />-->
-            <!--            <PushLeftPuck name="push_left_puck"-->
-            <!--                          pos="0"-->
-            <!--                          mode="joint"-->
-            <!--            />-->
-            <!--            <PushLeftPuck name="push_left_puck"-->
-            <!--                          pos="470"-->
-            <!--                          mode="joint"-->
-            <!--            />-->
+            <!--            <SubTree ID="PickAtomLeft"/>-->
         </Sequence>
+    </BehaviorTree>
 
+    <BehaviorTree ID="PickAtomLeft">
+        <Sequence>
+            <MoveArmFront name="move arm to the back"
+                          pos="500"
+            />
+            <MoveArmSideJoint name="move arm to the center (joint mode)"
+                              pos="800"
+            />
+            <TurnArm name="turn arm to the left"
+                     pos="200"
+            />
+            <MoveArmSideWheel name="move arm to the left"
+                              distance="500"
+            />
+            <!-- todo : activer la ventouse-->
+            <MoveArmSideWheel name="move arm back inside"
+                              distance="-500"
+            />
+            <MoveArmSideJoint name="move arm to the center (joint mode)"
+                              pos="800"
+            />
+            <TurnArm name="turn arm to the center"
+                     pos="510"
+            />
+            <MoveArmFront name="move arm to the front"
+                          pos="150"
+            />
+            <!-- todo : désactiver la ventouse-->
+            <MoveArmFront name="move arm to the back"
+                          pos="500"
+            />
+        </Sequence>
     </BehaviorTree>
 </root>
