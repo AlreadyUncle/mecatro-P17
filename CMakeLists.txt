@@ -39,6 +39,7 @@ set(SOURCE_FILES
         src/components/SerialPort.cpp
 
         src/strategy/Nodes.cpp
+        src/components/Jack.cpp
         )
 
 # Link everything to the project
