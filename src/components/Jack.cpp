@@ -4,14 +4,13 @@
 
 #include "Jack.h"
 
+int Jack::jackPin  = 3;
+bool Jack::closed  = true;
 
-Jack::Jack(int pin) {
+Jack::Jack() {
     if (wiringPiSetup() == -1)
         LOG_F(ERROR, "Trying to initialize Jack, could not initialise wiringPi : %s", strerror(errno));
-    jackPin = pin;
-    closed = true;
-    //todo find a way to initialize pin inside the function
-    // wiringPiISR (jackPin, INT_EDGE_RISING, &Jack::launch);
+    wiringPiISR (jackPin, INT_EDGE_RISING, &Jack::launch);
     LOG_F(INFO, "Succeeded to initialise JackPin\n", jackPin);
 }
 
@@ -23,7 +22,7 @@ void Jack::launch() {
     }
 }
 
-void Jack::wait() {
+void Jack::waitToRemove() {
     if(closed){
         waitForInterrupt(jackPin,-1);
     }

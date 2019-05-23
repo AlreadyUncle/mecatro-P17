@@ -14,12 +14,11 @@
 
 class Jack {
     public:
-        Jack(int pin);
-        void launch();
-        void wait();
-    private:
-        bool closed;
-        int jackPin;
+        Jack();
+        static void launch();
+        static void waitToRemove();
+        static bool closed;
+        static int jackPin;
     };
 
 

@@ -30,17 +30,20 @@ include_directories(
 set(SOURCE_FILES
         libs/loguru/loguru.cpp
 
-        src/main_big_robot.cpp
+        src/main.cpp
 
         src/components/AX12.cpp
         src/components/Kangaroo.cpp
         src/components/LCD.cpp
         src/components/UltrasonicSensor.cpp
         src/components/SerialPort.cpp
+        src/components/Jack.cpp
 
         src/strategy/Nodes.cpp
-        src/components/Jack.cpp
-        )
+
+
+        src/components/Ventouse.cpp
+        src/components/Barillet.cpp src/components/Barillet.h)
 
 # Link everything to the project
 add_executable(mecatro_P17 ${SOURCE_FILES})
