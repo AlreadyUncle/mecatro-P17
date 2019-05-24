@@ -206,3 +206,13 @@ NodeStatus Robot::UpdateScore::tick() {
 
     return NodeStatus::SUCCESS;
 }
+
+NodeStatus Robot::ActivateRelayModule::tick() {
+    _relayModule.turnOn();
+    return NodeStatus::SUCCESS;
+}
+
+NodeStatus Robot::DeactivateRelayModule::tick() {
+    _relayModule.turnOff();
+    return NodeStatus::SUCCESS;
+}

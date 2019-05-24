@@ -11,6 +11,7 @@
 #include "../components/Kangaroo.h"
 #include "../components/AX12.h"
 #include "../components/LCD.h"
+#include "../components/RelayModule.h"
 
 #define SERIAL_PORT_KANGAROO            "/dev/ttyUSB0"
 
@@ -33,6 +34,8 @@
 #define SENSOR_TRIGGER_PIN              23
 #define SENSOR_ECHO_PIN_FRONT           24
 #define SENSOR_ECHO_PIN_BACK            25
+#define PUMP_RELAY_MODULE_PIN           5
+#define BARREL_RELAY_MODULE_PIN         4
 
 using namespace BT;
 
@@ -154,8 +157,30 @@ namespace Robot {
         AX12 _ax;
     };
 
-    class ActivatePump : public CoroActionNode {
+    class ActivateRelayModule : public SyncActionNode {
+    public:
+        ActivateRelayModule(const std::string &name, const NodeConfiguration &config,
+                            RelayModule &relayModule) :
+                SyncActionNode(name, config),
+                _relayModule(relayModule) {}
 
+        NodeStatus tick() override;
+
+    private:
+        RelayModule &_relayModule;
+    };
+
+    class DeactivateRelayModule : public SyncActionNode {
+    public:
+        DeactivateRelayModule(const std::string &name, const NodeConfiguration &config,
+                            RelayModule &relayModule) :
+                SyncActionNode(name, config),
+                _relayModule(relayModule) {}
+
+        NodeStatus tick() override;
+
+    private:
+        RelayModule &_relayModule;
     };
 
     /**
@@ -176,10 +201,6 @@ namespace Robot {
     private:
         int currentScore = 0;
         LCD &lcd;
-    };
-
-    class JackUnplugged : public ConditionNode {
-
     };
 }
 

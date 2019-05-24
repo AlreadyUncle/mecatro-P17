@@ -16,8 +16,6 @@
 
 #include "strategy/Nodes.h"
 
-
-
 using namespace std;
 using namespace BT;
 
@@ -32,17 +30,14 @@ int main(int argc, char *argv[]) {
 
     // -----------------------
     // Initialize robot components
-    UltrasonicSensor frontSensor(SENSOR_TRIGGER_PIN, SENSOR_ECHO_PIN_FRONT);
-    UltrasonicSensor backSensor(SENSOR_TRIGGER_PIN, SENSOR_ECHO_PIN_BACK);
-
+    // Kangaroo
     Kangaroo kangaroo(SERIAL_PORT_KANGAROO);
     if (kangaroo.isOperational())
         LOG_F(INFO, "Kangaroo is operational");
     else
         LOG_F(ERROR, "Kangaroo is not operational !");
 
-
-
+    // AX-12
     dynamixel::PortHandler *portHandler = dynamixel::PortHandler::getPortHandler(DEVICENAME);
     dynamixel::PacketHandler *packetHandler = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
 
@@ -52,6 +47,11 @@ int main(int argc, char *argv[]) {
     AX12 axMoveArmFront(AX_ID_BR_MOVE_ARM_FRONT, portHandler, packetHandler);
     AX12 axTurnArm(AX_ID_BR_TURN_ARM, portHandler, packetHandler);
 
+    // Other
+    UltrasonicSensor frontSensor(SENSOR_TRIGGER_PIN, SENSOR_ECHO_PIN_FRONT);
+    UltrasonicSensor backSensor(SENSOR_TRIGGER_PIN, SENSOR_ECHO_PIN_BACK);
+    RelayModule pumpRelayModule(PUMP_RELAY_MODULE_PIN);
+    RelayModule barrelRelayModule(BARREL_RELAY_MODULE_PIN);
 
     // -----------------------
     // Create the behavior tree
@@ -64,6 +64,8 @@ int main(int argc, char *argv[]) {
     // A node builder is nothing more than a function pointer to create a
     // std::unique_ptr<TreeNode>.
     // Using lambdas or std::bind, we can easily "inject" additional arguments.
+
+    // Kangaroo
     NodeBuilder builderMoveAhead;
     builderMoveAhead = [&](const std::string &name, const NodeConfiguration &config) {
         return std::make_unique<MoveAhead>(name, config, frontSensor, backSensor, kangaroo);
@@ -72,7 +74,10 @@ int main(int argc, char *argv[]) {
     builderTurn = [&](const std::string &name, const NodeConfiguration &config) {
         return std::make_unique<Turn>(name, config, kangaroo);
     };
+    factory.registerBuilder<MoveAhead>("MoveAhead", builderMoveAhead);
+    factory.registerBuilder<Turn>("Turn", builderTurn);
 
+    // AX-12
     NodeBuilder builderPushRightAtom = [&](const std::string &name, const NodeConfiguration &config) {
         return std::make_unique<MoveAX12Joint>(name, config, axPushRightAtom);
     };
@@ -85,24 +90,36 @@ int main(int argc, char *argv[]) {
     NodeBuilder builderTurnArm = [&](const std::string &name, const NodeConfiguration &config) {
         return std::make_unique<MoveAX12Joint>(name, config, axTurnArm);
     };
-
     NodeBuilder builderMoveArmSideJoint = [&](const std::string &name, const NodeConfiguration &config) {
         return std::make_unique<MoveAX12Joint>(name, config, axMoveArmSide);
     };
     NodeBuilder builderMoveArmSideWheel = [&](const std::string &name, const NodeConfiguration &config) {
         return std::make_unique<MoveAX12Wheel>(name, config, axMoveArmSide);
     };
-
-    factory.registerBuilder<MoveAhead>("MoveAhead", builderMoveAhead);
-    factory.registerBuilder<Turn>("Turn", builderTurn);
-
     factory.registerBuilder<MoveAX12Joint>("PushRightAtom", builderPushRightAtom);
     factory.registerBuilder<MoveAX12Joint>("PushLeftAtom", builderPushLeftAtom);
     factory.registerBuilder<MoveAX12Joint>("MoveArmFront", builderMoveArmFront);
     factory.registerBuilder<MoveAX12Joint>("TurnArm", builderTurnArm);
-
     factory.registerBuilder<MoveAX12Wheel>("MoveArmSideWheel", builderMoveArmSideWheel);
     factory.registerBuilder<MoveAX12Joint>("MoveArmSideJoint", builderMoveArmSideJoint);
+
+    // Other
+    NodeBuilder builderActivatePump = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<ActivateRelayModule>(name, config, pumpRelayModule);
+    };
+    NodeBuilder builderDeactivatePump = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<DeactivateRelayModule>(name, config, pumpRelayModule);
+    };
+    NodeBuilder builderActivateBarrel = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<ActivateRelayModule>(name, config, barrelRelayModule);
+    };
+    NodeBuilder builderDeactivateBarrel = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<DeactivateRelayModule>(name, config, barrelRelayModule);
+    };
+    factory.registerBuilder<ActivateRelayModule>("ActivatePump", builderActivatePump);
+    factory.registerBuilder<DeactivateRelayModule>("DeactivatePump", builderDeactivatePump);
+    factory.registerBuilder<ActivateRelayModule>("ActivateBarrel", builderActivateBarrel);
+    factory.registerBuilder<DeactivateRelayModule>("DeactivateBarrel", builderDeactivateBarrel);
 
 
     // Trees are created at deployment-time (i.e. at run-time, but only
@@ -119,8 +136,17 @@ int main(int argc, char *argv[]) {
 
     // -----------------------
     // Execute the behavior tree
-    while (tree.root_node->executeTick() == NodeStatus::RUNNING) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    pumpRelayModule.turnOff();
+    barrelRelayModule.turnOff();
+
+    try {
+        while (tree.root_node->executeTick() == NodeStatus::RUNNING) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        }
+    } catch (RuntimeError &e) {
+        // stop th
+        return -1;
     }
+
     return 0;
 }

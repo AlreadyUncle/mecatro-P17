@@ -1,19 +1,7 @@
 <root main_tree_to_execute="MainTree">
     <BehaviorTree ID="MainTree">
         <Sequence name="root">
-
-            <MoveArmSideJoint name="move arm to the center (joint mode)"
-                              pos="800"
-            />
-            <MoveArmSideWheel name="move arm to the left"
-                              distance="500"
-            />
-            <!-- todo : activer la ventouse-->
-            <MoveArmSideWheel name="move arm back inside"
-                              distance="-500"
-            />
-
-            <!--            <SubTree ID="PickAtomLeft"/>-->
+<!--            <SubTree ID="PickAtomLeft"/>-->
         </Sequence>
     </BehaviorTree>
 
@@ -31,7 +19,10 @@
             <MoveArmSideWheel name="move arm to the left"
                               distance="500"
             />
-            <!-- todo : activer la ventouse-->
+
+            <ActivatePump/>
+            <ActivateBarrel/>
+
             <MoveArmSideWheel name="move arm back inside"
                               distance="-500"
             />
@@ -44,7 +35,10 @@
             <MoveArmFront name="move arm to the front"
                           pos="150"
             />
-            <!-- todo : désactiver la ventouse-->
+
+            <DeactivatePump/>
+            <DeactivateBarrel/>
+
             <MoveArmFront name="move arm to the back"
                           pos="500"
             />

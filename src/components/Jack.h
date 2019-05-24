@@ -13,13 +13,19 @@
 #include "loguru.hpp"
 
 class Jack {
-    public:
-        Jack();
-        static void launch();
-        static void waitToRemove();
-        static bool closed;
-        static int jackPin;
-    };
+public:
+    Jack();
+
+    static void launch();
+
+    /**
+     * Blocking function that waits until the jack pin detects a change (EDGE_RISING), ie the jack cable is removed.
+     */
+    static void waitToRemove();
+
+    static bool closed;
+    static int jackPin;
+};
 
 
 #endif //MECATRO_P17_JACK_H

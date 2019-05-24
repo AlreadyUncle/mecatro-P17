@@ -2,8 +2,8 @@
 // Created by Ibrahim Said on 5/23/2019.
 //
 
-#ifndef MECATRO_P17_VENTOUSE_H
-#define MECATRO_P17_VENTOUSE_H
+#ifndef MECATRO_P17_RELAYMODULE_H
+#define MECATRO_P17_RELAYMODULE_H
 
 #include <wiringPi.h>
 #include <iostream>
@@ -12,11 +12,11 @@
 #include <sys/time.h>
 #include "loguru.hpp"
 
-class Ventouse {
+class RelayModule {
 
 public:
 
-    Ventouse(int pin);
+    RelayModule(int pin);
 
     void turnOn();
 
@@ -24,9 +24,9 @@ public:
 
 
 private:
-    const int Pin;
+    const int _pin;
 
 };
 
 
-#endif //MECATRO_P17_VENTOUSE_H
+#endif //MECATRO_P17_RELAYMODULE_H
