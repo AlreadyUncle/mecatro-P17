@@ -53,6 +53,7 @@ int main(int argc, char *argv[]) {
     UltrasonicSensor backSensor(SENSOR_TRIGGER_PIN, SENSOR_ECHO_PIN_BACK);
     RelayModule pumpRelayModule(PUMP_RELAY_MODULE_PIN);
     RelayModule barrelRelayModule(BARREL_RELAY_MODULE_PIN);
+    Encoder encoder;
 
     // -----------------------
     // Create the behavior tree
