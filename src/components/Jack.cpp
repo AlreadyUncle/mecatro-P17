@@ -11,7 +11,7 @@ Jack::Jack() {
     if (wiringPiSetup() == -1)
         LOG_F(ERROR, "Trying to initialize Jack, could not initialise wiringPi : %s", strerror(errno));
     wiringPiISR (jackPin, INT_EDGE_RISING, &Jack::launch);
-    LOG_F(INFO, "Succeeded to initialise JackPin\n", jackPin);
+    LOG_F(INFO, "Succeeded to initialise JackPin %d", jackPin);
 }
 
 void Jack::launch() {
@@ -27,6 +27,6 @@ void Jack::waitToRemove() {
         waitForInterrupt(jackPin,-1);
     }
     else{
-        LOG_F(ERROR, "Jack connected To Pin %d is already removed!", strerror(errno));
+        LOG_F(ERROR, "Jack connected To Pin %s is already removed!", strerror(errno));
     }
 }

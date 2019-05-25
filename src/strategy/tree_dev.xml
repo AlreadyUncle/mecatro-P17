@@ -1,7 +1,9 @@
 <root main_tree_to_execute="MainTree">
     <BehaviorTree ID="MainTree">
         <Sequence name="root">
-<!--            <SubTree ID="PickAtomLeft"/>-->
+            <!--            <SubTree ID="PickAtomLeft"/>-->
+            <SubTree ID="TurnBarrelOneSpot"
+                     barrelGoalPosition="1000"/>
         </Sequence>
     </BehaviorTree>
 
@@ -21,7 +23,6 @@
             />
 
             <ActivatePump/>
-            <ActivateBarrel/>
 
             <MoveArmSideWheel name="move arm back inside"
                               distance="-500"
@@ -37,11 +38,21 @@
             />
 
             <DeactivatePump/>
-            <DeactivateBarrel/>
 
             <MoveArmFront name="move arm to the back"
                           pos="500"
             />
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="TurnBarrelOneSpot">
+        <Sequence>
+            <ActivateBarrel name="start turning the barrel"/>
+            <RetryUntilSuccesful num_attempts="10000">
+                <IsBarrelMoveFinished name="check if the barrel has turned enough"
+                                      goalPosition="barrelGoalPosition"/>
+            </RetryUntilSuccesful>
+            <DeactivateBarrel name="stop turning the barrel"/>
         </Sequence>
     </BehaviorTree>
 </root>

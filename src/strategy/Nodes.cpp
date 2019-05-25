@@ -216,3 +216,18 @@ NodeStatus Robot::DeactivateRelayModule::tick() {
     _relayModule.turnOff();
     return NodeStatus::SUCCESS;
 }
+
+NodeStatus Robot::IsBarrelMoveFinished::tick() {
+    // Get inputs from the blackboard
+    auto goalPositionInput = getInput<int>("goalPosition");
+    if (!goalPositionInput) {
+        throw BT::RuntimeError("missing required input [goalPosition]: ",
+                               goalPositionInput.error());
+    }
+    auto goalPosition = goalPositionInput.value();
+
+    if (Encoder::globalBarrelCounter >= goalPosition)
+        return NodeStatus::SUCCESS;
+    else
+        return NodeStatus::FAILURE;
+}

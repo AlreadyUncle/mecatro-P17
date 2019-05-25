@@ -12,6 +12,7 @@
 #include "../components/AX12.h"
 #include "../components/LCD.h"
 #include "../components/RelayModule.h"
+#include "../components/Encoder.h"
 
 #define SERIAL_PORT_KANGAROO            "/dev/ttyUSB0"
 
@@ -173,7 +174,7 @@ namespace Robot {
     class DeactivateRelayModule : public SyncActionNode {
     public:
         DeactivateRelayModule(const std::string &name, const NodeConfiguration &config,
-                            RelayModule &relayModule) :
+                              RelayModule &relayModule) :
                 SyncActionNode(name, config),
                 _relayModule(relayModule) {}
 
@@ -201,6 +202,24 @@ namespace Robot {
     private:
         int currentScore = 0;
         LCD &lcd;
+    };
+
+    /**
+     * Check the global counter to see if the barrel has reached goalPosition
+     * Returns SUCCESS if move is finished, FAILURE otherwise
+     */
+    class IsBarrelMoveFinished : public ConditionNode {
+    public:
+        IsBarrelMoveFinished(const std::string &name, const NodeConfiguration &config) : ConditionNode(name, config) {}
+
+        NodeStatus tick() override;
+
+        // It is mandatory to define this static method.
+        static PortsList providedPorts() {
+            return {
+                    InputPort<int>("goalPosition"),
+            };
+        }
     };
 }
 

@@ -41,7 +41,7 @@ set(SOURCE_FILES
         src/components/RelayModule.cpp
 
         src/strategy/Nodes.cpp
-        )
+        src/components/Encoder.cpp)
 
 # Link everything to the project
 add_executable(mecatro_P17 ${SOURCE_FILES})

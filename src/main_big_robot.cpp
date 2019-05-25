@@ -4,6 +4,7 @@
 
 #include "behaviortree_cpp/bt_factory.h"
 #include "behaviortree_cpp/loggers/bt_file_logger.h"
+#include "behaviortree_cpp/loggers/bt_minitrace_logger.h"
 #include "dynamixel_sdk.h"
 #include <wiringPi.h>
 #include "loguru.hpp"
@@ -120,7 +121,7 @@ int main(int argc, char *argv[]) {
     factory.registerBuilder<DeactivateRelayModule>("DeactivatePump", builderDeactivatePump);
     factory.registerBuilder<ActivateRelayModule>("ActivateBarrel", builderActivateBarrel);
     factory.registerBuilder<DeactivateRelayModule>("DeactivateBarrel", builderDeactivateBarrel);
-
+    factory.registerNodeType<IsBarrelMoveFinished>("IsBarrelMoveFinished");
 
     // Trees are created at deployment-time (i.e. at run-time, but only
     // once at the beginning).
@@ -130,7 +131,7 @@ int main(int argc, char *argv[]) {
     auto tree = factory.createTreeFromFile("/home/pi/mecatro_P17/src/strategy/tree_dev.xml"); // requires absolute paths
 
     // This logger saves state changes on file
-    FileLogger logger_file(tree, "/home/pi/mecatro_P17/log/bt_trace.fbl");
+    MinitraceLogger logger_minitrace(tree, "/home/pi/mecatro_P17/log/bt_trace.json");
     printTreeRecursively(tree.root_node);
 
 
