@@ -123,6 +123,7 @@ int main(int argc, char *argv[]) {
     factory.registerBuilder<ActivateRelayModule>("ActivateBarrel", builderActivateBarrel);
     factory.registerBuilder<DeactivateRelayModule>("DeactivateBarrel", builderDeactivateBarrel);
     factory.registerNodeType<IsBarrelMoveFinished>("IsBarrelMoveFinished");
+    factory.registerNodeType<Wait>("Wait");
 
     // Trees are created at deployment-time (i.e. at run-time, but only
     // once at the beginning).
@@ -141,14 +142,12 @@ int main(int argc, char *argv[]) {
     pumpRelayModule.turnOff();
     barrelRelayModule.turnOff();
 
-    try {
-        while (tree.root_node->executeTick() == NodeStatus::RUNNING) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
-        }
-    } catch (RuntimeError &e) {
-        // stop th
-        return -1;
+    while (tree.root_node->executeTick() == NodeStatus::RUNNING) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
+
+    pumpRelayModule.turnOff();
+    barrelRelayModule.turnOff();
 
     return 0;
 }
