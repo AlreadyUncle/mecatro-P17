@@ -53,11 +53,10 @@ void LCD::printToScreen(string s,int row,int offset){
 void LCD::printToScreenCentered(string s,int row){
     if(s.length()>=SCREEN_WIDTH)
         printToScreen(s,row,0);
-    int offset = (SCREEN_WIDTH-s.length())/2;
-    printToScreen(s,row,offset);
+    else {
+        int offset = (SCREEN_WIDTH - s.length()) / 2;
+        printToScreen(s, row, offset);
+    }
 }
 
-
-LCD::~LCD() {
-}
 

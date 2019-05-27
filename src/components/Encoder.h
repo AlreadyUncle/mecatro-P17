@@ -15,10 +15,12 @@ class Encoder {
 public:
     Encoder();
 
-    static void increaseGlobalCounter();
+    static void changePinA();
+    static void changePinB();
 
-    static int pin;
+    static int pinA,pinB;
     static int globalBarrelCounter;
+    static bool pinASet,pinBSet;
 };
 
 
