@@ -2,16 +2,21 @@
     <BehaviorTree ID="MainTree">
         <Sequence name="root">
 
-            <SubTree ID="PickAtomLeft"/>
-
-            <SetBlackboard output_key="barrelGoalPosition" value="5180"/>
+            <SetBlackboard output_key="barrelGoalPosition" value="20150"/>
+            <SubTree ID="TurnBarrel"
+                     barrelGoalPosition="barrelGoalPosition"/>
+            <SubTree ID="PushLeft"/>
+            <SetBlackboard output_key="barrelGoalPosition" value="57100"/>
             <SubTree ID="TurnBarrel"
                      barrelGoalPosition="barrelGoalPosition"/>
 
+            <SubTree ID="PickAtomLeft"/>
 
-                        <SubTree ID="PushLeft"/>
-
-            <SetBlackboard output_key="barrelGoalPosition" value="14328"/>
+            <SetBlackboard output_key="barrelGoalPosition" value="77450"/>
+            <SubTree ID="TurnBarrel"
+                     barrelGoalPosition="barrelGoalPosition"/>
+            <SubTree ID="PushLeft"/>
+            <SetBlackboard output_key="barrelGoalPosition" value="114700"/>
             <SubTree ID="TurnBarrel"
                      barrelGoalPosition="barrelGoalPosition"/>
 
@@ -19,6 +24,7 @@
     </BehaviorTree>
 
     <BehaviorTree ID="PickAtomLeft">
+
         <Sequence>
             <MoveArmFront name="move arm to the back"
                           pos="800"
@@ -65,6 +71,7 @@
             <Wait name="wait for the atom to fall"
                   delay="500"/>
 
+            -->
             <MoveArmFront name="move arm to the back"
                           pos="500"
             />
@@ -126,9 +133,9 @@
     <BehaviorTree ID="PushLeft">
         <Sequence>
             <PushLeftAtom name="push it"
-                          pos="0"/>
+                          pos="340"/>
             <PushLeftAtom name="come back"
-                          pos="470"/>
+                          pos="720"/>
         </Sequence>
     </BehaviorTree>
 
