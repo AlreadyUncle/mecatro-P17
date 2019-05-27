@@ -123,7 +123,7 @@ NodeStatus Robot::MoveAX12Joint::tick() {
     // ------------------------
     // Move logic
     _ax.setMode(joint);
-    _ax.setSpeed(0); // 0 : maximum speed (same as 1023)
+    _ax.setSpeed(DXL_JOINT_SPEED); // 0 : maximum speed (same as 1023)
     _ax.goToPositionJointMode(goalPosition);
 
     auto currentPosition = _ax.getPosition();
@@ -155,10 +155,13 @@ NodeStatus Robot::MoveAX12Wheel::tick() {
 
     // Rotation direction (CW or CCW) is controlled by the 10th bit
     bool isCW = distance >= 0;
-    int speed = isCW ? DEFAULT_AX12_WHEEL_SPEED + 1024 : DEFAULT_AX12_WHEEL_SPEED;
+    int speed = isCW ? DXL_WHEEL_SPEED + 1024 : DXL_WHEEL_SPEED;
     int zero = isCW ? 1024 : 0;
-    auto duration = std::chrono::milliseconds((int) (1000 * distance) / DEFAULT_AX12_WHEEL_SPEED);
-    LOG_F(INFO, "duration : %d", (int) (1000 * distance) / DEFAULT_AX12_WHEEL_SPEED);
+    auto duration = std::chrono::milliseconds((int) (1000 * abs(distance) / DXL_WHEEL_SPEED));
+
+    LOG_F(INFO, "goal duration (ms) : %d", (int) (1000 * abs(distance) / DXL_WHEEL_SPEED));
+    LOG_F(INFO, "speed : %d", speed);
+    LOG_F(INFO, "zero : %d", zero);
 
     // Start the movement
     _ax.setMode(wheel);
@@ -224,10 +227,46 @@ NodeStatus Robot::IsBarrelMoveFinished::tick() {
         throw BT::RuntimeError("missing required input [goalPosition]: ",
                                goalPositionInput.error());
     }
+
     auto goalPosition = goalPositionInput.value();
 
-    if (Encoder::globalBarrelCounter >= goalPosition)
+    if (Encoder::globalBarrelCounter >= goalPosition) {
+        LOG_F(INFO, "Barrel Move finished (goalPosition %d, currentPosition %d)", goalPosition,
+              Encoder::globalBarrelCounter);
         return NodeStatus::SUCCESS;
-    else
+    } else
         return NodeStatus::FAILURE;
+}
+
+NodeStatus Robot::Wait::tick() {
+    // Get inputs from the blackboard
+    auto delayInput = getInput<int>("delay");
+    if (!delayInput) {
+        throw BT::RuntimeError("missing required input [delay]: ",
+                               delayInput.error());
+    }
+    auto delayMs = delayInput.value();
+    LOG_F(INFO, "Waiting for duration %dms", delayMs);
+
+    auto delayDuration = std::chrono::milliseconds(delayMs);
+    auto initialTime = std::chrono::system_clock::now();
+    auto currentTime = std::chrono::system_clock::now();
+
+    while (currentTime < initialTime + delayDuration) {
+        currentTime = std::chrono::system_clock::now();
+        setStatusRunningAndYield();
+    }
+
+    LOG_F(INFO, "Finished waiting");
+
+    cleanup(false);
+    return NodeStatus::SUCCESS;
+}
+
+void Robot::Wait::cleanup(bool halted) {
+
+}
+
+void Robot::Wait::halt() {
+    CoroActionNode::halt();
 }

@@ -23,7 +23,8 @@
 #define DEFAULT_KANGAROO_ROTATION_SPEED 500
 
 // AX-12
-#define DEFAULT_AX12_WHEEL_SPEED        500
+#define DXL_WHEEL_SPEED                 500
+#define DXL_JOINT_SPEED                 500       // 1 to 1023 (max speed), 0 is for max speed
 #define AX_ID_BR_PUSH_RIGHT_ATOM        6       // BR stands for big robot
 #define AX_ID_BR_PUSH_LEFT_ATOM         2
 #define AX_ID_BR_MOVE_ARM_SIDE          3
@@ -221,6 +222,29 @@ namespace Robot {
             };
         }
     };
+
+    /**
+     * Wait for a certain `delay`
+     */
+    class Wait : public CoroActionNode {
+    public:
+        Wait(const std::string &name, const NodeConfiguration &config) :
+                CoroActionNode(name, config) {}
+
+        NodeStatus tick() override;
+
+        void cleanup(bool halted);
+
+        void halt() override;
+
+        // It is mandatory to define this static method.
+        static PortsList providedPorts() {
+            return {
+                    InputPort<int>("delay"),
+            };
+        }
+    };
+
 }
 
 #endif //MECATRO_P17_NODES_H
