@@ -2,21 +2,31 @@
     <BehaviorTree ID="MainTree">
         <Sequence name="root">
 
-            <SetBlackboard output_key="barrelGoalPosition" value="20150"/>
+            <SetBlackboard output_key="barrelGoalPosition" value="1130"/>
             <SubTree ID="TurnBarrel"
                      barrelGoalPosition="barrelGoalPosition"/>
             <SubTree ID="PushLeft"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="57100"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
-
-            <SubTree ID="PickAtomLeft"/>
-
-            <SetBlackboard output_key="barrelGoalPosition" value="77450"/>
+            <SetBlackboard output_key="barrelGoalPosition" value="10665"/>
             <SubTree ID="TurnBarrel"
                      barrelGoalPosition="barrelGoalPosition"/>
             <SubTree ID="PushLeft"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="114700"/>
+            <SetBlackboard output_key="barrelGoalPosition" value="20200"/>
+            <SubTree ID="TurnBarrel"
+                     barrelGoalPosition="barrelGoalPosition"/>
+            <SubTree ID="PushLeft"/>
+            <SetBlackboard output_key="barrelGoalPosition" value="29735"/>
+            <SubTree ID="TurnBarrel"
+                     barrelGoalPosition="barrelGoalPosition"/>
+            <SubTree ID="PushLeft"/>
+            <SetBlackboard output_key="barrelGoalPosition" value="39270"/>
+            <SubTree ID="TurnBarrel"
+                     barrelGoalPosition="barrelGoalPosition"/>
+            <SubTree ID="PushLeft"/>
+            <SetBlackboard output_key="barrelGoalPosition" value="48805"/>
+            <SubTree ID="TurnBarrel"
+                     barrelGoalPosition="barrelGoalPosition"/>
+            <SubTree ID="PushLeft"/>
+            <SetBlackboard output_key="barrelGoalPosition" value="57210"/>
             <SubTree ID="TurnBarrel"
                      barrelGoalPosition="barrelGoalPosition"/>
 
