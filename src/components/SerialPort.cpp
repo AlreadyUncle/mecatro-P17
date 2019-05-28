@@ -42,7 +42,7 @@ bool SerialPort::puts(const char *command) {
         int nb_bytes_written = write(m_fd, command, strlen(command));
 
         if (nb_bytes_written == strlen(command)){
-            LOG_F(INFO, "Successful writing command %s, %d bytes written", command, nb_bytes_written);
+            LOG_F(1, "Successful writing command %s, %d bytes written", command, nb_bytes_written);
             return true;
         }
         else if (nb_bytes_written == -1)

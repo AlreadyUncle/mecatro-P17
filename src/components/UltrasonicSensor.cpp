@@ -63,11 +63,11 @@ int UltrasonicSensor::getDistance() {
 
         if (pulsewidth > 0) {
             double distanceMm = pulsewidth * 340 * 0.001 / 2;
-            LOG_F(1, "Sensor echo at %dµs = %fmm", pulsewidth, distanceMm);
+            LOG_F(INFO, "Sensor echo at %dµs = %fmm", pulsewidth, distanceMm);
             return (int) (distanceMm);
         } else {
             /* no object detected code */
-            LOG_F(1, "Sensor echo timed out, no object detected");
+            LOG_F(INFO, "Sensor echo timed out, no object detected");
             return -1;
         }
     } else {

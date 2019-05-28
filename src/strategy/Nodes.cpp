@@ -6,6 +6,9 @@
 
 // ------ Kangaroo -------
 NodeStatus Robot::MoveAhead::tick() {
+    int speed = bigRobot ? KANGAROO_SPEED_BR : KANGAROO_SPEED_SR;
+    float unitsPerMm = bigRobot ? UNITS_PER_MM_BR : UNITS_PER_MM_SR;
+
     // ------------------------
     // Read move instructions from the blackboard
     auto distanceInput = getInput<int>("distance");
@@ -22,7 +25,7 @@ NodeStatus Robot::MoveAhead::tick() {
     // ------------------------
     // Move or wait logic
     bool isMoveCompleted = false;
-    int distanceToTravelUnits = (int) (distanceToTravelMm * UNITS_PER_MM);
+    int distanceToTravelUnits = (int) (distanceToTravelMm * unitsPerMm);
     int distanceTraveledUnits = 0;
 
     while (!isMoveCompleted) {
@@ -44,13 +47,15 @@ NodeStatus Robot::MoveAhead::tick() {
         } else {
             if (isMoving) {
                 // Moving with obstacle ahead : stop movement and keep in memory current position
-                distanceTraveledUnits = kangaroo.getPosition();
+                distanceTraveledUnits += kangaroo.getPosition();
                 kangaroo.startStraightMove(0, 0); //todo: check if command powerdown is more appropriate
                 isMoving = false;
                 LOG_F(INFO, "obstacle ahead, stopped movement at distance %d", distanceTraveledUnits);
             } else if (!obstacleAhead) {
                 // Idle with no obstacle ahead : start/resume movement
-                kangaroo.startStraightMove(distanceToTravelUnits - distanceTraveledUnits, DEFAULT_KANGAROO_SPEED);
+                LOG_F(INFO, "no obstacle ahead, starting or resuming movement with %d units left to do",
+                      distanceToTravelUnits - distanceTraveledUnits);
+                kangaroo.startStraightMove(distanceToTravelUnits - distanceTraveledUnits, speed);
                 isMoving = true;
             }
             setStatusRunningAndYield();
@@ -73,6 +78,9 @@ void Robot::MoveAhead::halt() {
 }
 
 NodeStatus Robot::Turn::tick() {
+    int speed = bigRobot ? KANGAROO_ROTATION_SPEED_BR : KANGAROO_ROTATION_SPEED_SR;
+    float unitsPerDegree = bigRobot ? UNITS_PER_DEGREE_BR : UNITS_PER_DEGREE_SR;
+
     // ------------------------
     // Read move instructions from the blackboard
     auto angleInput = getInput<int>("angle");
@@ -81,11 +89,11 @@ NodeStatus Robot::Turn::tick() {
                                angleInput.error());
     }
     int angleDegrees = angleInput.value();
-    int angleUnits = (int) (angleDegrees * UNITS_PER_DEGREE);
+    int angleUnits = (int) (angleDegrees * unitsPerDegree);
 
     // ------------------------
     // Move or wait logic
-    kangaroo.startTurnMove(angleUnits, DEFAULT_KANGAROO_ROTATION_SPEED);
+    kangaroo.startTurnMove(angleUnits, speed);
     bool isTurnCompleted = false;
     while (!isTurnCompleted) {
         LOG_F(1, "turning... ");

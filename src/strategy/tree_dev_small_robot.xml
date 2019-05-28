@@ -1,0 +1,11 @@
+<root main_tree_to_execute="MainTree">
+    <BehaviorTree ID="MainTree">
+        <Sequence name="root">
+
+            <MoveAhead name="move forward"
+                  distance="-360"/>
+
+        </Sequence>
+    </BehaviorTree>
+
+</root>

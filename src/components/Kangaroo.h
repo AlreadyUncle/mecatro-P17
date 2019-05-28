@@ -52,6 +52,13 @@ public:
      */
     bool isMoveCompleted();
 
+    /**
+     *
+     * @return A string with channel number, a comma, character p or P, position in units,
+     * followed by a return and a newline
+     */
+    string getRawPosition();
+
     int getPositionMax(mode m, int &positionMax); // retourne le range de position maximal
     int getPositionMin(mode m, int &positionMin); //retourne le range de position minimal
     int getSpeed(mode m, int &speed); //retourne la vitesse
@@ -74,12 +81,6 @@ private:
 
     bool putCommand(char mode, string cmd);
 
-    /**
-     *
-     * @return A string with channel number, a comma, character p or P, position in units,
-     * followed by a return and a newline
-     */
-    string getRawPosition();
 
     mode current_mode;
     SerialPort m_serialPortOutput;

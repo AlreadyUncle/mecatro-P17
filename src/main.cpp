@@ -4,10 +4,9 @@
 #include <iostream>
 #include <wiringPi.h>
 #include "loguru.hpp"
-#include "components/Jack.h"
-#include "components/RelayModule.h"
 
-#define waitingTime 1000
+#include "components/Kangaroo.h"
+
 using namespace std;
 
 int main() {
@@ -15,14 +14,15 @@ int main() {
 
     wiringPiSetup();
 
-    Jack jack;
-    RelayModule ventouse(5);
 
-    jack.waitToRemove();
-    ventouse.turnOn();
-    delay(waitingTime);
-    ventouse.turnOff();
-    delay(waitingTime);
+    Kangaroo kangaroo("/dev/ttyUSB0");
+
+    kangaroo.startTurnMove(10000, 4000);
+
+    while (true) {
+        cout << kangaroo.getRawPosition() << endl;
+    }
+
 
     return 0;
 }
