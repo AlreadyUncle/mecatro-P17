@@ -22,7 +22,7 @@
 #define UNITS_PER_MM_SR                 59.22
 #define UNITS_PER_DEGREE_BR             13.89
 #define UNITS_PER_DEGREE_SR             134.389
-#define KANGAROO_SPEED_BR               500
+#define KANGAROO_SPEED_BR               1000
 #define KANGAROO_ROTATION_SPEED_BR      500
 #define KANGAROO_SPEED_SR               5000
 #define KANGAROO_ROTATION_SPEED_SR      5000
@@ -38,17 +38,17 @@
 #define AX_ID_SR_OPEN_PINCE             3
 
 // Other Pins definition
-#define SENSOR_OBSTACLE_THRESHOLD       100     // distance (in mm) under which obstacles are considered
+#define SENSOR_OBSTACLE_THRESHOLD       300     // distance (in mm) under which obstacles are considered
 #define FRONT_SENSOR_TRIGGER_PIN_SR     4
 #define FRONT_SENSOR_ECHO_PIN_SR        5
 #define BACK_SENSOR_TRIGGER_PIN_SR      0
 #define BACK_SENSOR_ECHO_PIN_SR         2
-#define FRONT_SENSOR_TRIGGER_PIN_BR     23
-#define FRONT_SENSOR_ECHO_PIN_BR        24
-#define BACK_SENSOR_TRIGGER_PIN_BR      23
-#define BACK_SENSOR_ECHO_PIN_BR         25
-#define PUMP_RELAY_MODULE_PIN           5
-#define BARREL_RELAY_MODULE_PIN         4
+#define FRONT_SENSOR_TRIGGER_PIN_BR     5
+#define FRONT_SENSOR_ECHO_PIN_BR        4
+#define BACK_SENSOR_TRIGGER_PIN_BR      0
+#define BACK_SENSOR_ECHO_PIN_BR         2
+#define PUMP_RELAY_MODULE_PIN           21
+#define BARREL_RELAY_MODULE_PIN         22
 
 using namespace BT;
 

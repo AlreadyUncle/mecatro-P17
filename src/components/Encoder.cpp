@@ -5,8 +5,8 @@
 #include "Encoder.h"
 
 
-int Encoder::pinA = 8;
-int Encoder::pinB = 9;
+int Encoder::pinA = 12;
+int Encoder::pinB = 13;
 int Encoder::globalBarrelCounter= 0;
 bool Encoder::pinASet;
 bool Encoder::pinBSet;

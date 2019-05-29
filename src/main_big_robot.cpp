@@ -14,14 +14,28 @@
 #include "components/LCD.h"
 #include "components/SerialPort.h"
 #include "components/UltrasonicSensor.h"
+#include "components/SerialPort.h"
 
 #include "strategy/Nodes.h"
+#include "components/Jack.h"
 
 using namespace std;
 using namespace BT;
 
 
 int main(int argc, char *argv[]) {
+
+    SerialPort sp;
+    if (sp.open("/dev/ttyUSB2",9600)!=-1){
+        cout<<"port opened"<<endl;
+        while (true){
+            cout<<sp.puts("1")<<endl;
+            delayMicroseconds(500000);}
+        }
+        else {cout<<"not ok"<<endl;}
+
+    /*
+}
     // -----------------------
     // Initialize logger
     loguru::init(argc, argv);
@@ -32,7 +46,7 @@ int main(int argc, char *argv[]) {
     // -----------------------
     // Initialize robot components
     // Kangaroo
-    Kangaroo kangaroo(SERIAL_PORT_KANGAROO);
+    Kangaroo kangaroo(SERIAL_PORT_KANGAROO_BR);
     if (kangaroo.isOperational())
         LOG_F(INFO, "Kangaroo is operational");
     else
@@ -49,11 +63,21 @@ int main(int argc, char *argv[]) {
     AX12 axTurnArm(AX_ID_BR_TURN_ARM, portHandler, packetHandler);
 
     // Other
-    UltrasonicSensor frontSensor(SENSOR_TRIGGER_PIN, SENSOR_ECHO_PIN_FRONT);
-    UltrasonicSensor backSensor(SENSOR_TRIGGER_PIN, SENSOR_ECHO_PIN_BACK);
+    UltrasonicSensor frontSensor(FRONT_SENSOR_TRIGGER_PIN_BR, FRONT_SENSOR_ECHO_PIN_BR);
+    UltrasonicSensor backSensor(BACK_SENSOR_TRIGGER_PIN_BR, BACK_SENSOR_ECHO_PIN_BR);
     RelayModule pumpRelayModule(PUMP_RELAY_MODULE_PIN);
     RelayModule barrelRelayModule(BARREL_RELAY_MODULE_PIN);
     Encoder encoder;
+    Jack jack;
+    LCD screen("/dev/ttyUSB1");
+
+    screen.reset();
+    screen.toggleCursor(false);
+    screen.printToScreenCentered("Piche  "
+                                 "ParisTech",1);
+    screen.printToScreenCentered("Coupe de France",2);
+    screen.printToScreenCentered("de Robotique 2k19",3);
+    screen.printToScreenCentered("Score = 2",4);
 
     // -----------------------
     // Create the behavior tree
@@ -70,11 +94,11 @@ int main(int argc, char *argv[]) {
     // Kangaroo
     NodeBuilder builderMoveAhead;
     builderMoveAhead = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAhead>(name, config, frontSensor, backSensor, kangaroo);
+        return std::make_unique<MoveAhead>(name, config, frontSensor, backSensor, kangaroo,true);
     };
     NodeBuilder builderTurn;
     builderTurn = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<Turn>(name, config, kangaroo);
+        return std::make_unique<Turn>(name, config, kangaroo, true);
     };
     factory.registerBuilder<MoveAhead>("MoveAhead", builderMoveAhead);
     factory.registerBuilder<Turn>("Turn", builderTurn);
@@ -142,12 +166,13 @@ int main(int argc, char *argv[]) {
     pumpRelayModule.turnOff();
     barrelRelayModule.turnOff();
 
+    //jack.waitToRemove();
     while (tree.root_node->executeTick() == NodeStatus::RUNNING) {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 
     pumpRelayModule.turnOff();
     barrelRelayModule.turnOff();
-
+*/
     return 0;
 }
