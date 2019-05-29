@@ -1,150 +1,30 @@
 <root main_tree_to_execute="MainTree">
     <BehaviorTree ID="MainTree">
         <Sequence name="root">
+            <MoveAhead name = "Avancer un peu" distance="100"></MoveAhead>
 
-            <SetBlackboard output_key="barrelGoalPosition" value="20150"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
-            <SubTree ID="PushLeft"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="57100"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
+            <Turn name = "turn 1" angle = "90"></Turn>
 
-            <SubTree ID="PickAtomLeft"/>
+            <MoveAhead name="move forward"
+                       distance="500"/>
 
-            <SetBlackboard output_key="barrelGoalPosition" value="77450"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
-            <SubTree ID="PushLeft"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="114700"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
+            <Turn name = "turn 1" angle = "-90"></Turn>
+
+            <MoveAhead name="move forward"
+                       distance="600"/>
+
+            <Turn name = "turn 1" angle = "-90"></Turn>
+
+            <MoveAhead name="move forward"
+                       distance="200"/>
+
+            <Turn name = "turn 1" angle = "-90"></Turn>
+
+            <MoveAhead name="move forward"
+                       distance="600"/>
+
 
         </Sequence>
     </BehaviorTree>
 
-    <BehaviorTree ID="PickAtomLeft">
-
-        <Sequence>
-            <MoveArmFront name="move arm to the back"
-                          pos="800"
-            />
-            <MoveArmSideJoint name="move arm to the center (joint mode)"
-                              pos="250"
-            />
-            <TurnArm name="turn arm to the left"
-                     pos="200"
-            />
-
-            <MoveArmSideJoint name="move arm to the left (joint mode)"
-                              pos="0"
-            />
-            <MoveArmSideWheel name="move arm to the left"
-                              distance="300"
-            />
-            <MoveArmSideJoint name="move arm to the left (new joint mode)"
-                              pos="750"
-            />
-
-            <ActivatePump/>
-            <Wait name="wait for the atom to be stuck"
-                  delay="1000"/>
-
-            <MoveArmSideJoint name="move arm to the right (joint mode)"
-                              pos="1023"
-            />
-            <MoveArmSideWheel name="move arm back inside"
-                              distance="-300"
-            />
-            <MoveArmSideJoint name="move arm to the center (joint mode)"
-                              pos="250"
-            />
-
-            <TurnArm name="turn arm to the center"
-                     pos="510"
-            />
-            <MoveArmFront name="move arm to the front"
-                          pos="200"
-            />
-
-            <DeactivatePump/>
-            <Wait name="wait for the atom to fall"
-                  delay="500"/>
-
-            -->
-            <MoveArmFront name="move arm to the back"
-                          pos="500"
-            />
-        </Sequence>
-    </BehaviorTree>
-
-    <BehaviorTree ID="PickAtomRight">
-        <Sequence>
-            <MoveArmFront name="move arm to the back"
-                          pos="800"
-            />
-            <MoveArmSideJoint name="move arm to the center (joint mode)"
-                              pos="300"
-            />
-            <TurnArm name="turn arm to the right"
-                     pos="820"
-            />
-
-            <MoveArmSideJoint name="move arm to the right (joint mode)"
-                              pos="1000"
-            />
-
-            <ActivatePump/>
-            <Wait name="wait for the atom to be stuck"
-                  delay="1000"/>
-
-            <MoveArmSideJoint name="move arm to the center (joint mode)"
-                              pos="300"
-            />
-
-            <TurnArm name="turn arm to the center"
-                     pos="510"
-            />
-            <MoveArmFront name="move arm to the front"
-                          pos="200"
-            />
-
-            <DeactivatePump/>
-            <Wait name="wait for the atom to fall"
-                  delay="500"/>
-
-            <MoveArmFront name="move arm to the back"
-                          pos="500"
-            />
-        </Sequence>
-    </BehaviorTree>
-
-    <BehaviorTree ID="TurnBarrel">
-        <Sequence>
-            <ActivateBarrel name="start turning the barrel"/>
-            <RetryUntilSuccesful num_attempts="1000000000">
-                <IsBarrelMoveFinished name="check if the barrel has turned enough"
-                                      goalPosition="{barrelGoalPosition}"/>
-            </RetryUntilSuccesful>
-            <DeactivateBarrel name="stop turning the barrel"/>
-        </Sequence>
-    </BehaviorTree>
-
-    <BehaviorTree ID="PushLeft">
-        <Sequence>
-            <PushLeftAtom name="push it"
-                          pos="340"/>
-            <PushLeftAtom name="come back"
-                          pos="720"/>
-        </Sequence>
-    </BehaviorTree>
-
-    <BehaviorTree ID="PushRight">
-        <Sequence>
-            <PushRightAtom name="push it"
-                           pos="600"/>
-            <PushRightAtom name="come back"
-                           pos="170"/>
-        </Sequence>
-    </BehaviorTree>
 </root>
