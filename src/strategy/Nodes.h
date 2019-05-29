@@ -63,10 +63,10 @@ namespace Robot {
         MoveAhead(const std::string &name, const NodeConfiguration &config, UltrasonicSensor &frontSensor,
                   UltrasonicSensor &backSensor, Kangaroo &kangaroo, bool bigRobot) :
                 CoroActionNode(name, config),
-                frontSensor(frontSensor),
-                backSensor(backSensor),
-                kangaroo(kangaroo),
-                bigRobot(bigRobot) {}
+                _frontSensor(frontSensor),
+                _backSensor(backSensor),
+                _kangaroo(kangaroo),
+                _bigRobot(bigRobot) {}
 
         NodeStatus tick() override;
 
@@ -82,11 +82,11 @@ namespace Robot {
         }
 
     private:
-        bool bigRobot;
+        bool _bigRobot;
         bool isMoving = false;
-        UltrasonicSensor &frontSensor;
-        UltrasonicSensor &backSensor;
-        Kangaroo &kangaroo;
+        UltrasonicSensor &_frontSensor;
+        UltrasonicSensor &_backSensor;
+        Kangaroo &_kangaroo;
     };
 
     /**
@@ -97,8 +97,8 @@ namespace Robot {
         Turn(const std::string &name, const NodeConfiguration &config,
              Kangaroo &kangaroo, bool bigRobot) :
                 CoroActionNode(name, config),
-                kangaroo(kangaroo),
-                bigRobot(bigRobot) {}
+                _kangaroo(kangaroo),
+                _bigRobot(bigRobot) {}
 
         NodeStatus tick() override;
 
@@ -115,8 +115,8 @@ namespace Robot {
 
 
     private:
-        bool bigRobot;
-        Kangaroo &kangaroo;
+        bool _bigRobot;
+        Kangaroo &_kangaroo;
     };
 
     /**
@@ -206,7 +206,7 @@ namespace Robot {
     public:
         UpdateScore(const std::string &name, const NodeConfiguration &config, LCD &lcd) :
                 SyncActionNode(name, config),
-                lcd(lcd) {}
+                _lcd(lcd) {}
 
         NodeStatus tick() override;
 
@@ -216,7 +216,7 @@ namespace Robot {
 
     private:
         int currentScore = 0;
-        LCD &lcd;
+        LCD &_lcd;
     };
 
     /**
