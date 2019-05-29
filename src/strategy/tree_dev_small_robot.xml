@@ -2,8 +2,32 @@
     <BehaviorTree ID="MainTree">
         <Sequence name="root">
 
+            <MoveAhead name="move"
+                       distance="50"/>
+
+            <Turn name="turn"
+                  angle="90"/>
+
+            <MoveAhead name="move"
+                       distance="150"/>
+
+            <Turn name="turn"
+                  angle="-90"/>
+
+            <MoveAhead name="move"
+                       distance="800"/>
+
+            <Turn name="turn"
+                  angle="-90"/>
+
+            <MoveAhead name="move"
+                       distance="750"/>
+
+            <Turn name="turn"
+                  angle="-90"/>
+
             <MoveAhead name="move forward"
-                  distance="-500"/>
+                       distance="600"/>
 
         </Sequence>
     </BehaviorTree>
