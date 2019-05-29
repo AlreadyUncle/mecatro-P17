@@ -3,7 +3,7 @@
         <Sequence name="root">
 
             <MoveAhead name="move forward"
-                  distance="-360"/>
+                  distance="-500"/>
 
         </Sequence>
     </BehaviorTree>

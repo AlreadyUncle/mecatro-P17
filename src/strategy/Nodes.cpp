@@ -6,8 +6,8 @@
 
 // ------ Kangaroo -------
 NodeStatus Robot::MoveAhead::tick() {
-    int speed = bigRobot ? KANGAROO_SPEED_BR : KANGAROO_SPEED_SR;
-    float unitsPerMm = bigRobot ? UNITS_PER_MM_BR : UNITS_PER_MM_SR;
+    int speed = _bigRobot ? KANGAROO_SPEED_BR : KANGAROO_SPEED_SR;
+    float unitsPerMm = _bigRobot ? UNITS_PER_MM_BR : UNITS_PER_MM_SR;
 
     // ------------------------
     // Read move instructions from the blackboard
@@ -19,7 +19,7 @@ NodeStatus Robot::MoveAhead::tick() {
     int distanceToTravelMm = distanceInput.value();
 
     // Use the appropriate ultrasonic sensor to check for obstacles
-    UltrasonicSensor &sensor = distanceToTravelMm >= 0 ? frontSensor : backSensor;
+    UltrasonicSensor &sensor = distanceToTravelMm >= 0 ? _frontSensor : _backSensor;
 
 
     // ------------------------
@@ -35,8 +35,23 @@ NodeStatus Robot::MoveAhead::tick() {
         // (note that ahead can mean front or back, depending on the current move direction)
         bool obstacleAhead = (distanceToObstacle > 0 and distanceToObstacle < SENSOR_OBSTACLE_THRESHOLD);
 
-        if (isMoving and !obstacleAhead) {
-            if (kangaroo.isMoveCompleted()) {
+//todo: update distance traveled at each step with getp ?
+
+        if (!isMoving and !obstacleAhead) {
+            // Idle with no obstacle ahead : start/resume movement
+            LOG_F(INFO, "no obstacle ahead, starting or resuming movement with %d units left to do",
+                  distanceToTravelUnits - distanceTraveledUnits);
+
+            // Our small robot moves straight when it's told to turn, and vice versa
+            if (_bigRobot)
+                _kangaroo.startStraightMove(distanceToTravelUnits - distanceTraveledUnits, speed);
+            else
+                _kangaroo.startTurnMove(distanceToTravelUnits - distanceTraveledUnits, speed);
+
+            isMoving = true;
+            setStatusRunningAndYield();
+        } else if (isMoving and !obstacleAhead) {
+            if (_kangaroo.isMoveCompleted()) {
                 isMoveCompleted = true;
                 LOG_F(INFO, "straight move completed (total distance : %dmm, %d units)", distanceToTravelMm,
                       distanceToTravelUnits);
@@ -44,22 +59,23 @@ NodeStatus Robot::MoveAhead::tick() {
                 LOG_F(1, "straight move going on, no obstacle");
                 setStatusRunningAndYield();
             }
+        } else if (isMoving and obstacleAhead) {
+            // Moving with obstacle ahead : stop movement and keep in memory current position
+            distanceTraveledUnits += _kangaroo.getPosition();
+            if (_bigRobot)
+                _kangaroo.startStraightMove(0, 0);
+            else
+                _kangaroo.startTurnMove(0, 0);
+
+            isMoving = false;
+            LOG_F(INFO, "obstacle ahead, stopped movement at distance %d", distanceTraveledUnits);
+            setStatusRunningAndYield();
+
         } else {
-            if (isMoving) {
-                // Moving with obstacle ahead : stop movement and keep in memory current position
-                distanceTraveledUnits += kangaroo.getPosition();
-                kangaroo.startStraightMove(0, 0); //todo: check if command powerdown is more appropriate
-                isMoving = false;
-                LOG_F(INFO, "obstacle ahead, stopped movement at distance %d", distanceTraveledUnits);
-            } else if (!obstacleAhead) {
-                // Idle with no obstacle ahead : start/resume movement
-                LOG_F(INFO, "no obstacle ahead, starting or resuming movement with %d units left to do",
-                      distanceToTravelUnits - distanceTraveledUnits);
-                kangaroo.startStraightMove(distanceToTravelUnits - distanceTraveledUnits, speed);
-                isMoving = true;
-            }
+            LOG_F(INFO, "obstacle ahead, movement already stopped, waiting...");
             setStatusRunningAndYield();
         }
+
     }
 
     cleanup(false);
@@ -78,8 +94,8 @@ void Robot::MoveAhead::halt() {
 }
 
 NodeStatus Robot::Turn::tick() {
-    int speed = bigRobot ? KANGAROO_ROTATION_SPEED_BR : KANGAROO_ROTATION_SPEED_SR;
-    float unitsPerDegree = bigRobot ? UNITS_PER_DEGREE_BR : UNITS_PER_DEGREE_SR;
+    int speed = _bigRobot ? KANGAROO_ROTATION_SPEED_BR : KANGAROO_ROTATION_SPEED_SR;
+    float unitsPerDegree = _bigRobot ? UNITS_PER_DEGREE_BR : UNITS_PER_DEGREE_SR;
 
     // ------------------------
     // Read move instructions from the blackboard
@@ -93,11 +109,15 @@ NodeStatus Robot::Turn::tick() {
 
     // ------------------------
     // Move or wait logic
-    kangaroo.startTurnMove(angleUnits, speed);
+    if (_bigRobot)
+        _kangaroo.startTurnMove(angleUnits, speed);
+    else
+        _kangaroo.startStraightMove(angleUnits, speed);
+
     bool isTurnCompleted = false;
     while (!isTurnCompleted) {
         LOG_F(1, "turning... ");
-        isTurnCompleted = kangaroo.isMoveCompleted();
+        isTurnCompleted = _kangaroo.isMoveCompleted();
         setStatusRunningAndYield();
     }
     LOG_F(INFO, "turn move completed (total distance : %d degrees, %d units)", angleDegrees, angleUnits);
@@ -212,7 +232,7 @@ NodeStatus Robot::UpdateScore::tick() {
     int pointsEarned = pointsEarnedInput.value();
     currentScore += pointsEarned;
 
-    lcd.printToScreenCentered("Score : " + std::to_string(currentScore));
+    _lcd.printToScreenCentered("Score : " + std::to_string(currentScore));
     LOG_F(INFO, "Added %d to the score. New current score :%d", pointsEarned, currentScore);
 
     return NodeStatus::SUCCESS;

@@ -70,6 +70,8 @@ public:
 
     bool turnB(int angle, int v, bool verbose = false);
 
+    // Turn off the Sabertooth, to go free wheel. If you wish to stop the robot and resume movement later,
+    // prefer starting a move to position 0, with speed 0
     bool powerdown(mode m);
 
     void downZero();
