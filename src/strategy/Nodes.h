@@ -19,9 +19,9 @@
 
 // Kangaroo
 #define UNITS_PER_MM_BR                 5.669
-#define UNITS_PER_MM_SR                 134.389     // Actually it's units per degree
+#define UNITS_PER_MM_SR                 59.22
 #define UNITS_PER_DEGREE_BR             13.89
-#define UNITS_PER_DEGREE_SR             13.89
+#define UNITS_PER_DEGREE_SR             134.389
 #define KANGAROO_SPEED_BR               500
 #define KANGAROO_ROTATION_SPEED_BR      500
 #define KANGAROO_SPEED_SR               5000
@@ -35,9 +35,10 @@
 #define AX_ID_BR_MOVE_ARM_SIDE          3
 #define AX_ID_BR_MOVE_ARM_FRONT         4
 #define AX_ID_BR_TURN_ARM               5
+#define AX_ID_SR_OPEN_PINCE             3
 
 // Other Pins definition
-#define SENSOR_OBSTACLE_THRESHOLD       300     // distance (in mm) under which obstacles are considered
+#define SENSOR_OBSTACLE_THRESHOLD       100     // distance (in mm) under which obstacles are considered
 #define FRONT_SENSOR_TRIGGER_PIN_SR     4
 #define FRONT_SENSOR_ECHO_PIN_SR        5
 #define BACK_SENSOR_TRIGGER_PIN_SR      0

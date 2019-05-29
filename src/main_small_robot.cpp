@@ -16,6 +16,7 @@
 #include "components/UltrasonicSensor.h"
 
 #include "strategy/Nodes.h"
+#include "components/Jack.h"
 
 using namespace std;
 using namespace BT;
@@ -42,15 +43,12 @@ int main(int argc, char *argv[]) {
     dynamixel::PortHandler *portHandler = dynamixel::PortHandler::getPortHandler(DEVICENAME);
     dynamixel::PacketHandler *packetHandler = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
 
-    AX12 axPushRightAtom(AX_ID_BR_PUSH_RIGHT_ATOM, portHandler, packetHandler);
-    AX12 axPushLeftAtom(AX_ID_BR_PUSH_LEFT_ATOM, portHandler, packetHandler);
-    AX12 axMoveArmSide(AX_ID_BR_MOVE_ARM_SIDE, portHandler, packetHandler);
-    AX12 axMoveArmFront(AX_ID_BR_MOVE_ARM_FRONT, portHandler, packetHandler);
-    AX12 axTurnArm(AX_ID_BR_TURN_ARM, portHandler, packetHandler);
+    AX12 axOpenPince(AX_ID_SR_OPEN_PINCE, portHandler, packetHandler);
 
     // Other
     UltrasonicSensor frontSensor(FRONT_SENSOR_TRIGGER_PIN_SR, FRONT_SENSOR_ECHO_PIN_SR);
     UltrasonicSensor backSensor(BACK_SENSOR_TRIGGER_PIN_SR, BACK_SENSOR_ECHO_PIN_SR);
+    Jack jack;
 
     // -----------------------
     // Create the behavior tree
@@ -77,30 +75,10 @@ int main(int argc, char *argv[]) {
     factory.registerBuilder<Turn>("Turn", builderTurn);
 
     // AX-12
-    NodeBuilder builderPushRightAtom = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAX12Joint>(name, config, axPushRightAtom);
+    NodeBuilder builderOpenPince = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12Joint>(name, config, axOpenPince);
     };
-    NodeBuilder builderPushLeftAtom = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAX12Joint>(name, config, axPushLeftAtom);
-    };
-    NodeBuilder builderMoveArmFront = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAX12Joint>(name, config, axMoveArmFront);
-    };
-    NodeBuilder builderTurnArm = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAX12Joint>(name, config, axTurnArm);
-    };
-    NodeBuilder builderMoveArmSideJoint = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAX12Joint>(name, config, axMoveArmSide);
-    };
-    NodeBuilder builderMoveArmSideWheel = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAX12Wheel>(name, config, axMoveArmSide);
-    };
-    factory.registerBuilder<MoveAX12Joint>("PushRightAtom", builderPushRightAtom);
-    factory.registerBuilder<MoveAX12Joint>("PushLeftAtom", builderPushLeftAtom);
-    factory.registerBuilder<MoveAX12Joint>("MoveArmFront", builderMoveArmFront);
-    factory.registerBuilder<MoveAX12Joint>("TurnArm", builderTurnArm);
-    factory.registerBuilder<MoveAX12Wheel>("MoveArmSideWheel", builderMoveArmSideWheel);
-    factory.registerBuilder<MoveAX12Joint>("MoveArmSideJoint", builderMoveArmSideJoint);
+    factory.registerBuilder<MoveAX12Joint>("OpenPince", builderOpenPince);
 
     // Other
     factory.registerNodeType<Wait>("Wait");
@@ -117,10 +95,10 @@ int main(int argc, char *argv[]) {
     MinitraceLogger logger_minitrace(tree, "/home/pi/mecatro_P17/log/bt_trace.json");
     printTreeRecursively(tree.root_node);
 
-    cout << "printing sensor distance" << endl;
-    cout << frontSensor.getDistance() << endl;
     // -----------------------
     // Execute the behavior tree
+
+    //jack.waitToRemove();
 
     while (tree.root_node->executeTick() == NodeStatus::RUNNING) {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
