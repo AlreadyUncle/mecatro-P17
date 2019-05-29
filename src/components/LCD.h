@@ -15,8 +15,6 @@ public:
 
     LCD(string portName);
 
-    ~LCD();
-
     void reset();
 
     void clear();

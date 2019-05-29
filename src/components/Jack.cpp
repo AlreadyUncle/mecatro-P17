@@ -4,7 +4,7 @@
 
 #include "Jack.h"
 
-int Jack::jackPin  = 3;
+int Jack::jackPin  = 6;
 bool Jack::closed  = true;
 
 Jack::Jack() {
