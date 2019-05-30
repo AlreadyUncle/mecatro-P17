@@ -15,8 +15,8 @@
 #include "../components/Encoder.h"
 
 #define SERIAL_PORT_KANGAROO_BR         "/dev/ttyUSB0"
-#define SERIAL_PORT_XBEE             "/dev/ttyUSB2"
-#define SERIAL_PORT_ECRAN_BR            "/dev/ttyUSB1"
+#define SERIAL_PORT_XBEE                "/dev/ttyUSB2"
+#define SERIAL_PORT_ECRAN_BR            "/dev/serial0"
 #define SERIAL_PORT_KANGAROO_SR         "/dev/ttyUSB0"
 
 // Kangaroo

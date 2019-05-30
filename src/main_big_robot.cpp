@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
     RelayModule barrelRelayModule(BARREL_RELAY_MODULE_PIN);
     Encoder encoder;
     JackBigRobot jack;
-    LCD screen("/dev/ttyUSB1");
+    LCD screen(SERIAL_PORT_ECRAN_BR);
 
     screen.reset();
     screen.toggleCursor(false);
