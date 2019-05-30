@@ -146,14 +146,14 @@ int main(int argc, char *argv[]) {
     // Initialization code
     pumpRelayModule.turnOff();      // turn off the relays if the pins are ON for whatever reason
     barrelRelayModule.turnOff();
-    jack.waitToRemove();
+    //jack.waitToRemove();
 
     // -----------------------
     // Execute the behavior tree
     // IMPORTANT: when the object "tree" goes out of scope, all the
     // TreeNodes are destroyed
     auto tree = factory.createTreeFromFile(
-            "/home/pi/mecatro_P17/src/strategy/tree_homologation_score_big_robot_yellow.xml"); // requires absolute paths
+            "/home/pi/mecatro_P17/src/strategy/tree_big_robot.xml"); // requires absolute paths
 
     // This logger saves state changes on file
     MinitraceLogger logger_minitrace(tree, "/home/pi/mecatro_P17/log/bt_trace.json");

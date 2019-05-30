@@ -42,7 +42,7 @@
 
 // Other Pins definition
 #define SENSOR_OBSTACLE_THRESHOLD_SR           240     // distance (in mm) under which obstacles are considered
-#define SENSOR_OBSTACLE_THRESHOLD_BR           200     // distance (in mm) under which obstacles are considered
+#define SENSOR_OBSTACLE_THRESHOLD_BR           20     // distance (in mm) under which obstacles are considered
 #define FRONT_SENSOR_TRIGGER_PIN_SR         4
 #define FRONT_SENSOR_ECHO_PIN_SR            5
 #define BACK_SENSOR_TRIGGER_PIN_SR          0
