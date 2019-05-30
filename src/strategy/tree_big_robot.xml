@@ -2,14 +2,21 @@
     <BehaviorTree ID="MainTree">
         <Sequence name="root">
 
+            <SubTree ID="PickAtomRight"/>
+
             <!--            <MoveArmSideJoint pos="1023"/>-->
             <!--            <MoveArmSideWheel distance="-500"/>-->
-            <SubTree ID="PickAllRightAtoms"/>
+<!--            <SubTree ID="PickAllRightAtoms"/>-->
 
         </Sequence>
     </BehaviorTree>
 
     <!--    Global subtrees-->
+
+    <BehaviorTree ID="ResetAX12">
+        <MoveArmFront name="move arm to the back"
+        pos="1023"/>
+    </BehaviorTree>
 
     <BehaviorTree ID="PickAllLeftAtoms">
         <Sequence>
@@ -164,6 +171,8 @@
     <!--    Basic subtrees-->
 
     <BehaviorTree ID="PickAtomLeft">
+        <!--   NOT UP TO DATE   -->
+
         <Sequence>
             <MoveArmFront name="move arm to the back"
                           pos="800"
@@ -233,7 +242,7 @@
                      pos="510"
             />
             <MoveArmFront name="move arm to the front"
-                          pos="630"
+                          pos="550"
             />
 
             <DeactivatePump/>
