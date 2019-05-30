@@ -44,6 +44,7 @@
 #define DXL_MINIMUM_POSITION_VALUE      10                 // Dynamixel will rotate between this value
 #define DXL_MAXIMUM_POSITION_VALUE      1000               // and this value (note that the Dynamixel would not move when the position value is out of movable range. Check e-manual about the range of the Dynamixel you use.)
 #define DXL_MOVING_STATUS_THRESHOLD     5                  // Dynamixel moving status threshold
+#define DXL_CYCLES_TO_GIVE_UP           5                  // Number of unsuccessful tries to move to give up movement
 
 #define ESC_ASCII_VALUE                 0x1b
 enum AX12Mode {

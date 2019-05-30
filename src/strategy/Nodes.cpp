@@ -151,8 +151,7 @@ NodeStatus Robot::MoveAX12Joint::tick() {
     // Read move instructions from the blackboard
     auto positionInput = getInput<int>("pos");
     if (!positionInput) {
-        throw BT::RuntimeError("missing required input [pos]: ",
-                               positionInput.error());
+        throw BT::RuntimeError("missing required input [pos]: ",positionInput.error());
     }
     auto goalPosition = positionInput.value();
 
@@ -163,9 +162,16 @@ NodeStatus Robot::MoveAX12Joint::tick() {
     _ax.goToPositionJointMode(goalPosition);
 
     auto currentPosition = _ax.getPosition();
-    while (std::abs(goalPosition - currentPosition) > DXL_MOVING_STATUS_THRESHOLD) {
+    auto previousPosition = currentPosition;
+    int cyclesNotMoving = 0;
+    while (std::abs(goalPosition - currentPosition) > DXL_MOVING_STATUS_THRESHOLD and cyclesNotMoving<DXL_CYCLES_TO_GIVE_UP) {
         currentPosition = _ax.getPosition();
         LOG_F(INFO, "[id %d] moving ; GoalPos:%03d CurrentPos:%03d", _ax.ID, goalPosition, currentPosition);
+        if(currentPosition==previousPosition)
+            cyclesNotMoving++;
+        else
+            cyclesNotMoving=0;
+        previousPosition=currentPosition;
         setStatusRunningAndYield();
     }
 

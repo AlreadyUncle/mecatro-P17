@@ -101,7 +101,7 @@ int main(int argc, char *argv[]) {
     // -----------------------
     // Turn on the experiment
     SerialPort xBee;
-    if (xBee.open(SERIAL_PORT_XBEE, 9600) != -1) {
+    if (xBee.open(SERIAL_PORT_XBEE_SR, 9600) != -1) {
         LOG_F(INFO, "XBee Serial Port opened");
         for(int i=0;i<1000;i++){
             xBee.puts("!@#$%^&*()");

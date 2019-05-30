@@ -13,63 +13,45 @@
 
     <BehaviorTree ID="PickAllLeftAtoms">
         <Sequence>
-            <MoveAhead name="move ahead"
-                       distance="650"/>
-            <Turn name="turn"
-                  angle="90"/>
-            <MoveAhead name="move ahead"
-                       distance="245"/>
-            <Turn name="turn"
-                  angle="1"/>
+            <MoveAhead name="move ahead" distance="650"/>
+            <Turn name="turn" angle="90"/>
+            <MoveAhead name="move ahead" distance="245"/>
+            <Turn name="turn" angle="1"/>
 
-            <MoveArmFront name="move arm to the back"
-                          pos="800"
-            />
-            <TurnArm name="turn arm to the left"
-                     pos="200"
-            />
+            <MoveArmFront name="move arm to the back" pos="800"/>
+            <TurnArm name="turn arm to the left" pos="200"/>
+
             <PickAtomLeft/>
+
             <SetBlackboard output_key="barrelGoalPosition" value="9535"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
-
-            <MoveAhead name="move ahead"
-                       distance="100"/>
+            <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+            <MoveAhead name="move ahead" distance="100"/>
             <PickAtomLeft/>
+
             <SetBlackboard output_key="barrelGoalPosition" value="19070"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
-
-            <MoveAhead name="move ahead"
-                       distance="100"/>
+            <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+            <MoveAhead name="move ahead" distance="100"/>
             <PickAtomLeft/>
+
             <SetBlackboard output_key="barrelGoalPosition" value="28605"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
-
-            <MoveAhead name="move ahead"
-                       distance="100"/>
+            <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+            <MoveAhead name="move ahead" distance="100"/>
             <PickAtomLeft/>
+
             <SetBlackboard output_key="barrelGoalPosition" value="38140"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
-
-            <MoveAhead name="move ahead"
-                       distance="100"/>
+            <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+            <MoveAhead name="move ahead" distance="100"/>
             <PickAtomLeft/>
+
             <SetBlackboard output_key="barrelGoalPosition" value="47675"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
-
-            <MoveAhead name="move ahead"
-                       distance="100"/>
+            <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+            <MoveAhead name="move ahead" distance="100"/>
             <PickAtomLeft/>
-            <SetBlackboard output_key="barrelGoalPosition" value="57210"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
 
-            <MoveAhead name="move ahead"
-                       distance="200"/>
+            <SetBlackboard output_key="barrelGoalPosition" value="57210"/>
+            <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+            <MoveAhead name="move ahead" distance="200"/>
+
         </Sequence>
     </BehaviorTree>
 
