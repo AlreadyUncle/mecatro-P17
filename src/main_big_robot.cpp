@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
     RelayModule barrelRelayModule(BARREL_RELAY_MODULE_PIN);
     Encoder encoder;
     JackBigRobot jack;
-    LCD screen("/dev/ttyUSB1");
+    LCD screen(SERIAL_PORT_ECRAN_BR);
 
     screen.reset();
     screen.toggleCursor(false);
@@ -85,7 +85,8 @@ int main(int argc, char *argv[]) {
     // Kangaroo
     NodeBuilder builderMoveAhead;
     builderMoveAhead = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAhead>(name, config, frontSensorLeft, frontSensorRight, backSensorLeft, backSensorRight, kangaroo, true);
+        return std::make_unique<MoveAhead>(name, config, frontSensorLeft, frontSensorRight, backSensorLeft,
+                                           backSensorRight, kangaroo, true);
     };
     NodeBuilder builderTurn;
     builderTurn = [&](const std::string &name, const NodeConfiguration &config) {
@@ -120,7 +121,7 @@ int main(int argc, char *argv[]) {
     factory.registerBuilder<MoveAX12Wheel>("MoveArmSideWheel", builderMoveArmSideWheel);
     factory.registerBuilder<MoveAX12Joint>("MoveArmSideJoint", builderMoveArmSideJoint);
 
-    // Other
+    // Other nodes
     NodeBuilder builderActivatePump = [&](const std::string &name, const NodeConfiguration &config) {
         return std::make_unique<ActivateRelayModule>(name, config, pumpRelayModule);
     };
@@ -140,12 +141,19 @@ int main(int argc, char *argv[]) {
     factory.registerNodeType<IsBarrelMoveFinished>("IsBarrelMoveFinished");
     factory.registerNodeType<Wait>("Wait");
 
-    // Trees are created at deployment-time (i.e. at run-time, but only
-    // once at the beginning).
 
+    // -----------------------
+    // Initialization code
+    pumpRelayModule.turnOff();      // turn off the relays if the pins are ON for whatever reason
+    barrelRelayModule.turnOff();
+    //jack.waitToRemove();
+
+    // -----------------------
+    // Execute the behavior tree
     // IMPORTANT: when the object "tree" goes out of scope, all the
     // TreeNodes are destroyed
-    auto tree = factory.createTreeFromFile("/home/pi/mecatro_P17/src/strategy/tree_homologation_score_big_robot.xml"); // requires absolute paths
+    auto tree = factory.createTreeFromFile(
+            "/home/pi/mecatro_P17/src/strategy/tree_big_robot.xml"); // requires absolute paths
 
     // This logger saves state changes on file
     MinitraceLogger logger_minitrace(tree, "/home/pi/mecatro_P17/log/bt_trace.json");
@@ -156,7 +164,8 @@ int main(int argc, char *argv[]) {
     pumpRelayModule.turnOff();
     barrelRelayModule.turnOff();
 
-    //jack.waitToRemove();
+    jack.waitToRemove();
+
     while (tree.root_node->executeTick() == NodeStatus::RUNNING) {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }

@@ -2,8 +2,9 @@
     <BehaviorTree ID="MainTree">
         <Sequence name="root">
 
-            <SubTree ID="PickAllRightAtoms"/>
-
+<!--            <MoveArmSideJoint pos="1023"/>-->
+<!--            <MoveArmSideWheel distance="-500"/>-->
+            <SubTree ID="PickAtomRight"/>
 
         </Sequence>
     </BehaviorTree>
@@ -13,7 +14,7 @@
     <BehaviorTree ID="PickAllLeftAtoms">
         <Sequence>
             <MoveAhead name="move ahead"
-                       distance="350"/>
+                       distance="650"/>
             <Turn name="turn"
                   angle="90"/>
             <MoveAhead name="move ahead"
@@ -27,34 +28,45 @@
             <TurnArm name="turn arm to the left"
                      pos="200"
             />
-            <Wait name="wait 1"
-                  delay="5000"/>
+            <PickAtomLeft/>
+            <SetBlackboard output_key="barrelGoalPosition" value="9535"/>
+            <SubTree ID="TurnBarrel"
+                     barrelGoalPosition="barrelGoalPosition"/>
 
             <MoveAhead name="move ahead"
                        distance="100"/>
-            <Wait name="wait 2"
-                  delay="5000"/>
+            <PickAtomLeft/>
+            <SetBlackboard output_key="barrelGoalPosition" value="19070"/>
+            <SubTree ID="TurnBarrel"
+                     barrelGoalPosition="barrelGoalPosition"/>
 
             <MoveAhead name="move ahead"
                        distance="100"/>
-            <Wait name="wait 3"
-                  delay="5000"/>
+            <PickAtomLeft/>
+            <SetBlackboard output_key="barrelGoalPosition" value="28605"/>
+            <SubTree ID="TurnBarrel"
+                     barrelGoalPosition="barrelGoalPosition"/>
 
             <MoveAhead name="move ahead"
                        distance="100"/>
-            <Wait name="wait 4"
-                  delay="5000"/>
+            <PickAtomLeft/>
+            <SetBlackboard output_key="barrelGoalPosition" value="38140"/>
+            <SubTree ID="TurnBarrel"
+                     barrelGoalPosition="barrelGoalPosition"/>
 
             <MoveAhead name="move ahead"
                        distance="100"/>
-            <Wait name="wait 5"
-                  delay="5000"/>
+            <PickAtomLeft/>
+            <SetBlackboard output_key="barrelGoalPosition" value="47675"/>
+            <SubTree ID="TurnBarrel"
+                     barrelGoalPosition="barrelGoalPosition"/>
 
             <MoveAhead name="move ahead"
                        distance="100"/>
-            <Wait name="wait 6"
-                  delay="5000"/>
-
+            <PickAtomLeft/>
+            <SetBlackboard output_key="barrelGoalPosition" value="57210"/>
+            <SubTree ID="TurnBarrel"
+                     barrelGoalPosition="barrelGoalPosition"/>
 
             <MoveAhead name="move ahead"
                        distance="200"/>
@@ -156,34 +168,22 @@
                           pos="800"
             />
             <MoveArmSideJoint name="move arm to the center (joint mode)"
-                              pos="250"
+                              pos="1023"
             />
             <TurnArm name="turn arm to the left"
                      pos="200"
             />
 
-            <MoveArmSideJoint name="move arm to the left (joint mode)"
-                              pos="0"
-            />
-            <MoveArmSideWheel name="move arm to the left"
-                              distance="300"
-            />
             <MoveArmSideJoint name="move arm to the left (new joint mode)"
-                              pos="750"
+                              pos="250"
             />
 
             <ActivatePump/>
             <Wait name="wait for the atom to be stuck"
                   delay="1000"/>
 
-            <MoveArmSideJoint name="move arm to the right (joint mode)"
+            <MoveArmSideJoint name="move arm back to the center (joint mode)"
                               pos="1023"
-            />
-            <MoveArmSideWheel name="move arm back inside"
-                              distance="-300"
-            />
-            <MoveArmSideJoint name="move arm to the center (joint mode)"
-                              pos="250"
             />
 
             <TurnArm name="turn arm to the center"
@@ -197,7 +197,6 @@
             <Wait name="wait for the atom to fall"
                   delay="500"/>
 
-            r
             <MoveArmFront name="move arm to the back"
                           pos="500"
             />
@@ -209,23 +208,24 @@
             <MoveArmFront name="move arm to the back"
                           pos="800"
             />
+
             <MoveArmSideJoint name="move arm to the center (joint mode)"
-                              pos="300"
+                              pos="170"
             />
             <TurnArm name="turn arm to the right"
                      pos="820"
             />
 
             <MoveArmSideJoint name="move arm to the right (joint mode)"
-                              pos="1000"
+                              pos="950"
             />
 
             <ActivatePump/>
             <Wait name="wait for the atom to be stuck"
                   delay="1000"/>
 
-            <MoveArmSideJoint name="move arm to the center (joint mode)"
-                              pos="300"
+            <MoveArmSideJoint name="move arm back to the center (joint mode)"
+                              pos="170"
             />
 
             <TurnArm name="turn arm to the center"

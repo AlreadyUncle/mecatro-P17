@@ -5,6 +5,7 @@
 #ifndef MECATRO_P17_NODES_H
 #define MECATRO_P17_NODES_H
 
+#include "thread"
 #include "behaviortree_cpp/behavior_tree.h"
 #include "loguru.hpp"
 #include "../components/UltrasonicSensor.h"
@@ -15,9 +16,10 @@
 #include "../components/Encoder.h"
 
 #define SERIAL_PORT_KANGAROO_BR         "/dev/ttyUSB0"
-#define SERIAL_PORT_XBEE                "/dev/ttyUSB0"
-#define SERIAL_PORT_ECRAN_BR            "/dev/ttyUSB1"
 #define SERIAL_PORT_KANGAROO_SR         "/dev/ttyUSB1"
+#define SERIAL_PORT_XBEE_SR             "/dev/ttyUSB0"
+#define SERIAL_PORT_ECRAN_BR            "/dev/ttyUSB1"
+
 
 // Kangaroo
 #define UNITS_PER_MM_BR                 5.669
@@ -41,7 +43,7 @@
 
 // Other Pins definition
 #define SENSOR_OBSTACLE_THRESHOLD_SR           240     // distance (in mm) under which obstacles are considered
-#define SENSOR_OBSTACLE_THRESHOLD_BR           200     // distance (in mm) under which obstacles are considered
+#define SENSOR_OBSTACLE_THRESHOLD_BR           20     // distance (in mm) under which obstacles are considered
 #define FRONT_SENSOR_TRIGGER_PIN_SR         4
 #define FRONT_SENSOR_ECHO_PIN_SR            5
 #define BACK_SENSOR_TRIGGER_PIN_SR          0
