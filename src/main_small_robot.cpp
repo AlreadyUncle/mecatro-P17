@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
     // -----------------------
     // Initialize robot components
     // Kangaroo
-    Kangaroo kangaroo("/dev/ttyUSB0");
+    Kangaroo kangaroo(SERIAL_PORT_KANGAROO_SR);
     if (kangaroo.isOperational())
         LOG_F(INFO, "Kangaroo is operational");
     else
@@ -89,20 +89,34 @@ int main(int argc, char *argv[]) {
     // IMPORTANT: when the object "tree" goes out of scope, all the
     // TreeNodes are destroyed
     auto tree = factory.createTreeFromFile(
-            "/home/pi/mecatro_P17/src/strategy/tree_dev_small_robot.xml"); // requires absolute paths
+            "/home/pi/mecatro_P17/src/strategy/tree_homologation_small_robot_purple.xml"); // requires absolute paths
 
     // This logger saves state changes on file
     MinitraceLogger logger_minitrace(tree, "/home/pi/mecatro_P17/log/bt_trace.json");
     printTreeRecursively(tree.root_node);
 
-    // -----------------------
-    // Execute the behavior tree
 
     jack.waitToRemove();
+
+    // -----------------------
+    // Turn on the experiment
+    SerialPort xBee;
+    if (xBee.open(SERIAL_PORT_XBEE, 9600) != -1) {
+        LOG_F(INFO, "XBee Serial Port opened");
+        for(int i=0;i<1000;i++){
+            xBee.puts("!@#$%^&*()");
+            LOG_F(INFO, "String sent to Xbee");
+        }
+    } else
+        LOG_F(ERROR, "Could not open Xbee serial port");
+
+/*
+    // -----------------------
+    // Execute the behavior tree
 
     while (tree.root_node->executeTick() == NodeStatus::RUNNING) {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
-
+*/
     return 0;
 }

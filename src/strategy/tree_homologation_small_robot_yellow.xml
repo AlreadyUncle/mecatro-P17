@@ -21,7 +21,7 @@
                   angle="-90"/>
 
             <MoveAhead name="move"
-                       distance="450"/>
+                       distance="460"/>
 
             <Turn name="turn"
                   angle="-90"/>

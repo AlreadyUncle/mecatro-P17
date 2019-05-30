@@ -151,19 +151,6 @@ int main(int argc, char *argv[]) {
     MinitraceLogger logger_minitrace(tree, "/home/pi/mecatro_P17/log/bt_trace.json");
     printTreeRecursively(tree.root_node);
 
-
-    // -----------------------
-    // Turn on the experiment
-    SerialPort xBee;
-    if (xBee.open(SERIAL_PORT_XBEE, 9600) != -1) {
-        LOG_F(INFO, "XBee Serial Port opened");
-        xBee.puts("#");
-        LOG_F(INFO, "Character sent to Xbee");
-    } else
-        LOG_F(ERROR, "Could not open Xbee serial port");
-
-
-
     // -----------------------
     // Execute the behavior tree
     pumpRelayModule.turnOff();
