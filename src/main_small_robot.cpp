@@ -44,7 +44,9 @@ int main(int argc, char *argv[]) {
     dynamixel::PacketHandler *packetHandler = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
 
     AX12 axOpenPince(AX_ID_SR_OPEN_PINCE, portHandler, packetHandler);
-
+    AX12 axMoveArmSide(AX_ID_SR_MOVE_ARM_SIDE, portHandler, packetHandler);
+    AX12 axMoveArmFront(AX_ID_SR_MOVE_ARM_FRONT, portHandler, packetHandler);
+    AX12 axTurnArm(AX_ID_SR_TURN_ARM, portHandler, packetHandler);
     // Other
     UltrasonicSensor frontSensor(FRONT_SENSOR_TRIGGER_PIN_SR, FRONT_SENSOR_ECHO_PIN_SR);
     UltrasonicSensor backSensor(BACK_SENSOR_TRIGGER_PIN_SR, BACK_SENSOR_ECHO_PIN_SR);
@@ -78,7 +80,20 @@ int main(int argc, char *argv[]) {
     NodeBuilder builderOpenPince = [&](const std::string &name, const NodeConfiguration &config) {
         return std::make_unique<MoveAX12Joint>(name, config, axOpenPince);
     };
+    NodeBuilder builderMoveArmFront = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12Joint>(name, config, axMoveArmFront);
+    };
+    NodeBuilder builderTurnArm = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12Joint>(name, config, axTurnArm);
+    };
+    NodeBuilder builderMoveArmSide = [&](const std::string &name, const NodeConfiguration &config) {
+        return std::make_unique<MoveAX12Joint>(name, config, axMoveArmSide);
+    };
+
     factory.registerBuilder<MoveAX12Joint>("OpenPince", builderOpenPince);
+    factory.registerBuilder<MoveAX12Joint>("MoveArmFront", builderMoveArmFront);
+    factory.registerBuilder<MoveAX12Joint>("TurnArm", builderTurnArm);
+    factory.registerBuilder<MoveAX12Joint>("MoveArmSide", builderMoveArmSide);
 
     // Other
     factory.registerNodeType<Wait>("Wait");
@@ -89,21 +104,21 @@ int main(int argc, char *argv[]) {
     // IMPORTANT: when the object "tree" goes out of scope, all the
     // TreeNodes are destroyed
     auto tree = factory.createTreeFromFile(
-            "/home/pi/mecatro_P17/src/strategy/tree_homologation_small_robot_purple.xml"); // requires absolute paths
+            "/home/pi/mecatro_P17/src/strategy/tree_small_robot_test.xml"); // requires absolute paths
 
     // This logger saves state changes on file
     MinitraceLogger logger_minitrace(tree, "/home/pi/mecatro_P17/log/bt_trace.json");
     printTreeRecursively(tree.root_node);
 
 
-    jack.waitToRemove();
+    //jack.waitToRemove();
 
     // -----------------------
     // Turn on the experiment
     SerialPort xBee;
-    if (xBee.open(SERIAL_PORT_XBEE, 9600) != -1) {
+    if (xBee.open(SERIAL_PORT_XBEE_SR, 9600) != -1) {
         LOG_F(INFO, "XBee Serial Port opened");
-        for(int i=0;i<1000;i++){
+        for(int i=0;i<100;i++){
             xBee.puts("!@#$%^&*()");
             LOG_F(INFO, "String sent to Xbee");
         }
@@ -117,6 +132,6 @@ int main(int argc, char *argv[]) {
     while (tree.root_node->executeTick() == NodeStatus::RUNNING) {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
-*/
+
     return 0;
 }

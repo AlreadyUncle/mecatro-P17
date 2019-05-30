@@ -16,8 +16,8 @@
 #include "../components/Encoder.h"
 
 #define SERIAL_PORT_KANGAROO_BR         "/dev/ttyUSB0"
-#define SERIAL_PORT_KANGAROO_SR         "/dev/ttyUSB1"
-#define SERIAL_PORT_XBEE_SR             "/dev/ttyUSB0"
+#define SERIAL_PORT_KANGAROO_SR         "/dev/ttyUSB0"
+#define SERIAL_PORT_XBEE_SR             "/dev/ttyUSB1"
 #define SERIAL_PORT_ECRAN_BR            "/dev/ttyUSB1"
 
 
@@ -40,6 +40,10 @@
 #define AX_ID_BR_MOVE_ARM_FRONT         4
 #define AX_ID_BR_TURN_ARM               5
 #define AX_ID_SR_OPEN_PINCE             3
+#define AX_ID_SR_MOVE_ARM_SIDE          4
+#define AX_ID_SR_MOVE_ARM_FRONT         2
+#define AX_ID_SR_TURN_ARM               5
+
 
 // Other Pins definition
 #define SENSOR_OBSTACLE_THRESHOLD_SR           240     // distance (in mm) under which obstacles are considered
