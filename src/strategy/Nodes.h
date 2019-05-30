@@ -14,8 +14,8 @@
 #include "../components/RelayModule.h"
 #include "../components/Encoder.h"
 
-#define SERIAL_PORT_KANGAROO_BR         "/dev/ttyUSB2"
-#define SERIAL_PORT_XBEE_BR             "/dev/ttyUSB0"
+#define SERIAL_PORT_KANGAROO_BR         "/dev/ttyUSB0"
+#define SERIAL_PORT_XBEE             "/dev/ttyUSB2"
 #define SERIAL_PORT_ECRAN_BR            "/dev/ttyUSB1"
 #define SERIAL_PORT_KANGAROO_SR         "/dev/ttyUSB0"
 
@@ -24,7 +24,7 @@
 #define UNITS_PER_MM_SR                 59.22
 #define UNITS_PER_DEGREE_BR             13.89
 #define UNITS_PER_DEGREE_SR             134.389
-#define KANGAROO_SPEED_BR               1000
+#define KANGAROO_SPEED_BR               500
 #define KANGAROO_ROTATION_SPEED_BR      500
 #define KANGAROO_SPEED_SR               5000
 #define KANGAROO_ROTATION_SPEED_SR      5000
@@ -40,7 +40,7 @@
 #define AX_ID_SR_OPEN_PINCE             3
 
 // Other Pins definition
-#define SENSOR_OBSTACLE_THRESHOLD           100     // distance (in mm) under which obstacles are considered
+#define SENSOR_OBSTACLE_THRESHOLD           10     // distance (in mm) under which obstacles are considered
 #define FRONT_SENSOR_TRIGGER_PIN_SR         4
 #define FRONT_SENSOR_ECHO_PIN_SR            5
 #define BACK_SENSOR_TRIGGER_PIN_SR          0

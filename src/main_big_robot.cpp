@@ -144,11 +144,23 @@ int main(int argc, char *argv[]) {
 
     // IMPORTANT: when the object "tree" goes out of scope, all the
     // TreeNodes are destroyed
-    auto tree = factory.createTreeFromFile("/home/pi/mecatro_P17/src/strategy/tree_homologation_score_big_robot.xml"); // requires absolute paths
+    auto tree = factory.createTreeFromFile("/home/pi/mecatro_P17/src/strategy/tree_big_robot.xml"); // requires absolute paths
 
     // This logger saves state changes on file
     MinitraceLogger logger_minitrace(tree, "/home/pi/mecatro_P17/log/bt_trace.json");
     printTreeRecursively(tree.root_node);
+
+
+    // -----------------------
+    // Turn on the experiment
+    SerialPort xBee;
+    if (xBee.open(SERIAL_PORT_XBEE, 9600) != -1) {
+        LOG_F(INFO, "XBee Serial Port opened");
+        xBee.puts("#");
+        LOG_F(INFO, "Character sent to Xbee");
+    } else
+        LOG_F(ERROR, "Could not open Xbee serial port");
+
 
 
     // -----------------------
