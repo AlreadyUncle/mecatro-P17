@@ -146,7 +146,8 @@ int main(int argc, char *argv[]) {
     // Initialization code
     pumpRelayModule.turnOff();      // turn off the relays if the pins are ON for whatever reason
     barrelRelayModule.turnOff();
-    //jack.waitToRemove();
+
+    jack.waitToRemove();
 
     // -----------------------
     // Execute the behavior tree

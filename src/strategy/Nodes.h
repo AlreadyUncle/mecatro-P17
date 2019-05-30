@@ -26,8 +26,8 @@
 #define UNITS_PER_MM_SR                 59.22
 #define UNITS_PER_DEGREE_BR             13.89
 #define UNITS_PER_DEGREE_SR             134.389
-#define KANGAROO_SPEED_BR               500
-#define KANGAROO_ROTATION_SPEED_BR      500
+#define KANGAROO_SPEED_BR               750
+#define KANGAROO_ROTATION_SPEED_BR      750
 #define KANGAROO_SPEED_SR               5000
 #define KANGAROO_ROTATION_SPEED_SR      5000
 
