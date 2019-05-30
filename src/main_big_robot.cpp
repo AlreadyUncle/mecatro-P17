@@ -15,9 +15,9 @@
 #include "components/SerialPort.h"
 #include "components/UltrasonicSensor.h"
 #include "components/SerialPort.h"
+#include "components/JackBigRobot.h"
 
 #include "strategy/Nodes.h"
-#include "components/Jack.h"
 
 using namespace std;
 using namespace BT;
@@ -25,17 +25,6 @@ using namespace BT;
 
 int main(int argc, char *argv[]) {
 
-    SerialPort sp;
-    if (sp.open("/dev/ttyUSB2",9600)!=-1){
-        cout<<"port opened"<<endl;
-        while (true){
-            cout<<sp.puts("1")<<endl;
-            delayMicroseconds(500000);}
-        }
-        else {cout<<"not ok"<<endl;}
-
-    /*
-}
     // -----------------------
     // Initialize logger
     loguru::init(argc, argv);
@@ -63,21 +52,22 @@ int main(int argc, char *argv[]) {
     AX12 axTurnArm(AX_ID_BR_TURN_ARM, portHandler, packetHandler);
 
     // Other
-    UltrasonicSensor frontSensor(FRONT_SENSOR_TRIGGER_PIN_BR, FRONT_SENSOR_ECHO_PIN_BR);
+    UltrasonicSensor frontSensorLeft(FRONT_SENSOR_LEFT_TRIGGER_PIN_BR, FRONT_SENSOR_LEFT_ECHO_PIN_BR);
+    UltrasonicSensor frontSensorRight(FRONT_SENSOR_RIGHT_TRIGGER_PIN_BR, FRONT_SENSOR_RIGHT_ECHO_PIN_BR);
     UltrasonicSensor backSensor(BACK_SENSOR_TRIGGER_PIN_BR, BACK_SENSOR_ECHO_PIN_BR);
     RelayModule pumpRelayModule(PUMP_RELAY_MODULE_PIN);
     RelayModule barrelRelayModule(BARREL_RELAY_MODULE_PIN);
     Encoder encoder;
-    Jack jack;
+    JackBigRobot jack;
     LCD screen("/dev/ttyUSB1");
 
     screen.reset();
     screen.toggleCursor(false);
     screen.printToScreenCentered("Piche  "
-                                 "ParisTech",1);
-    screen.printToScreenCentered("Coupe de France",2);
-    screen.printToScreenCentered("de Robotique 2k19",3);
-    screen.printToScreenCentered("Score = 2",4);
+                                 "ParisTech", 1);
+    screen.printToScreenCentered("Coupe de France", 2);
+    screen.printToScreenCentered("de Robotique 2k19", 3);
+    screen.printToScreenCentered("Score = 2", 4);
 
     // -----------------------
     // Create the behavior tree
@@ -94,7 +84,7 @@ int main(int argc, char *argv[]) {
     // Kangaroo
     NodeBuilder builderMoveAhead;
     builderMoveAhead = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAhead>(name, config, frontSensor, backSensor, kangaroo,true);
+        return std::make_unique<MoveAhead>(name, config, frontSensorLeft, frontSensorRight, backSensor, kangaroo, true);
     };
     NodeBuilder builderTurn;
     builderTurn = [&](const std::string &name, const NodeConfiguration &config) {
@@ -154,7 +144,7 @@ int main(int argc, char *argv[]) {
 
     // IMPORTANT: when the object "tree" goes out of scope, all the
     // TreeNodes are destroyed
-    auto tree = factory.createTreeFromFile("/home/pi/mecatro_P17/src/strategy/tree_dev.xml"); // requires absolute paths
+    auto tree = factory.createTreeFromFile("/home/pi/mecatro_P17/src/strategy/tree_homologation_score_big_robot.xml"); // requires absolute paths
 
     // This logger saves state changes on file
     MinitraceLogger logger_minitrace(tree, "/home/pi/mecatro_P17/log/bt_trace.json");
@@ -173,6 +163,6 @@ int main(int argc, char *argv[]) {
 
     pumpRelayModule.turnOff();
     barrelRelayModule.turnOff();
-*/
+
     return 0;
 }

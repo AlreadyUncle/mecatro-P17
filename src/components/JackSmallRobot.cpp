@@ -2,19 +2,19 @@
 // Created by Ibrahim Said on 5/22/2019.
 //
 
-#include "Jack.h"
+#include "JackSmallRobot.h"
 
-int Jack::jackPin  = 6;
-bool Jack::closed  = true;
+int JackSmallRobot::jackPin  = 6;
+bool JackSmallRobot::closed  = true;
 
-Jack::Jack() {
+JackSmallRobot::JackSmallRobot() {
     if (wiringPiSetup() == -1)
         LOG_F(ERROR, "Trying to initialize Jack, could not initialise wiringPi : %s", strerror(errno));
-    wiringPiISR (jackPin, INT_EDGE_RISING, &Jack::launch);
+    wiringPiISR (jackPin, INT_EDGE_RISING, &JackSmallRobot::launch);
     LOG_F(INFO, "Succeeded to initialise JackPin %d", jackPin);
 }
 
-void Jack::launch() {
+void JackSmallRobot::launch() {
     if(closed)
     {
         closed = false;
@@ -22,7 +22,7 @@ void Jack::launch() {
     }
 }
 
-void Jack::waitToRemove() {
+void JackSmallRobot::waitToRemove() {
     if(closed){
         waitForInterrupt(jackPin,-1);
     }

@@ -12,9 +12,9 @@
 #include <sys/time.h>
 #include "loguru.hpp"
 
-class Jack {
+class JackSmallRobot {
 public:
-    Jack();
+    JackSmallRobot();
 
     static void launch();
 

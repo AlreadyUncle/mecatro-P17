@@ -16,7 +16,7 @@
 #include "components/UltrasonicSensor.h"
 
 #include "strategy/Nodes.h"
-#include "components/Jack.h"
+#include "components/JackSmallRobot.h"
 
 using namespace std;
 using namespace BT;
@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
     // -----------------------
     // Execute the behavior tree
 
-    //jack.waitToRemove();
+    jack.waitToRemove();
 
     while (tree.root_node->executeTick() == NodeStatus::RUNNING) {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));

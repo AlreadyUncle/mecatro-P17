@@ -14,7 +14,9 @@
 #include "../components/RelayModule.h"
 #include "../components/Encoder.h"
 
-#define SERIAL_PORT_KANGAROO_BR         "/dev/ttyUSB0"
+#define SERIAL_PORT_KANGAROO_BR         "/dev/ttyUSB2"
+#define SERIAL_PORT_XBEE_BR             "/dev/ttyUSB0"
+#define SERIAL_PORT_ECRAN_BR            "/dev/ttyUSB1"
 #define SERIAL_PORT_KANGAROO_SR         "/dev/ttyUSB0"
 
 // Kangaroo
@@ -38,17 +40,19 @@
 #define AX_ID_SR_OPEN_PINCE             3
 
 // Other Pins definition
-#define SENSOR_OBSTACLE_THRESHOLD       300     // distance (in mm) under which obstacles are considered
-#define FRONT_SENSOR_TRIGGER_PIN_SR     4
-#define FRONT_SENSOR_ECHO_PIN_SR        5
-#define BACK_SENSOR_TRIGGER_PIN_SR      0
-#define BACK_SENSOR_ECHO_PIN_SR         2
-#define FRONT_SENSOR_TRIGGER_PIN_BR     5
-#define FRONT_SENSOR_ECHO_PIN_BR        4
-#define BACK_SENSOR_TRIGGER_PIN_BR      0
-#define BACK_SENSOR_ECHO_PIN_BR         2
-#define PUMP_RELAY_MODULE_PIN           21
-#define BARREL_RELAY_MODULE_PIN         22
+#define SENSOR_OBSTACLE_THRESHOLD           100     // distance (in mm) under which obstacles are considered
+#define FRONT_SENSOR_TRIGGER_PIN_SR         4
+#define FRONT_SENSOR_ECHO_PIN_SR            5
+#define BACK_SENSOR_TRIGGER_PIN_SR          0
+#define BACK_SENSOR_ECHO_PIN_SR             2
+#define FRONT_SENSOR_LEFT_TRIGGER_PIN_BR    5
+#define FRONT_SENSOR_LEFT_ECHO_PIN_BR       4
+#define FRONT_SENSOR_RIGHT_TRIGGER_PIN_BR   26
+#define FRONT_SENSOR_RIGHT_ECHO_PIN_BR      27
+#define BACK_SENSOR_TRIGGER_PIN_BR          0
+#define BACK_SENSOR_ECHO_PIN_BR             2
+#define PUMP_RELAY_MODULE_PIN               21
+#define BARREL_RELAY_MODULE_PIN             22
 
 using namespace BT;
 
@@ -61,10 +65,12 @@ namespace Robot {
      */
     class MoveAhead : public CoroActionNode {
     public:
-        MoveAhead(const std::string &name, const NodeConfiguration &config, UltrasonicSensor &frontSensor,
+        MoveAhead(const std::string &name, const NodeConfiguration &config, UltrasonicSensor &frontSensorLeft,
+                  UltrasonicSensor &frontSensorRight,
                   UltrasonicSensor &backSensor, Kangaroo &kangaroo, bool bigRobot) :
                 CoroActionNode(name, config),
-                _frontSensor(frontSensor),
+                _frontSensorLeft(frontSensorLeft),
+                _frontSensorRight(frontSensorRight),
                 _backSensor(backSensor),
                 _kangaroo(kangaroo),
                 _bigRobot(bigRobot) {}
@@ -85,7 +91,8 @@ namespace Robot {
     private:
         bool _bigRobot;
         bool isMoving = false;
-        UltrasonicSensor &_frontSensor;
+        UltrasonicSensor &_frontSensorLeft;
+        UltrasonicSensor &_frontSensorRight;
         UltrasonicSensor &_backSensor;
         Kangaroo &_kangaroo;
     };

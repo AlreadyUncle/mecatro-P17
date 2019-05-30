@@ -19,8 +19,8 @@ NodeStatus Robot::MoveAhead::tick() {
     int distanceToTravelMm = distanceInput.value();
 
     // Use the appropriate ultrasonic sensor to check for obstacles
-    UltrasonicSensor &sensor = distanceToTravelMm >= 0 ? _frontSensor : _backSensor;
-
+    UltrasonicSensor &sensorLeft = distanceToTravelMm >= 0 ? _frontSensorLeft : _backSensor;
+    UltrasonicSensor &sensorRight = distanceToTravelMm >= 0 ? _frontSensorRight : _backSensor;
 
     // ------------------------
     // Move or wait logic
@@ -30,10 +30,12 @@ NodeStatus Robot::MoveAhead::tick() {
 
     while (!isMoveCompleted) {
         // Check for any obstacles ahead
-        int distanceToObstacle = sensor.getDistance();
+        int distanceToObstacleLeft = sensorLeft.getDistance();
+        int distanceToObstacleRight = sensorRight.getDistance();
         // if we have an error code (distance < 0), we consider there is no obstacle
         // (note that ahead can mean front or back, depending on the current move direction)
-        bool obstacleAhead = (distanceToObstacle > 0 and distanceToObstacle < SENSOR_OBSTACLE_THRESHOLD);
+        bool obstacleAhead = (distanceToObstacleLeft > 0 and (distanceToObstacleLeft < SENSOR_OBSTACLE_THRESHOLD or
+                                                              distanceToObstacleRight < SENSOR_OBSTACLE_THRESHOLD));
 
 //todo: update distance traveled at each step with getp ?
 
