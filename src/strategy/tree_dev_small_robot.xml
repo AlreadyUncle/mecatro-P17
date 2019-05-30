@@ -21,11 +21,15 @@
                   angle="-90"/>
 
             <MoveAhead name="move"
-                       distance="750"/>
+                       distance="450"/>
 
             <Turn name="turn"
                   angle="-90"/>
 
+            <MoveAhead name="move forward"
+                       distance="600"/>
+            <MoveAhead name="move back"
+                       distance="-600"/>
             <MoveAhead name="move forward"
                        distance="600"/>
 

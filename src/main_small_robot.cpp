@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
     // Other
     UltrasonicSensor frontSensor(FRONT_SENSOR_TRIGGER_PIN_SR, FRONT_SENSOR_ECHO_PIN_SR);
     UltrasonicSensor backSensor(BACK_SENSOR_TRIGGER_PIN_SR, BACK_SENSOR_ECHO_PIN_SR);
-    Jack jack;
+    JackSmallRobot jack;
 
     // -----------------------
     // Create the behavior tree
@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
     // Kangaroo
     NodeBuilder builderMoveAhead;
     builderMoveAhead = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAhead>(name, config, frontSensor, backSensor, kangaroo, false);
+        return std::make_unique<MoveAhead>(name, config, frontSensor, frontSensor, backSensor, backSensor, kangaroo, false);
     };
     NodeBuilder builderTurn;
     builderTurn = [&](const std::string &name, const NodeConfiguration &config) {

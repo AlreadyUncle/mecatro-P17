@@ -23,6 +23,12 @@
             <MoveAhead name="move forward"
                        distance="600"/>
 
+            <MoveAhead name="move back"
+                       distance="-600"/>
+
+            <MoveAhead name="move forward"
+                       distance="600"/>
+
 
         </Sequence>
     </BehaviorTree>

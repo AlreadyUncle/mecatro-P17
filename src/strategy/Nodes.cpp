@@ -7,6 +7,7 @@
 // ------ Kangaroo -------
 NodeStatus Robot::MoveAhead::tick() {
     int speed = _bigRobot ? KANGAROO_SPEED_BR : KANGAROO_SPEED_SR;
+    int threshold = _bigRobot ? SENSOR_OBSTACLE_THRESHOLD_BR : SENSOR_OBSTACLE_THRESHOLD_SR;
     float unitsPerMm = _bigRobot ? UNITS_PER_MM_BR : UNITS_PER_MM_SR;
 
     // ------------------------
@@ -19,8 +20,8 @@ NodeStatus Robot::MoveAhead::tick() {
     int distanceToTravelMm = distanceInput.value();
 
     // Use the appropriate ultrasonic sensor to check for obstacles
-    UltrasonicSensor &sensorLeft = distanceToTravelMm >= 0 ? _frontSensorLeft : _backSensor;
-    UltrasonicSensor &sensorRight = distanceToTravelMm >= 0 ? _frontSensorRight : _backSensor;
+    UltrasonicSensor &sensorLeft = distanceToTravelMm >= 0 ? _frontSensorLeft : _backSensorLeft;
+    UltrasonicSensor &sensorRight = distanceToTravelMm >= 0 ? _frontSensorRight : _backSensorRight;
 
     // ------------------------
     // Move or wait logic
@@ -31,11 +32,15 @@ NodeStatus Robot::MoveAhead::tick() {
     while (!isMoveCompleted) {
         // Check for any obstacles ahead
         int distanceToObstacleLeft = sensorLeft.getDistance();
-        int distanceToObstacleRight = sensorRight.getDistance();
+        int distanceToObstacleRight;
+        if(_bigRobot)
+            distanceToObstacleRight = sensorRight.getDistance();
+        else
+            distanceToObstacleRight = distanceToObstacleLeft;
         // if we have an error code (distance < 0), we consider there is no obstacle
         // (note that ahead can mean front or back, depending on the current move direction)
-        bool obstacleAhead = (distanceToObstacleLeft > 0 and (distanceToObstacleLeft < SENSOR_OBSTACLE_THRESHOLD or
-                                                              distanceToObstacleRight < SENSOR_OBSTACLE_THRESHOLD));
+        bool obstacleAhead = ((distanceToObstacleLeft > 0 and distanceToObstacleLeft < threshold) or
+                            (distanceToObstacleRight > 0 and distanceToObstacleRight < threshold));
 
 //todo: update distance traveled at each step with getp ?
 
