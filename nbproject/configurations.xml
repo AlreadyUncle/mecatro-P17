@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="libs">
+        <df name="BehaviorTree.CPP-master">
+          <df name="3rdparty">
+            <df name="backward-cpp">
+              <in>backward.cpp</in>
+            </df>
+            <df name="minitrace">
+              <in>minitrace.cpp</in>
+            </df>
+          </df>
+          <df name="conan">
+            <df name="test_package">
+              <in>test_package.cpp</in>
+            </df>
+          </df>
+          <df name="examples">
+            <in>broken_sequence.cpp</in>
+            <in>t01_build_your_first_tree.cpp</in>
+            <in>t02_basic_ports.cpp</in>
+            <in>t03_generic_ports.cpp</in>
+            <in>t04_reactive_sequence.cpp</in>
+            <in>t05_crossdoor.cpp</in>
+            <in>t06_subtree_port_remapping.cpp</in>
+            <in>t07_wrap_legacy.cpp</in>
+            <in>t08_additional_node_args.cpp</in>
+            <in>t09_async_actions_coroutines.cpp</in>
+            <in>t10_include_trees.cpp</in>
+          </df>
+          <df name="sample_nodes">
+            <in>crossdoor_nodes.cpp</in>
+            <in>dummy_nodes.cpp</in>
+            <in>movebase_node.cpp</in>
+          </df>
+          <df name="src">
+            <df name="controls">
+              <in>fallback_node.cpp</in>
+              <in>parallel_node.cpp</in>
+              <in>reactive_fallback.cpp</in>
+              <in>reactive_sequence.cpp</in>
+              <in>sequence_node.cpp</in>
+              <in>sequence_star_node.cpp</in>
+            </df>
+            <df name="decorators">
+              <in>inverter_node.cpp</in>
+              <in>repeat_node.cpp</in>
+              <in>retry_node.cpp</in>
+              <in>subtree_node.cpp</in>
+              <in>timeout_node.cpp</in>
+            </df>
+            <df name="loggers">
+              <in>bt_cout_logger.cpp</in>
+              <in>bt_file_logger.cpp</in>
+              <in>bt_minitrace_logger.cpp</in>
+              <in>bt_zmq_publisher.cpp</in>
+            </df>
+            <df name="private">
+              <in>tinyxml2.cpp</in>
+            </df>
+            <in>action_node.cpp</in>
+            <in>basic_types.cpp</in>
+            <in>behavior_tree.cpp</in>
+            <in>blackboard.cpp</in>
+            <in>bt_factory.cpp</in>
+            <in>condition_node.cpp</in>
+            <in>control_node.cpp</in>
+            <in>decorator_node.cpp</in>
+            <in>example.cpp</in>
+            <in>shared_library.cpp</in>
+            <in>shared_library_UNIX.cpp</in>
+            <in>shared_library_WIN.cpp</in>
+            <in>tree_node.cpp</in>
+            <in>xml_parsing.cpp</in>
+          </df>
+          <df name="tests">
+            <df name="src">
+              <in>action_test_node.cpp</in>
+              <in>condition_test_node.cpp</in>
+            </df>
+            <in>gtest_blackboard.cpp</in>
+            <in>gtest_coroutines.cpp</in>
+            <in>gtest_decorator.cpp</in>
+            <in>gtest_factory.cpp</in>
+            <in>gtest_fallback.cpp</in>
+            <in>gtest_parallel.cpp</in>
+            <in>gtest_sequence.cpp</in>
+            <in>gtest_subtree.cpp</in>
+            <in>gtest_tree.cpp</in>
+            <in>navigation_test.cpp</in>
+          </df>
+          <df name="tools">
+            <in>bt_log_cat.cpp</in>
+            <in>bt_plugin_manifest.cpp</in>
+            <in>bt_recorder.cpp</in>
+          </df>
+        </df>
+        <df name="dxl_sdk_cpp_source">
+          <df name="example">
+            <df name="dxl_monitor">
+              <in>dxl_monitor.cpp</in>
+            </df>
+            <df name="protocol1.0">
+              <df name="bulk_read">
+                <in>bulk_read.cpp</in>
+              </df>
+              <df name="multi_port">
+                <in>multi_port.cpp</in>
+              </df>
+              <df name="ping">
+                <in>ping.cpp</in>
+              </df>
+              <df name="read_write">
+                <in>read_write.cpp</in>
+              </df>
+              <df name="reset">
+                <in>reset.cpp</in>
+              </df>
+              <df name="sync_write">
+                <in>sync_write.cpp</in>
+              </df>
+            </df>
+            <df name="protocol_combined">
+              <in>protocol_combined.cpp</in>
+            </df>
+          </df>
+          <df name="src">
+            <df name="dynamixel_sdk">
+              <in>group_bulk_read.cpp</in>
+              <in>group_bulk_write.cpp</in>
+              <in>group_sync_read.cpp</in>
+              <in>group_sync_write.cpp</in>
+              <in>packet_handler.cpp</in>
+              <in>port_handler.cpp</in>
+              <in>port_handler_arduino.cpp</in>
+              <in>port_handler_linux.cpp</in>
+              <in>port_handler_mac.cpp</in>
+              <in>port_handler_windows.cpp</in>
+              <in>protocol1_packet_handler.cpp</in>
+              <in>protocol2_packet_handler.cpp</in>
+            </df>
+          </df>
+        </df>
+        <df name="loguru">
+          <in>loguru.cpp</in>
+        </df>
+      </df>
+      <df name="old_examples">
+        <df name="kangaroo">
+          <in>kangaroo.cpp</in>
+          <in>kangaroo_fara1.cpp</in>
+          <in>main.cpp</in>
+          <in>serialport.cpp</in>
+        </df>
+      </df>
+      <df name="src">
+        <df name="components">
+          <in>AX12.cpp</in>
+          <in>Barillet.cpp</in>
+          <in>Jack.cpp</in>
+          <in>Kangaroo.cpp</in>
+          <in>LCD.cpp</in>
+          <in>SerialPort.cpp</in>
+          <in>UltrasonicSensor.cpp</in>
+          <in>Ventouse.cpp</in>
+        </df>
+        <df name="strategy">
+          <in>Nodes.cpp</in>
+        </df>
+        <in>main.cpp</in>
+        <in>main_LCD.cpp</in>
+        <in>main_big_robot.cpp</in>
+        <in>main_dev.cpp</in>
+      </df>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>CMakeLists.txt</itemPath>
+      <itemPath>Makefile</itemPath>
+      <itemPath>nbproject/private/launcher.properties</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
+          <preBuildCommand>${CMAKE} -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=${IDE_CC} -DCMAKE_CXX_COMPILER=${IDE_CXX} -DCMAKE_C_FLAGS_DEBUG="-g3 -gdwarf-2" -DCMAKE_CXX_FLAGS_DEBUG="-g3 -gdwarf-2" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON </preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <item path="libs/BehaviorTree.CPP-master/3rdparty/backward-cpp/backward.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/3rdparty/minitrace/minitrace.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/conan/test_package/test_package.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/examples/broken_sequence.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/examples/t01_build_your_first_tree.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/examples/t02_basic_ports.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/examples/t03_generic_ports.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/examples/t04_reactive_sequence.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/examples/t05_crossdoor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/examples/t06_subtree_port_remapping.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/examples/t07_wrap_legacy.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/examples/t08_additional_node_args.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/examples/t09_async_actions_coroutines.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/examples/t10_include_trees.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/sample_nodes/crossdoor_nodes.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/sample_nodes/dummy_nodes.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/sample_nodes/movebase_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/action_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/basic_types.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/behavior_tree.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/blackboard.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/bt_factory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/condition_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/control_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/controls/fallback_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/controls/parallel_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/controls/reactive_fallback.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/controls/reactive_sequence.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/controls/sequence_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/controls/sequence_star_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/decorator_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/decorators/inverter_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/decorators/repeat_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/decorators/retry_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/decorators/subtree_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/decorators/timeout_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/example.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/loggers/bt_cout_logger.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/loggers/bt_file_logger.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/loggers/bt_minitrace_logger.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/loggers/bt_zmq_publisher.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/private/tinyxml2.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/shared_library.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/shared_library_UNIX.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/shared_library_WIN.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/tree_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/src/xml_parsing.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tests/gtest_blackboard.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tests/gtest_coroutines.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tests/gtest_decorator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tests/gtest_factory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tests/gtest_fallback.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tests/gtest_parallel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tests/gtest_sequence.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tests/gtest_subtree.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tests/gtest_tree.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tests/navigation_test.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tests/src/action_test_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tests/src/condition_test_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tools/bt_log_cat.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tools/bt_plugin_manifest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/BehaviorTree.CPP-master/tools/bt_recorder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/example/dxl_monitor/dxl_monitor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/example/protocol1.0/bulk_read/bulk_read.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/example/protocol1.0/multi_port/multi_port.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/example/protocol1.0/ping/ping.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/example/protocol1.0/read_write/read_write.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/example/protocol1.0/reset/reset.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/example/protocol1.0/sync_write/sync_write.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/example/protocol_combined/protocol_combined.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/src/dynamixel_sdk/group_bulk_read.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/src/dynamixel_sdk/group_bulk_write.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/src/dynamixel_sdk/group_sync_read.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/src/dynamixel_sdk/group_sync_write.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/src/dynamixel_sdk/packet_handler.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/src/dynamixel_sdk/port_handler.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/src/dynamixel_sdk/port_handler_arduino.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/src/dynamixel_sdk/port_handler_linux.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/src/dynamixel_sdk/port_handler_mac.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/src/dynamixel_sdk/port_handler_windows.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/src/dynamixel_sdk/protocol1_packet_handler.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/dxl_sdk_cpp_source/src/dynamixel_sdk/protocol2_packet_handler.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="libs/loguru/loguru.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="old_examples/kangaroo/kangaroo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="old_examples/kangaroo/kangaroo_fara1.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="old_examples/kangaroo/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="old_examples/kangaroo/serialport.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/components/AX12.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/components/Barillet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/components/Jack.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/components/Kangaroo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/components/LCD.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/components/SerialPort.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/components/UltrasonicSensor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/components/Ventouse.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main_LCD.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main_big_robot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main_dev.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/strategy/Nodes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

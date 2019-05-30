@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="libs">
+        <df name="BehaviorTree.CPP-master">
+          <df name="3rdparty">
+            <df name="backward-cpp">
+              <in>backward.cpp</in>
+              <in>backward.hpp</in>
+            </df>
+            <df name="coroutine">
+              <in>coroutine.h</in>
+            </df>
+            <df name="filesystem">
+              <in>fwd.h</in>
+              <in>path.h</in>
+              <in>resolver.h</in>
+            </df>
+            <df name="flatbuffers">
+              <in>base.h</in>
+              <in>flatbuffers.h</in>
+              <in>stl_emulation.h</in>
+              <in>util.h</in>
+            </df>
+            <df name="minitrace">
+              <in>minitrace.cpp</in>
+              <in>minitrace.h</in>
+            </df>
+          </df>
+          <df name="conan">
+            <df name="test_package">
+              <in>test_package.cpp</in>
+            </df>
+            <df name="travis">
+            </df>
+          </df>
+          <df name="docs">
+            <df name="images">
+            </df>
+            <df name="uml">
+            </df>
+          </df>
+          <df name="examples">
+            <df name="test_files">
+              <df name="subtrees">
+              </df>
+            </df>
+            <in>broken_sequence.cpp</in>
+            <in>t01_build_your_first_tree.cpp</in>
+            <in>t02_basic_ports.cpp</in>
+            <in>t03_generic_ports.cpp</in>
+            <in>t04_reactive_sequence.cpp</in>
+            <in>t05_crossdoor.cpp</in>
+            <in>t06_subtree_port_remapping.cpp</in>
+            <in>t07_wrap_legacy.cpp</in>
+            <in>t08_additional_node_args.cpp</in>
+            <in>t09_async_actions_coroutines.cpp</in>
+            <in>t10_include_trees.cpp</in>
+          </df>
+          <df name="include">
+            <df name="behaviortree_cpp">
+              <df name="actions">
+                <in>always_failure_node.h</in>
+                <in>always_success_node.h</in>
+                <in>set_blackboard_node.h</in>
+              </df>
+              <df name="controls">
+                <in>fallback_node.h</in>
+                <in>parallel_node.h</in>
+                <in>reactive_fallback.h</in>
+                <in>reactive_sequence.h</in>
+                <in>sequence_node.h</in>
+                <in>sequence_star_node.h</in>
+              </df>
+              <df name="decorators">
+                <in>blackboard_precondition.h</in>
+                <in>force_failure_node.h</in>
+                <in>force_success_node.h</in>
+                <in>inverter_node.h</in>
+                <in>repeat_node.h</in>
+                <in>retry_node.h</in>
+                <in>subtree_node.h</in>
+                <in>timeout_node.h</in>
+                <in>timer_queue.h</in>
+              </df>
+              <df name="flatbuffers">
+                <in>BT_logger_generated.h</in>
+                <in>base.h</in>
+                <in>bt_flatbuffer_helper.h</in>
+                <in>flatbuffers.h</in>
+              </df>
+              <df name="loggers">
+                <in>abstract_logger.h</in>
+                <in>bt_cout_logger.h</in>
+                <in>bt_file_logger.h</in>
+                <in>bt_minitrace_logger.h</in>
+                <in>bt_zmq_publisher.h</in>
+              </df>
+              <df name="utils">
+                <in>any.hpp</in>
+                <in>convert_impl.hpp</in>
+                <in>demangle_util.h</in>
+                <in>expected.hpp</in>
+                <in>make_unique.hpp</in>
+                <in>platform.hpp</in>
+                <in>safe_any.hpp</in>
+                <in>shared_library.h</in>
+                <in>signal.h</in>
+                <in>simple_string.hpp</in>
+                <in>strcat.hpp</in>
+                <in>string_view.hpp</in>
+              </df>
+              <in>action_node.h</in>
+              <in>basic_types.h</in>
+              <in>behavior_tree.h</in>
+              <in>blackboard.h</in>
+              <in>bt_factory.h</in>
+              <in>bt_parser.h</in>
+              <in>condition_node.h</in>
+              <in>control_node.h</in>
+              <in>decorator_node.h</in>
+              <in>exceptions.h</in>
+              <in>leaf_node.h</in>
+              <in>tree_node.h</in>
+              <in>xml_parsing.h</in>
+            </df>
+          </df>
+          <df name="sample_nodes">
+            <in>crossdoor_nodes.cpp</in>
+            <in>crossdoor_nodes.h</in>
+            <in>dummy_nodes.cpp</in>
+            <in>dummy_nodes.h</in>
+            <in>movebase_node.cpp</in>
+            <in>movebase_node.h</in>
+          </df>
+          <df name="src">
+            <df name="controls">
+              <in>fallback_node.cpp</in>
+              <in>parallel_node.cpp</in>
+              <in>reactive_fallback.cpp</in>
+              <in>reactive_sequence.cpp</in>
+              <in>sequence_node.cpp</in>
+              <in>sequence_star_node.cpp</in>
+            </df>
+            <df name="decorators">
+              <in>inverter_node.cpp</in>
+              <in>repeat_node.cpp</in>
+              <in>retry_node.cpp</in>
+              <in>subtree_node.cpp</in>
+              <in>timeout_node.cpp</in>
+            </df>
+            <df name="loggers">
+              <in>bt_cout_logger.cpp</in>
+              <in>bt_file_logger.cpp</in>
+              <in>bt_minitrace_logger.cpp</in>
+              <in>bt_zmq_publisher.cpp</in>
+            </df>
+            <df name="private">
+              <in>tinyxml2.cpp</in>
+              <in>tinyxml2.h</in>
+            </df>
+            <in>action_node.cpp</in>
+            <in>basic_types.cpp</in>
+            <in>behavior_tree.cpp</in>
+            <in>blackboard.cpp</in>
+            <in>bt_factory.cpp</in>
+            <in>condition_node.cpp</in>
+            <in>control_node.cpp</in>
+            <in>decorator_node.cpp</in>
+            <in>example.cpp</in>
+            <in>shared_library.cpp</in>
+            <in>shared_library_UNIX.cpp</in>
+            <in>shared_library_WIN.cpp</in>
+            <in>tree_node.cpp</in>
+            <in>xml_parsing.cpp</in>
+          </df>
+          <df name="tests">
+            <df name="include">
+              <in>action_test_node.h</in>
+              <in>condition_test_node.h</in>
+            </df>
+            <df name="src">
+              <in>action_test_node.cpp</in>
+              <in>condition_test_node.cpp</in>
+            </df>
+            <in>gtest_blackboard.cpp</in>
+            <in>gtest_coroutines.cpp</in>
+            <in>gtest_decorator.cpp</in>
+            <in>gtest_factory.cpp</in>
+            <in>gtest_fallback.cpp</in>
+            <in>gtest_parallel.cpp</in>
+            <in>gtest_sequence.cpp</in>
+            <in>gtest_subtree.cpp</in>
+            <in>gtest_tree.cpp</in>
+            <in>navigation_test.cpp</in>
+          </df>
+          <df name="tools">
+            <in>bt_log_cat.cpp</in>
+            <in>bt_plugin_manifest.cpp</in>
+            <in>bt_recorder.cpp</in>
+          </df>
+        </df>
+        <df name="dxl_sdk_cpp_source">
+          <df name="build">
+            <df name="linux_sbc">
+            </df>
+          </df>
+          <df name="example">
+            <df name="dxl_monitor">
+              <df name="linux_sbc">
+              </df>
+              <in>dxl_monitor.cpp</in>
+            </df>
+            <df name="protocol1.0">
+              <df name="bulk_read">
+                <df name="linux_sbc">
+                </df>
+                <in>bulk_read.cpp</in>
+              </df>
+              <df name="multi_port">
+                <df name="linux_sbc">
+                </df>
+                <in>multi_port.cpp</in>
+              </df>
+              <df name="ping">
+                <df name="linux_sbc">
+                </df>
+                <in>ping.cpp</in>
+              </df>
+              <df name="read_write">
+                <df name="linux_sbc">
+                </df>
+                <in>read_write.cpp</in>
+              </df>
+              <df name="reset">
+                <df name="linux_sbc">
+                </df>
+                <in>reset.cpp</in>
+              </df>
+              <df name="sync_write">
+                <df name="linux_sbc">
+                </df>
+                <in>sync_write.cpp</in>
+              </df>
+            </df>
+            <df name="protocol_combined">
+              <df name="linux_sbc">
+              </df>
+              <in>protocol_combined.cpp</in>
+            </df>
+          </df>
+          <df name="include">
+            <df name="dynamixel_sdk">
+              <in>dynamixel_sdk.h</in>
+              <in>group_bulk_read.h</in>
+              <in>group_bulk_write.h</in>
+              <in>group_sync_read.h</in>
+              <in>group_sync_write.h</in>
+              <in>packet_handler.h</in>
+              <in>port_handler.h</in>
+              <in>port_handler_arduino.h</in>
+              <in>port_handler_linux.h</in>
+              <in>port_handler_mac.h</in>
+              <in>port_handler_windows.h</in>
+              <in>protocol1_packet_handler.h</in>
+              <in>protocol2_packet_handler.h</in>
+            </df>
+          </df>
+          <df name="src">
+            <df name="dynamixel_sdk">
+              <in>group_bulk_read.cpp</in>
+              <in>group_bulk_write.cpp</in>
+              <in>group_sync_read.cpp</in>
+              <in>group_sync_write.cpp</in>
+              <in>packet_handler.cpp</in>
+              <in>port_handler.cpp</in>
+              <in>port_handler_arduino.cpp</in>
+              <in>port_handler_linux.cpp</in>
+              <in>port_handler_mac.cpp</in>
+              <in>port_handler_windows.cpp</in>
+              <in>protocol1_packet_handler.cpp</in>
+              <in>protocol2_packet_handler.cpp</in>
+            </df>
+            <in>DynamixelSDK.h</in>
+          </df>
+        </df>
+        <df name="loguru">
+          <in>loguru.cpp</in>
+          <in>loguru.hpp</in>
+        </df>
+      </df>
+      <df name="old_examples">
+        <df name="kangaroo">
+          <in>kangaroo.cpp</in>
+          <in>kangaroo.h</in>
+          <in>kangaroo_fara1.cpp</in>
+          <in>main.cpp</in>
+          <in>serialport.cpp</in>
+          <in>serialport.h</in>
+        </df>
+      </df>
+      <df name="src">
+        <df name="components">
+          <in>AX12.cpp</in>
+          <in>AX12.h</in>
+          <in>Barillet.cpp</in>
+          <in>Barillet.h</in>
+          <in>Jack.cpp</in>
+          <in>Jack.h</in>
+          <in>Kangaroo.cpp</in>
+          <in>Kangaroo.h</in>
+          <in>LCD.cpp</in>
+          <in>LCD.h</in>
+          <in>SerialPort.cpp</in>
+          <in>SerialPort.h</in>
+          <in>UltrasonicSensor.cpp</in>
+          <in>UltrasonicSensor.h</in>
+          <in>Ventouse.cpp</in>
+          <in>Ventouse.h</in>
+        </df>
+        <df name="strategy">
+          <in>Nodes.cpp</in>
+          <in>Nodes.h</in>
+        </df>
+        <in>main.cpp</in>
+        <in>main_LCD.cpp</in>
+        <in>main_big_robot.cpp</in>
+        <in>main_dev.cpp</in>
+      </df>
+    </df>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>pi@192.168.43.237:22</developmentServer>
+        <platform>2</platform>
+      </toolsSet>
+      <compile>
+        <compiledirpicklist>
+          <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
+        </compiledirpicklist>
+        <compiledir>${AUTO_FOLDER}</compiledir>
+        <compilecommandpicklist>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+        </compilecommandpicklist>
+        <compilecommand>${AUTO_COMPILE}</compilecommand>
+      </compile>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <rundir>.</rundir>
+        <buildfirst>false</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>

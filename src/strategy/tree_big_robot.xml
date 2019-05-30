@@ -72,7 +72,7 @@
             <Turn name="turn"
                   angle="-90"/>
 
-            <!--            Move to atoms-->
+            <!-- Move to atoms -->
             <MoveAhead name="move ahead"
                        distance="260"/>
             <Wait name="wait 1"

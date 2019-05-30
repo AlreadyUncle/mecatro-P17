@@ -54,7 +54,8 @@ int main(int argc, char *argv[]) {
     // Other
     UltrasonicSensor frontSensorLeft(FRONT_SENSOR_LEFT_TRIGGER_PIN_BR, FRONT_SENSOR_LEFT_ECHO_PIN_BR);
     UltrasonicSensor frontSensorRight(FRONT_SENSOR_RIGHT_TRIGGER_PIN_BR, FRONT_SENSOR_RIGHT_ECHO_PIN_BR);
-    UltrasonicSensor backSensor(BACK_SENSOR_TRIGGER_PIN_BR, BACK_SENSOR_ECHO_PIN_BR);
+    UltrasonicSensor backSensorLeft(BACK_SENSOR_LEFT_TRIGGER_PIN_BR, BACK_SENSOR_LEFT_ECHO_PIN_BR);
+    UltrasonicSensor backSensorRight(BACK_SENSOR_RIGHT_TRIGGER_PIN_BR, BACK_SENSOR_RIGHT_ECHO_PIN_BR);
     RelayModule pumpRelayModule(PUMP_RELAY_MODULE_PIN);
     RelayModule barrelRelayModule(BARREL_RELAY_MODULE_PIN);
     Encoder encoder;
@@ -84,7 +85,7 @@ int main(int argc, char *argv[]) {
     // Kangaroo
     NodeBuilder builderMoveAhead;
     builderMoveAhead = [&](const std::string &name, const NodeConfiguration &config) {
-        return std::make_unique<MoveAhead>(name, config, frontSensorLeft, frontSensorRight, backSensor, kangaroo, true);
+        return std::make_unique<MoveAhead>(name, config, frontSensorLeft, frontSensorRight, backSensorLeft, backSensorRight, kangaroo, true);
     };
     NodeBuilder builderTurn;
     builderTurn = [&](const std::string &name, const NodeConfiguration &config) {
@@ -144,7 +145,7 @@ int main(int argc, char *argv[]) {
 
     // IMPORTANT: when the object "tree" goes out of scope, all the
     // TreeNodes are destroyed
-    auto tree = factory.createTreeFromFile("/home/pi/mecatro_P17/src/strategy/tree_big_robot.xml"); // requires absolute paths
+    auto tree = factory.createTreeFromFile("/home/pi/mecatro_P17/src/strategy/tree_homologation_score_big_robot.xml"); // requires absolute paths
 
     // This logger saves state changes on file
     MinitraceLogger logger_minitrace(tree, "/home/pi/mecatro_P17/log/bt_trace.json");

@@ -40,7 +40,8 @@
 #define AX_ID_SR_OPEN_PINCE             3
 
 // Other Pins definition
-#define SENSOR_OBSTACLE_THRESHOLD           10     // distance (in mm) under which obstacles are considered
+#define SENSOR_OBSTACLE_THRESHOLD_SR           240     // distance (in mm) under which obstacles are considered
+#define SENSOR_OBSTACLE_THRESHOLD_BR           200     // distance (in mm) under which obstacles are considered
 #define FRONT_SENSOR_TRIGGER_PIN_SR         4
 #define FRONT_SENSOR_ECHO_PIN_SR            5
 #define BACK_SENSOR_TRIGGER_PIN_SR          0
@@ -49,8 +50,10 @@
 #define FRONT_SENSOR_LEFT_ECHO_PIN_BR       4
 #define FRONT_SENSOR_RIGHT_TRIGGER_PIN_BR   26
 #define FRONT_SENSOR_RIGHT_ECHO_PIN_BR      27
-#define BACK_SENSOR_TRIGGER_PIN_BR          0
-#define BACK_SENSOR_ECHO_PIN_BR             2
+#define BACK_SENSOR_LEFT_TRIGGER_PIN_BR     3
+#define BACK_SENSOR_LEFT_ECHO_PIN_BR        7
+#define BACK_SENSOR_RIGHT_TRIGGER_PIN_BR    0
+#define BACK_SENSOR_RIGHT_ECHO_PIN_BR       2
 #define PUMP_RELAY_MODULE_PIN               21
 #define BARREL_RELAY_MODULE_PIN             22
 
@@ -66,12 +69,13 @@ namespace Robot {
     class MoveAhead : public CoroActionNode {
     public:
         MoveAhead(const std::string &name, const NodeConfiguration &config, UltrasonicSensor &frontSensorLeft,
-                  UltrasonicSensor &frontSensorRight,
-                  UltrasonicSensor &backSensor, Kangaroo &kangaroo, bool bigRobot) :
+                  UltrasonicSensor &frontSensorRight, UltrasonicSensor &backSensorLeft,
+                  UltrasonicSensor &backSensorRight, Kangaroo &kangaroo, bool bigRobot) :
                 CoroActionNode(name, config),
                 _frontSensorLeft(frontSensorLeft),
                 _frontSensorRight(frontSensorRight),
-                _backSensor(backSensor),
+                _backSensorLeft(backSensorLeft),
+                _backSensorRight(backSensorRight),
                 _kangaroo(kangaroo),
                 _bigRobot(bigRobot) {}
 
@@ -93,7 +97,8 @@ namespace Robot {
         bool isMoving = false;
         UltrasonicSensor &_frontSensorLeft;
         UltrasonicSensor &_frontSensorRight;
-        UltrasonicSensor &_backSensor;
+        UltrasonicSensor &_backSensorLeft;
+        UltrasonicSensor &_backSensorRight;
         Kangaroo &_kangaroo;
     };
 
