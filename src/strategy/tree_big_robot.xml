@@ -23,7 +23,7 @@
             <Turn name="adjust"
                   angle="-1"/>
 
-            <!-- Pick up atoms -->
+            <!-- Pick up atoms-->
             <SubTree ID="PickAtomRight"/>
             <SetBlackboard output_key="barrelGoalPosition" value="9535"/>
             <SubTree ID="TurnBarrel"
