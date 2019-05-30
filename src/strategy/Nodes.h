@@ -5,6 +5,7 @@
 #ifndef MECATRO_P17_NODES_H
 #define MECATRO_P17_NODES_H
 
+#include "thread"
 #include "behaviortree_cpp/behavior_tree.h"
 #include "loguru.hpp"
 #include "../components/UltrasonicSensor.h"

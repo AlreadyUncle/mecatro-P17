@@ -33,14 +33,15 @@ NodeStatus Robot::MoveAhead::tick() {
         // Check for any obstacles ahead
         int distanceToObstacleLeft = sensorLeft.getDistance();
         int distanceToObstacleRight;
-        if(_bigRobot)
+        if (_bigRobot) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(50));
             distanceToObstacleRight = sensorRight.getDistance();
-        else
+        } else
             distanceToObstacleRight = distanceToObstacleLeft;
         // if we have an error code (distance < 0), we consider there is no obstacle
         // (note that ahead can mean front or back, depending on the current move direction)
         bool obstacleAhead = ((distanceToObstacleLeft > 0 and distanceToObstacleLeft < threshold) or
-                            (distanceToObstacleRight > 0 and distanceToObstacleRight < threshold));
+                              (distanceToObstacleRight > 0 and distanceToObstacleRight < threshold));
 
 //todo: update distance traveled at each step with getp ?
 
