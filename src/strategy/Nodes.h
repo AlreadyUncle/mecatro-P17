@@ -28,7 +28,7 @@
 #define UNITS_PER_DEGREE_SR             134.389
 #define KANGAROO_SPEED_BR               750
 #define KANGAROO_ROTATION_SPEED_BR      750
-#define KANGAROO_SPEED_SR               5000
+#define KANGAROO_SPEED_SR               8000
 #define KANGAROO_ROTATION_SPEED_SR      5000
 
 // AX-12
@@ -46,7 +46,7 @@
 
 
 // Other Pins definition
-#define SENSOR_OBSTACLE_THRESHOLD_SR           240     // distance (in mm) under which obstacles are considered
+#define SENSOR_OBSTACLE_THRESHOLD_SR           20     // distance (in mm) under which obstacles are considered
 #define SENSOR_OBSTACLE_THRESHOLD_BR           20     // distance (in mm) under which obstacles are considered
 #define FRONT_SENSOR_TRIGGER_PIN_SR         4
 #define FRONT_SENSOR_ECHO_PIN_SR            5
