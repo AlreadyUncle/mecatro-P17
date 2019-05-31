@@ -46,8 +46,10 @@
 
 
 // Other Pins definition
-#define SENSOR_OBSTACLE_THRESHOLD_SR           20     // distance (in mm) under which obstacles are considered
-#define SENSOR_OBSTACLE_THRESHOLD_BR           20     // distance (in mm) under which obstacles are considered
+#define SENSOR_OBSTACLE_THRESHOLD_SR        20     // distance (in mm) under which obstacles are considered
+#define SENSOR_OBSTACLE_LOW_THRESHOLD_BR    20     // (very low threshold, basically no obstacle detection)
+#define SENSOR_OBSTACLE_HIGH_THRESHOLD_BR   100    // higher threshold
+
 #define FRONT_SENSOR_TRIGGER_PIN_SR         4
 #define FRONT_SENSOR_ECHO_PIN_SR            5
 #define BACK_SENSOR_TRIGGER_PIN_SR          0
@@ -70,6 +72,7 @@ namespace Robot {
     /**
      * Move (forward or backward, depending on the signe of `distance`) a certain distance, while checking the obstacles.
      * If there are any obstacles, stop and wait.
+     * By default,
      * Return RUNNING until the movement is completed, then return SUCCESS.
      */
     class MoveAhead : public CoroActionNode {
@@ -94,7 +97,8 @@ namespace Robot {
         // It is mandatory to define this static method.
         static PortsList providedPorts() {
             return {
-                    InputPort<int>("distance")
+                    InputPort<int>("distance"),
+                    InputPort<bool>("avoidCollusion")
             };
         }
 

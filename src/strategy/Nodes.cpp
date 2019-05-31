@@ -7,8 +7,15 @@
 // ------ Kangaroo -------
 NodeStatus Robot::MoveAhead::tick() {
     int speed = _bigRobot ? KANGAROO_SPEED_BR : KANGAROO_SPEED_SR;
-    int threshold = _bigRobot ? SENSOR_OBSTACLE_THRESHOLD_BR : SENSOR_OBSTACLE_THRESHOLD_SR;
+    int threshold = _bigRobot ? SENSOR_OBSTACLE_LOW_THRESHOLD_BR : SENSOR_OBSTACLE_THRESHOLD_SR;
     float unitsPerMm = _bigRobot ? UNITS_PER_MM_BR : UNITS_PER_MM_SR;
+
+    auto avoidCollisionInput = getInput<bool>("avoidCollision");
+    if (avoidCollisionInput and avoidCollisionInput.value()) {
+           threshold = SENSOR_OBSTACLE_HIGH_THRESHOLD_BR;
+           LOG_F(INFO, "Moving ahead with high sensitivity threshold to avoid collisions");
+    }
+
 
     // ------------------------
     // Read move instructions from the blackboard
