@@ -273,3 +273,12 @@ bool Kangaroo::turnB(int angle, int v, bool verbose) {
     } while (!moveCompleted);
     return retour;
 }
+
+void Kangaroo::stop() {
+    if (current_mode == drive)
+        startStraightMove(0, 0);
+    else if (current_mode == turn)
+        startTurnMove(0, 0);
+    else
+        LOG_F(ERROR, "Could not stop kangaroo, current mode not recognized");
+}

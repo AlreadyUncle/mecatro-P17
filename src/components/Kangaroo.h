@@ -59,6 +59,11 @@ public:
      */
     string getRawPosition();
 
+    /**
+     * Go to a pos 0 at speed 0, in drive then in turn mode
+     */
+    void stop();
+
     int getPositionMax(mode m, int &positionMax); // retourne le range de position maximal
     int getPositionMin(mode m, int &positionMin); //retourne le range de position minimal
     int getSpeed(mode m, int &speed); //retourne la vitesse

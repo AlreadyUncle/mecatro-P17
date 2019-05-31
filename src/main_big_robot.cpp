@@ -147,14 +147,21 @@ int main(int argc, char *argv[]) {
     pumpRelayModule.turnOff();      // turn off the relays if the pins are ON for whatever reason
     barrelRelayModule.turnOff();
 
+    bool isPurple = true; // TO UPDATE BEFORE EACH MATCH !
+    std::string treePath =
+            "/home/pi/mecatro_P17/src/strategy/tree_big_robot_";
+    treePath += (isPurple ? "purple" : "yellow");
+    treePath += ".xml";
+    LOG_F(INFO, "STARTING SIDE : %s", isPurple ? "Purple" : "Yellow");
+
     jack.waitToRemove();
 
     // -----------------------
     // Execute the behavior tree
     // IMPORTANT: when the object "tree" goes out of scope, all the
     // TreeNodes are destroyed
-    auto tree = factory.createTreeFromFile(
-            "/home/pi/mecatro_P17/src/strategy/tree_big_robot.xml"); // requires absolute paths
+    auto tree = factory.createTreeFromFile(treePath); // requires absolute paths
+    //auto tree = factory.createTreeFromFile("/home/pi/mecatro_P17/src/strategy/tree_homologation_score_big_robot.xml"); // requires absolute paths
 
     // This logger saves state changes on file
     MinitraceLogger logger_minitrace(tree, "/home/pi/mecatro_P17/log/bt_trace.json");
@@ -165,10 +172,18 @@ int main(int argc, char *argv[]) {
     pumpRelayModule.turnOff();
     barrelRelayModule.turnOff();
 
+    auto initialTime = std::chrono::system_clock::now();
+    auto timeOut = std::chrono::seconds(2);
     while (tree.root_node->executeTick() == NodeStatus::RUNNING) {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
+
+        if (std::chrono::system_clock::now() > initialTime + timeOut) {
+            LOG_F(INFO, "STOPPING MATCH - Timeout %dsec reached", timeOut);
+            break;
+        }
     }
 
+    kangaroo.stop();
     pumpRelayModule.turnOff();
     barrelRelayModule.turnOff();
 
