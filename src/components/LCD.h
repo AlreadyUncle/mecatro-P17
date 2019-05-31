@@ -10,10 +10,8 @@
 class LCD {
 
 public:
-    SerialPort m_serialPortOutput;
-    bool m_isOpened;
 
-    LCD(string portName);
+    explicit LCD(string portName);
 
     void reset();
 
@@ -26,6 +24,10 @@ public:
     void printToScreen(string s, int row = 1, int offset = 0);
 
     void printToScreenCentered(string s, int row = 1);
+
+private:
+    SerialPort m_serialPortOutput;
+    bool m_isOpened;
 };
 
 #endif //MECATRO_LCD_H

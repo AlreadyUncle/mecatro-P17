@@ -247,7 +247,8 @@ NodeStatus Robot::UpdateScore::tick() {
     int pointsEarned = pointsEarnedInput.value();
     currentScore += pointsEarned;
 
-    _lcd.printToScreenCentered("Score : " + std::to_string(currentScore));
+    _lcd.printToScreenCentered("EuroPiche - MINES ParisTech", 2);
+    _lcd.printToScreenCentered("Score : " + std::to_string(currentScore), 2);
     LOG_F(INFO, "Added %d to the score. New current score :%d", pointsEarned, currentScore);
 
     return NodeStatus::SUCCESS;

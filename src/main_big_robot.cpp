@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
                                  "ParisTech", 1);
     screen.printToScreenCentered("Coupe de France", 2);
     screen.printToScreenCentered("de Robotique 2k19", 3);
-    screen.printToScreenCentered("Score = 2", 4);
+    screen.printToScreenCentered("Score = 90", 4);
 
     // -----------------------
     // Create the behavior tree
@@ -147,7 +147,7 @@ int main(int argc, char *argv[]) {
     pumpRelayModule.turnOff();      // turn off the relays if the pins are ON for whatever reason
     barrelRelayModule.turnOff();
 
-    bool isPurple = true; // TO UPDATE BEFORE EACH MATCH !
+    bool isPurple = false; // TO UPDATE BEFORE EACH MATCH !
     std::string treePath =
             "/home/pi/mecatro_P17/src/strategy/tree_big_robot_";
     treePath += (isPurple ? "purple" : "yellow");
@@ -173,7 +173,21 @@ int main(int argc, char *argv[]) {
     barrelRelayModule.turnOff();
 
     auto initialTime = std::chrono::system_clock::now();
-    auto timeOut = std::chrono::seconds(2);
+    auto timeOut = std::chrono::seconds(99);
+
+    // -----------------------
+    // Turn on the experiment
+    SerialPort xBee;
+    if (xBee.open(SERIAL_PORT_XBEE_SR, 9600) != -1) {
+        LOG_F(INFO, "XBee Serial Port opened");
+        for(int i=0;i<100;i++){
+            xBee.puts("!@#$%^&*()");
+            LOG_F(INFO, "String sent to Xbee");
+        }
+    } else
+        LOG_F(ERROR, "Could not open Xbee serial port");
+
+
     while (tree.root_node->executeTick() == NodeStatus::RUNNING) {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
