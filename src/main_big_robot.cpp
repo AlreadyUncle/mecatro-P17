@@ -146,6 +146,7 @@ int main(int argc, char *argv[]) {
     // Initialization code
     pumpRelayModule.turnOff();      // turn off the relays if the pins are ON for whatever reason
     barrelRelayModule.turnOff();
+
     jack.waitToRemove();
 
     // -----------------------
@@ -163,8 +164,6 @@ int main(int argc, char *argv[]) {
     // Execute the behavior tree
     pumpRelayModule.turnOff();
     barrelRelayModule.turnOff();
-
-    jack.waitToRemove();
 
     while (tree.root_node->executeTick() == NodeStatus::RUNNING) {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));

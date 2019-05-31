@@ -174,7 +174,7 @@ NodeStatus Robot::MoveAX12Joint::tick() {
         previousPosition=currentPosition;
         setStatusRunningAndYield();
     }
-    _ax.goToPositionJointMode(currentPosition);
+    _ax.goToPositionJointMode(currentPosition); // stop the movement if something is blocking the AX 12
 
     cleanup(false);
     return NodeStatus::SUCCESS;

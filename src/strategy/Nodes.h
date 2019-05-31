@@ -16,9 +16,9 @@
 #include "../components/Encoder.h"
 
 #define SERIAL_PORT_KANGAROO_BR         "/dev/ttyUSB0"
+#define SERIAL_PORT_ECRAN_BR            "/dev/serial0"
 #define SERIAL_PORT_KANGAROO_SR         "/dev/ttyUSB0"
 #define SERIAL_PORT_XBEE_SR             "/dev/ttyUSB1"
-#define SERIAL_PORT_ECRAN_BR            "/dev/ttyUSB1"
 
 
 // Kangaroo
@@ -26,9 +26,9 @@
 #define UNITS_PER_MM_SR                 59.22
 #define UNITS_PER_DEGREE_BR             13.89
 #define UNITS_PER_DEGREE_SR             134.389
-#define KANGAROO_SPEED_BR               500
-#define KANGAROO_ROTATION_SPEED_BR      500
-#define KANGAROO_SPEED_SR               5000
+#define KANGAROO_SPEED_BR               750
+#define KANGAROO_ROTATION_SPEED_BR      750
+#define KANGAROO_SPEED_SR               8000
 #define KANGAROO_ROTATION_SPEED_SR      5000
 
 // AX-12
@@ -40,9 +40,13 @@
 #define AX_ID_BR_MOVE_ARM_FRONT         4
 #define AX_ID_BR_TURN_ARM               5
 #define AX_ID_SR_OPEN_PINCE             3
+#define AX_ID_SR_MOVE_ARM_SIDE          4
+#define AX_ID_SR_MOVE_ARM_FRONT         2
+#define AX_ID_SR_TURN_ARM               5
+
 
 // Other Pins definition
-#define SENSOR_OBSTACLE_THRESHOLD_SR           240     // distance (in mm) under which obstacles are considered
+#define SENSOR_OBSTACLE_THRESHOLD_SR           20     // distance (in mm) under which obstacles are considered
 #define SENSOR_OBSTACLE_THRESHOLD_BR           20     // distance (in mm) under which obstacles are considered
 #define FRONT_SENSOR_TRIGGER_PIN_SR         4
 #define FRONT_SENSOR_ECHO_PIN_SR            5
