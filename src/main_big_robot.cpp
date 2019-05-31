@@ -147,7 +147,7 @@ int main(int argc, char *argv[]) {
     pumpRelayModule.turnOff();      // turn off the relays if the pins are ON for whatever reason
     barrelRelayModule.turnOff();
 
-    bool isPurple = false; // TO UPDATE BEFORE EACH MATCH !
+    bool isPurple = true; // TO UPDATE BEFORE EACH MATCH !
     std::string treePath =
             "/home/pi/mecatro_P17/src/strategy/tree_big_robot_";
     treePath += (isPurple ? "purple" : "yellow");
@@ -155,6 +155,9 @@ int main(int argc, char *argv[]) {
     LOG_F(INFO, "STARTING SIDE : %s", isPurple ? "Purple" : "Yellow");
 
     jack.waitToRemove();
+
+    auto initialTime = std::chrono::system_clock::now();
+    auto timeOut = std::chrono::seconds(99);
 
     // -----------------------
     // Execute the behavior tree
@@ -172,13 +175,12 @@ int main(int argc, char *argv[]) {
     pumpRelayModule.turnOff();
     barrelRelayModule.turnOff();
 
-    auto initialTime = std::chrono::system_clock::now();
-    auto timeOut = std::chrono::seconds(99);
+
 
     // -----------------------
     // Turn on the experiment
     SerialPort xBee;
-    if (xBee.open(SERIAL_PORT_XBEE_SR, 9600) != -1) {
+    if (xBee.open(SERIAL_PORT_XBEE_BR, 9600) != -1) {
         LOG_F(INFO, "XBee Serial Port opened");
         for(int i=0;i<100;i++){
             xBee.puts("!@#$%^&*()");

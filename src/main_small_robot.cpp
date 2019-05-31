@@ -125,7 +125,7 @@ int main(int argc, char *argv[]) {
     } else
         LOG_F(ERROR, "Could not open Xbee serial port");
 
-/*
+
     // -----------------------
     // Execute the behavior tree
 

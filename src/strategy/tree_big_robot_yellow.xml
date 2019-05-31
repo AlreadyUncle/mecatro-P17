@@ -38,49 +38,63 @@
                   angle="-1"/>
 
             <!-- Pick up atoms-->
-            <SubTree ID="PickAtomRight"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="9535"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
 
-            <MoveAhead name="move ahead"
-                       distance="-100"/>
             <SubTree ID="PickAtomRight"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="19070"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
+            <Parallel threshold="2">
+                <Sequence name="para">
+                    <SetBlackboard output_key="barrelGoalPosition" value="9535"/>
+                    <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+                </Sequence>
+                <MoveAhead name="move ahead" distance="-100"/>
+            </Parallel>
 
-            <MoveAhead name="move ahead"
-                       distance="-100"/>
             <SubTree ID="PickAtomRight"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="28605"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
+            <Parallel threshold="2">
+                <Sequence name="para">
+                    <SetBlackboard output_key="barrelGoalPosition" value="19070"/>
+                    <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+                </Sequence>
+                <MoveAhead name="move ahead" distance="-100"/>
+            </Parallel>
 
-            <MoveAhead name="move ahead"
-                       distance="-100"/>
             <SubTree ID="PickAtomRight"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="38140"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
+            <Parallel threshold="2">
+                <Sequence name="para">
+                    <SetBlackboard output_key="barrelGoalPosition" value="28605"/>
+                    <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+                </Sequence>
+                <MoveAhead name="move ahead" distance="-100"/>
+            </Parallel>
 
-            <MoveAhead name="move ahead"
-                       distance="-100"/>
             <SubTree ID="PickAtomRight"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="47675"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
+            <Parallel threshold="2">
+                <Sequence name="para">
+                    <SetBlackboard output_key="barrelGoalPosition" value="38140"/>
+                    <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+                </Sequence>
+                <MoveAhead name="move ahead" distance="-100"/>
+            </Parallel>
 
-            <MoveAhead name="move ahead"
-                       distance="-100"/>
             <SubTree ID="PickAtomRight"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="57210"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
+            <Parallel threshold="2">
+                <Sequence name="para">
+                    <SetBlackboard output_key="barrelGoalPosition" value="47675"/>
+                    <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+                </Sequence>
+                <MoveAhead name="move ahead" distance="-100"/>
+            </Parallel>
+
+            <SubTree ID="PickAtomRight"/>
+            <Parallel threshold="2">
+                <Sequence name="para">
+                    <SetBlackboard output_key="barrelGoalPosition" value="57210"/>
+                    <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+                </Sequence>
+                <MoveAhead name="move ahead" distance="720"/>
+            </Parallel>
 
             <!-- Move forward to do a U-turn, then go back to drop the atoms -->
-            <MoveAhead name="move ahead"
-                       distance="720"/>
+
             <Turn name="u turn"
                   angle="181"/>
             <MoveAhead name="move ahead"
@@ -102,48 +116,60 @@
 
             <!-- Pick up atoms -->
             <SubTree ID="PickAtomRight"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="9535"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
+            <Parallel threshold="2">
+                <Sequence name="para">
+                    <SetBlackboard output_key="barrelGoalPosition" value="9535"/>
+                    <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+                </Sequence>
+                <MoveAhead name="move ahead" distance="100"/>
+            </Parallel>
 
-            <MoveAhead name="move ahead"
-                       distance="100"/>
+
             <SubTree ID="PickAtomRight"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="19070"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
+            <Parallel threshold="2">
+                <Sequence name="para">
+                    <SetBlackboard output_key="barrelGoalPosition" value="19070"/>
+                    <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+                </Sequence>
+                <MoveAhead name="move ahead" distance="100"/>
+            </Parallel>
 
-            <MoveAhead name="move ahead"
-                       distance="100"/>
             <SubTree ID="PickAtomRight"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="28605"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
+            <Parallel threshold="2">
+                <Sequence name="para">
+                    <SetBlackboard output_key="barrelGoalPosition" value="28605"/>
+                    <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+                </Sequence>
+                <MoveAhead name="move ahead" distance="100"/>
+            </Parallel>
 
-            <MoveAhead name="move ahead"
-                       distance="100"/>
             <SubTree ID="PickAtomRight"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="38140"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
+            <Parallel threshold="2">
+                <Sequence name="para">
+                    <SetBlackboard output_key="barrelGoalPosition" value="38140"/>
+                    <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+                </Sequence>
+                <MoveAhead name="move ahead" distance="100"/>
+            </Parallel>
 
-            <MoveAhead name="move ahead"
-                       distance="100"/>
             <SubTree ID="PickAtomRight"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="47675"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
+            <Parallel threshold="2">
+                <Sequence name="para">
+                    <SetBlackboard output_key="barrelGoalPosition" value="47675"/>
+                    <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+                </Sequence>
+                <MoveAhead name="move ahead" distance="100"/>
+            </Parallel>
 
-            <MoveAhead name="move ahead"
-                       distance="100"/>
             <SubTree ID="PickAtomRight"/>
-            <SetBlackboard output_key="barrelGoalPosition" value="57210"/>
-            <SubTree ID="TurnBarrel"
-                     barrelGoalPosition="barrelGoalPosition"/>
-
-            <!-- Move to balance-->
-            <MoveAhead name="move ahead"
-                       distance="200"/>
+            <Parallel threshold="2">
+                <Sequence name="para">
+                    <SetBlackboard output_key="barrelGoalPosition" value="57210"/>
+                    <SubTree ID="TurnBarrel" barrelGoalPosition="barrelGoalPosition"/>
+                </Sequence>
+                <!-- Move to balance-->
+                <MoveAhead name="move ahead" distance="200"/>
+            </Parallel>
         </Sequence>
     </BehaviorTree>
 
@@ -253,28 +279,17 @@
 
     <BehaviorTree ID="PickAtomRight">
         <Sequence>
-            <MoveArmFront name="move arm to the back"
-                          pos="950"
-            />
+            <MoveArmFront name="move arm to the back" pos="950"/>
 
-            <MoveArmSideJoint name="move arm to the center (joint mode)"
-                              pos="235"
-            />
-            <TurnArm name="turn arm to the right"
-                     pos="820"
-            />
+            <MoveArmSideJoint name="move arm to the center (joint mode)" pos="235"/>
+            <TurnArm name="turn arm to the right" pos="820"/>
 
-            <MoveArmSideJoint name="move arm to the right (joint mode)"
-                              pos="1023"
-            />
+            <MoveArmSideJoint name="move arm to the right (joint mode)" pos="1023"/>
 
             <ActivatePump/>
-            <Wait name="wait for the atom to be stuck"
-                  delay="1000"/>
+            <Wait name="wait for the atom to be stuck" delay="1000"/>
 
-            <MoveArmSideJoint name="move arm back to the center (joint mode)"
-                              pos="235"
-            />
+            <MoveArmSideJoint name="move arm back to the center (joint mode)" pos="235"/>
 
             <TurnArm name="turn arm to the center"
                      pos="510"
