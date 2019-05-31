@@ -6,6 +6,7 @@
 
             <SubTree ID="PickAllYellowAtoms"/>
             <SubTree ID="EmptyBarrelRight"/>
+            <SubTree ID="PushAtomsToBaseYellow"/>
 
         </Sequence>
     </BehaviorTree>
@@ -228,6 +229,44 @@
             <SubTree ID="TurnBarrel"
                      barrelGoalPosition="barrelGoalPosition"/>
             <SubTree ID="PushRight"/>
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="PushAtomsToBasePurple">
+        <Sequence>
+            <Turn name="turn to the left a little to go backwards"
+                  angle="-10"/>
+            <MoveAhead name="escape a little"
+                       distance="-90"/>
+            <Turn name="turn to the left"
+                  angle="-40"/>
+            <MoveAhead name="escape a little"
+                       distance="-500"
+                       avoidCollision="true"/>
+            <Turn name="turn to the right to redress"
+                  angle="15"/>
+            <MoveAhead name="escape a little"
+                       distance="-750"
+                       avoidCollision="true"/>
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="PushAtomsToBaseYellow">
+        <Sequence>
+            <Turn name="turn to the right a little to go backwards"
+                  angle="10"/>
+            <MoveAhead name="escape a little"
+                       distance="-90"/>
+            <Turn name="turn to the right"
+                  angle="40"/>
+            <MoveAhead name="escape a little"
+                       distance="-500"
+                       avoidCollision="true"/>
+            <Turn name="turn to the left to redress"
+                  angle="-15"/>
+            <MoveAhead name="escape a little"
+                       distance="-750"
+                       avoidCollision="true"/>
         </Sequence>
     </BehaviorTree>
 

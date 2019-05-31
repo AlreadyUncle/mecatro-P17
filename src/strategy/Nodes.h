@@ -98,7 +98,7 @@ namespace Robot {
         static PortsList providedPorts() {
             return {
                     InputPort<int>("distance"),
-                    InputPort<bool>("avoidCollusion")
+                    InputPort<bool>("avoidCollision")
             };
         }
 
