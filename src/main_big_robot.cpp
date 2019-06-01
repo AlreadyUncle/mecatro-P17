@@ -147,7 +147,7 @@ int main(int argc, char *argv[]) {
     pumpRelayModule.turnOff();      // turn off the relays if the pins are ON for whatever reason
     barrelRelayModule.turnOff();
 
-    bool isPurple = true; // TO UPDATE BEFORE EACH MATCH !
+    bool isPurple = false; // TO UPDATE BEFORE EACH MATCH !
     std::string treePath =
             "/home/pi/mecatro_P17/src/strategy/tree_big_robot_";
     treePath += (isPurple ? "purple" : "yellow");

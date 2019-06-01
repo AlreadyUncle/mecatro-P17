@@ -6,6 +6,8 @@
 
             <SubTree ID="PickAllPurpleAtoms"/>
             <SubTree ID="EmptyBarrelLeft"/>
+            <SubTree ID="TakeChaos"/>
+
         </Sequence>
     </BehaviorTree>
 
@@ -28,7 +30,7 @@
         <Sequence>
             <!-- Move to atoms and adjust-->
             <MoveAhead name="move ahead"
-                       distance="655"/>
+                       distance="652"/>
             <Turn name="turn to the left (to be backwards)"
                   angle="-90"/>
             <MoveAhead name="move ahead"
@@ -97,7 +99,7 @@
             <Turn name="u turn"
                   angle="182"/>
             <MoveAhead name="move ahead"
-                       distance="920"/>
+                       distance="1020"/>
         </Sequence>
     </BehaviorTree>
 
@@ -110,8 +112,7 @@
                   angle="-90"/>
             <MoveAhead name="move ahead"
                        distance="255"/>
-            <Turn name="adjust" angle="-1
-"/>
+            <Turn name="adjust" angle="-1"/>
 
             <!-- Pick up atoms -->
             <!--<SubTree ID="PickAtomRight"/> shitty pos -->
@@ -288,8 +289,8 @@
 
             <MoveArmSideJoint name="move arm to the right (joint mode)" pos="1023"/>
 
-            <ActivatePump/>
-            <Wait name="wait for the atom to be stuck" delay="500"/>
+            <!--<ActivatePump/>-->
+            <Wait name="wait for the atom to be stuck" delay="1500"/> <!-- 500 -->
 
             <MoveArmSideJoint name="move arm back to the center (joint mode)" pos="235"/>
 
@@ -297,7 +298,7 @@
                      pos="510"/>
             <MoveArmFront name="move arm to the front" pos="460"/>
 
-            <DeactivatePump/>
+            <!--<DeactivatePump/>-->
             <Wait name="wait for the atom to fall" delay="1000"/>
 
             <MoveArmFront name="move arm to the back" pos="950"/>
@@ -330,6 +331,27 @@
             <!--<Wait name="visual" delay="2000"/>-->
             <PushRightAtom name="push it" pos="1023"/>
             <PushRightAtom name="come back" pos="580"/>
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="TakeChaos">
+        <Sequence>
+            <!--<MoveAhead name="move ahead" distance="652"/>
+            <Turn name="turn to the left (to be backwards)" angle="-90"/>
+            <MoveAhead name="move ahead" distance="-145"/>
+            <Turn name="adjust" angle="-1"/>
+            <MoveAhead name="move ahead" distance="-500"/>
+            <MoveAhead name="move ahead" distance="720"/>
+            <Turn name="u turn" angle="182"/>
+            <MoveAhead name="move ahead" distance="1020"/>-->
+
+            <Turn name="towards chaos" angle="30"/>
+            <MoveAhead name="move ahead" distance="30"/>
+            <Turn name="towards chaos" angle="22"/>
+            <MoveAhead name="move ahead" distance="500"/>
+            <Turn name="towards chaos" angle="133"/>
+            <MoveAhead name="move ahead" distance="1200"/>
+
         </Sequence>
     </BehaviorTree>
 </root>
